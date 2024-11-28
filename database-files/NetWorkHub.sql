@@ -15,7 +15,7 @@ CREATE TABLE people(
 
 # Create the Advisors Table
 CREATE TABLE advisors(
-    AdvisorID INT PRIMARY KEY AUTO_INCREMENT,
+    AdvisorID INT PRIMARY KEY,
     FirstName varchar(50),
     LastName varchar(50),
     Email varchar(50),
@@ -26,7 +26,7 @@ CREATE TABLE advisors(
 
 # Create the Students table
 CREATE TABLE students(
-    StudentID INT PRIMARY KEY AUTO_INCREMENT,
+    StudentID INT PRIMARY KEY,
     FirstName varchar(50),
     LastName varchar(50),
     Major varchar(50),
@@ -57,7 +57,7 @@ CREATE TABLE companies(
 
 # Create the Employees Table
 CREATE TABLE employees(
-    EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
+    EmployeeID INT PRIMARY KEY,
     FirstName varchar(50),
     LastName varchar(50),
     JobTitle varchar(100),
@@ -93,8 +93,8 @@ CREATE TABLE tags(
 CREATE TABLE internships(
     PositionID INT PRIMARY KEY AUTO_INCREMENT,
     JobTitle varchar(50) NOT NULL,
-    StartDate datetime NOT NULL,
-    EndDate datetime NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
     Company INT NOT NULL,
     PositionHolder INT NOT NULL,
     Supervisor INT NOT NULL,
