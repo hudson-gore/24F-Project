@@ -32,3 +32,20 @@ def get_contacts(type):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+# Get all the contacts for a specific position and indsutry
+@contacts.route('/contacts/<position>/<industry>', methods=['GET'])
+def get_contacts_pos_ind(position, industry):
+    cursor = db.get_db().cursor()
+    
+    query = '''SELECT e.FirstName, e.LastName, e.Phone, e.Email 
+               FROM employees e
+               JOIN companies c ON e.Company = c.CompanyID
+               WHERE e.JobTitle = %s AND c.Industry = %s'''
+    cursor.execute(query, (position, industry))
+
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
