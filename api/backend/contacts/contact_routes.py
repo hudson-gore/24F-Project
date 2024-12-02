@@ -144,3 +144,23 @@ def get_contacts_deg_tag(degree, tag):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+# Get all of the employee contacts that have completed a specified 
+# internship/co-op in the past and has the desired tag
+@contacts.route('/contacts/employees/<position>/<tag>', methods=['GET'])
+def get_contacts_intern_tag(position, tag):
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Email, e.Phone
+               FROM employees e
+               JOIN people p ON p.ID = e.EmployeeID
+               JOIN internships i ON p.ID = i.PositionHolder
+               JOIN tags t ON p.ID = t.TaggedUser
+               WHERE i.JobTitle = %s AND t.TagName = %s'''
+    cursor.execute(query, (position, tag))
+
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
