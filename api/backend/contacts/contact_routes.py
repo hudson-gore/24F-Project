@@ -24,7 +24,7 @@ def get_contacts(type):
     
     cursor = db.get_db().cursor()
 
-    query = ''' SELECT * FROM {type}}'''
+    query = ''' SELECT * FROM {type}'''
     cursor.execute(query)
 
     theData = cursor.fetchall()
@@ -62,6 +62,26 @@ def get_contacts_ind_tag(industry, tag):
                JOIN companies c ON e.Company = c.CompanyID
                WHERE c.Industry = %s AND t.TagName = %s'''
     cursor.execute(query, (industry, tag))
+
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
+# Get all of the students who have held a specific co-op
+@contacts.route('contacts/<company>/<position>', methods=['GET'])
+def get_contacts_spec_pos(company, position):    
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT s.FirstName, s.LastName, s.Email, s.Phone
+               FROM students s
+               JOIN people p ON s.StudentID = p.ID
+               JOIN internships i ON p.ID = i.PositionHolder
+               JOIN companies c ON c.CompanyID = i.Company
+               WHERE c.CompanyName = %s AND i.JobTitle = %s
+               '''
+    cursor.execute(query, (company, position))
 
     theData = cursor.fetchall()
 
