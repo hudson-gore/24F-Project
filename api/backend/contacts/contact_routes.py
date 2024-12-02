@@ -88,3 +88,42 @@ def get_contacts_spec_pos(company, position):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+# Get all of the contacts of employees from a specific industry, with
+# a defined company size, and specific tag
+@contacts.route('/contacts/<industry>/<size>/<tag>', methods=['GET'])
+def get_contacts_ind_sz_tag(industry, size, tag):
+    try:
+        # Validate that size is an integer
+        try:
+            size = int(size)
+        except ValueError:
+            return make_response(jsonify({"error": "Invalid company size provided"}), 400)
+
+        cursor = db.get_db().cursor()
+
+        # Query to get contacts
+        query = '''SELECT e.FirstName, e.LastName, e.Email, e.Phone
+                   FROM employees e
+                   JOIN companies c ON e.Company = c.CompanyID
+                   JOIN people p ON e.EmployeeID = p.ID
+                   JOIN tags t ON p.ID = t.TaggedUser
+                   WHERE c.Industry = %s
+                        AND c.Size <= %s
+                        AND t.TagName = %s'''
+        cursor.execute(query, (industry, size, tag))
+
+        theData = cursor.fetchall()
+
+        if not theData:
+            return make_response(jsonify({"error": "No contacts found for the given criteria"}), 404)
+
+        the_response = make_response(jsonify(theData))
+        the_response.status_code = 200
+        return the_response
+
+    except Exception as e:
+        # Catch all other exceptions
+        return make_response(jsonify({"error": f"An error occurred: {str(e)}"}), 500)
+    
+    
