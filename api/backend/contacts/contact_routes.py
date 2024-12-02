@@ -183,3 +183,22 @@ def get_contacts_major_tag(major, tag):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+# Get a list of all of the students with a specifc tag
+@contacts.route('/contacts/students/<tag>', methods=['GET'])
+def get_contacts_taggged(tag):
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT s.FirstName, s.LastName, s.Year, s.Major, s.Email, s.Phone
+               FROM students s
+               JOIN people p ON s.StudentID = p.ID
+               JOIN tags t on p.ID = t.TaggedUser
+               WHERE t.TagName = %s'''
+    
+    cursor.execute(query, (tag))
+
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
