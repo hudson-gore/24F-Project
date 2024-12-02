@@ -55,7 +55,7 @@ def get_contacts_pos_ind(position, industry):
 def get_contacts_ind_tag(industry, tag):
     cursor = db.get_db().cursor()
     
-    query = '''SELECT e.FirstName, e.LastName, e.Phone, e.Email 
+    query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Phone, e.Email 
                FROM employees e
                JOIN people p ON p.ID = e.EmployeeID
                JOIN tags t ON p.ID = t.TaggedUser
@@ -103,7 +103,7 @@ def get_contacts_ind_sz_tag(industry, size, tag):
         cursor = db.get_db().cursor()
 
         # Query to get contacts
-        query = '''SELECT e.FirstName, e.LastName, e.Email, e.Phone
+        query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Email, e.Phone
                    FROM employees e
                    JOIN companies c ON e.Company = c.CompanyID
                    JOIN people p ON e.EmployeeID = p.ID
@@ -126,4 +126,21 @@ def get_contacts_ind_sz_tag(industry, size, tag):
         # Catch all other exceptions
         return make_response(jsonify({"error": f"An error occurred: {str(e)}"}), 500)
     
-    
+# Get all of the employees who graduated with a specifc degree and 
+# have a specfic tag
+@contacts.route('/contacts/<degree>/<tag>', methods=['GET'])
+def get_contacts_deg_tag(degree, tag):
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Email, e.Phone
+               FROM employees e
+               JOIN people p ON e.EmployeeID = p.ID
+               JOIN tags t ON p.ID = t.TaggedUser
+               WHERE e.Degree = %s AND t.TagName = %s'''
+    cursor.execute(query, (degree, tag))
+
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
