@@ -164,3 +164,22 @@ def get_contacts_intern_tag(position, tag):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+# Get all of the students with a specific major and desired tag
+@contacts.route('/contacts/students/<major>/<tag>', methods=['GET'])
+def get_contacts_major_tag(major, tag):
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT s.FirstName, s.LastName, s.Year, s.Email, s.Phone
+               FROM students s
+               JOIN people p ON s.StudentID = p.ID
+               JOIN tags t ON p.ID = t.TaggedUser
+               WHERE s.Major = %s AND t.TagName = %s'''
+    
+    cursor.execute(query, (major, tag))
+
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
