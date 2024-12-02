@@ -34,7 +34,7 @@ def get_contacts(type):
     return the_response
 
 # Get all the contacts for a specific position and indsutry
-@contacts.route('/contacts/<position>/<industry>', methods=['GET'])
+@contacts.route('/contacts/employees/<position>/<industry>', methods=['GET'])
 def get_contacts_pos_ind(position, industry):
     cursor = db.get_db().cursor()
     
@@ -51,7 +51,7 @@ def get_contacts_pos_ind(position, industry):
     return the_response
 
 # Get all the contacts in a specifc industry with a specific tag
-@contacts.route('/contacts/<industry>/<tag>', methods=['GET'])
+@contacts.route('/contacts/employees/<industry>/<tag>', methods=['GET'])
 def get_contacts_ind_tag(industry, tag):
     cursor = db.get_db().cursor()
     
@@ -70,7 +70,7 @@ def get_contacts_ind_tag(industry, tag):
     return the_response
 
 # Get all of the students who have held a specific co-op
-@contacts.route('contacts/<company>/<position>', methods=['GET'])
+@contacts.route('contacts/students/<company>/<position>', methods=['GET'])
 def get_contacts_spec_pos(company, position):    
     cursor = db.get_db().cursor()
 
@@ -91,7 +91,7 @@ def get_contacts_spec_pos(company, position):
 
 # Get all of the contacts of employees from a specific industry, with
 # a defined company size, and specific tag
-@contacts.route('/contacts/<industry>/<size>/<tag>', methods=['GET'])
+@contacts.route('/contacts/employees/<industry>/<size>/<tag>', methods=['GET'])
 def get_contacts_ind_sz_tag(industry, size, tag):
     try:
         # Validate that size is an integer
@@ -128,7 +128,7 @@ def get_contacts_ind_sz_tag(industry, size, tag):
     
 # Get all of the employees who graduated with a specifc degree and 
 # have a specfic tag
-@contacts.route('/contacts/<degree>/<tag>', methods=['GET'])
+@contacts.route('/contacts/employees/<degree>/<tag>', methods=['GET'])
 def get_contacts_deg_tag(degree, tag):
     cursor = db.get_db().cursor()
 
