@@ -4,6 +4,7 @@ from flask import request
 from flask import jsonify
 from flask import make_response
 from flask import current_app
+from flask import abort
 from backend.db_connection import db
 from backend.ml_models.model01 import predict
 
@@ -15,10 +16,9 @@ contacts = Blueprint('contacts', __name__)
 # Get all of the contacts from the system
 @contacts.route('/contacts/<type>', methods=['GET'])
 def get_contacts(type):
-    # Define allowed table names 
+
     allowed_tables = {'employees, students'}
 
-    # Check if request is valid
     if type not in allowed_tables:
         return make_response(jsonify({"error": "Invalid type specified"}))
     
@@ -94,7 +94,6 @@ def get_contacts_spec_pos(company, position):
 @contacts.route('/contacts/employees/<industry>/<size>/<tag>', methods=['GET'])
 def get_contacts_ind_sz_tag(industry, size, tag):
     try:
-        # Validate that size is an integer
         try:
             size = int(size)
         except ValueError:
@@ -102,7 +101,6 @@ def get_contacts_ind_sz_tag(industry, size, tag):
 
         cursor = db.get_db().cursor()
 
-        # Query to get contacts
         query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Email, e.Phone
                    FROM employees e
                    JOIN companies c ON e.Company = c.CompanyID
@@ -202,3 +200,38 @@ def get_contacts_taggged(tag):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+# Get the contact info of a specific user
+@contacts.route('/contacts/<type>/<id>', methods=['GET'])
+def get_contact_info(type, id):
+    cursor = db.get_db().cursor()
+    try:
+        
+        if type not in ['student', 'employee']:
+            abort(400, description="Invalid contact type. Use 'student' or 'employee'.")
+
+        
+        queries = {
+            'student': '''SELECT s.FirstName, s.LastName, s.Email, s.Phone
+                          FROM students s
+                          WHERE s.StudentID = %s''',
+            'employee': '''SELECT e.FirstName, e.LastName, e.Email, e.Phone
+                          FROM employees e
+                          WHERE e.EmployeeID = %s'''
+        }
+
+        query = queries[type]
+        cursor.execute(query, (id,))
+        theData = cursor.fetchall()
+
+        the_response = make_response(jsonify(theData))
+        the_response.status_code = 200
+        
+
+        if not theData:
+            abort(404, description="Contact not found.")
+
+        return the_response
+    
+    except Exception as e:
+        return make_response(jsonify({"error": str(e)}), 500)
