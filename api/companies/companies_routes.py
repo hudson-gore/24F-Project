@@ -13,6 +13,20 @@ companies = Blueprint('companies', __name__)
 
 # Routes
 
+# Return all of the company profiles in the database
+@companies.route('/companies', methods=['GET'])
+def get_all_companies():
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT * FROM companies'''
+
+    cursor.execute(query)
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
 # Return the company profile of a specific company
 @companies.route('/companies/<id>', methods=['GET'])
 def get_comp_prof(id):
