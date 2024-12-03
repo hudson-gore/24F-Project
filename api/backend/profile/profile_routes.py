@@ -216,5 +216,25 @@ def delete_profile(id):
     response.status_code = 200
     return response
 
+# Return all the student profiles with a specifc tag
+@profile.route('/profile/<tag>', methods=['GET'])
+def get_profiles_w_tag(tag):
+
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT s.FirstName, s.LastName, s.Major, s.Year, s.Email, s.Phone
+               FROM students s
+               JOIN people p ON p.ID = s.StudentID
+               JOIN tags t ON p.ID = t.TaggedUser
+               WHERE t.TagName = %s
+            '''
+    cursor.execute(query, (tag,))
+
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+
+    return the_response
+
         
     
