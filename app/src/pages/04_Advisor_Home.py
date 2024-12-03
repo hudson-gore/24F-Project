@@ -38,7 +38,7 @@ if st.button("Analyze Job Placement Statistics"):
 
 if st.button("Share Resources"):
     st.write("Navigating to Share Resources...")
-    st.swtich_page("pages/share_resources.py")
+    st.switch_page("pages/share_resources.py")
 
 
 if st.button("Provide Feedback"):
