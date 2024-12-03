@@ -236,7 +236,6 @@ def get_contact_info(type, id):
     except Exception as e:
         return make_response(jsonify({"error": str(e)}), 500)
     
-# Add a new contact 
 # Add a new contact
 @contacts.route('/contact/<type>', methods=['POST'])
 def add_contact_info(type):
@@ -271,3 +270,40 @@ def add_contact_info(type):
     response = make_response("Successfully added contact.")
     response.status_code = 201
     return response
+
+# Update the info in an existing contact
+@contacts.route('/contact/<type>', methods=['PUT'])
+def update_contact_info(type):
+  
+    current_app.logger.info('PUT /contacts route')
+
+    if type not in ['student', 'employee']:
+        return make_response("Invalid contact type. Use 'student' or 'employee'.", 400)
+
+    contact_info = request.json
+    required_fields = ['ID', 'FirstName', 'LastName', 'Email', 'Phone']
+    if not all(field in contact_info for field in required_fields):
+        return make_response("Missing required fields in request data.", 400)
+
+    contact_id = contact_info['ID']
+    firstname = contact_info['FirstName']
+    lastname = contact_info['LastName']
+    email = contact_info['Email']
+    phone = contact_info['Phone']
+
+    queries = {
+        'student': '''UPDATE students
+                        SET FirstName = %s, LastName = %s, Email = %s, Phone = %s
+                        WHERE StudentID = %s''',
+        'employee': '''UPDATE employees
+                        SET FirstName = %s, LastName = %s, Email = %s, Phone = %s
+                        WHERE EmployeeID = %s'''
+    }
+    query = queries[type]
+
+    db_connection = db.get_db()
+    cursor = db_connection.cursor()
+    cursor.execute(query, (firstname, lastname, email, phone, contact_id))
+    db_connection.commit()
+
+    return "Contact info updated successfully!"
