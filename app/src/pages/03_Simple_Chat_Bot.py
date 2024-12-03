@@ -7,7 +7,6 @@ import random
 import time
 from modules.nav import SideBarLinks
 
-SideBarLinks()
 
 def response_generator():
   response = random.choice (
