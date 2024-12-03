@@ -265,5 +265,21 @@ def add_tag_to_profile():
     response.status_code = 200
     return response
 
+# Removing a tag from a specifc profile
+@profile.route('/profile/<tag>/<profile>', methods=['DELETE'])
+def delete_tag(tag, profile):
+    cursor = db.get_db().cursor()
+
+    query = '''DELETE FROM tags
+               WHERE TagID = %s AND TaggedUser = %s
+            '''
+    cursor.execute(query, (tag, profile))
+
+    db.get_db().commit()
+
+    response = make_response('Successfully deleted tag!')
+    response.status_code = 200
+    return response
+
         
     
