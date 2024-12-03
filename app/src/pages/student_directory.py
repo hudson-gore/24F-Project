@@ -5,7 +5,7 @@ st.set_page_config(layout="wide")
 SideBarLinks(show_home=True)
 
 # Title for the page
-st.title("View Student Profiles")
+st.title("Student Directory")
 
 # Description
 st.write("""

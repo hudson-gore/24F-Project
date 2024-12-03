@@ -4,11 +4,11 @@ from modules.nav import SideBarLinks
 st.set_page_config(layout="wide")
 SideBarLinks(show_home=True)
 
-student_ = st.session_state.get('role', '')
-student_role = st.session_state.get('role', '')
+student_major = st.session_state.get('Major', '')
+student_Grad = st.session_state.get('Expected_Grad', '')
 
 st.title("Jordan Thompson")
-st.caption("Undergraduate: Computer Science - May 2026")
+st.caption(f"Undergraduate: Computer Science - May 2026")
 st.caption("Northeastern University")
 
 # Resume and Transcript Uploads
@@ -32,7 +32,7 @@ with st.expander("Projects"):
 
 with st.expander("Roles Interested In"):
     roles = st.multiselect(
-        "Select Roles you are interested in", ["Software Engineer", "Data Analyst", "Cloud Engineer", "QRole"], default=["QRole"]
+        "Select Roles you are interested in", ["Software Engineer", "Data Analyst", "Cloud Engineer", "QRole", "IT"], default=["Software Engineer"]
     )
     st.write(f"Selected {len(roles)}/5")
 
