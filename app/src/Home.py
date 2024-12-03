@@ -49,3 +49,10 @@ if st.button("Dr. Sarah Patel", type='primary', use_container_width=True):
     st.session_state['first_name'] = 'Sarah'
     logger.info("Logging in as Dr. Sarah Patel")
     st.switch_page('pages/04_Advisor_Home.py')
+
+if st.button("API TEST BUTTON", type='primary', use_container_width=True):
+    st.session_state['authenticated'] = True
+    st.session_state['role'] = 'co_op_advisor'
+    st.session_state['first_name'] = 'Sarah'
+    logger.info("Logging in as Dr. Sarah Patel")
+    st.switch_page('pages/12_API_Test.py')
