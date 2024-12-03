@@ -41,7 +41,7 @@ def add_new_comp():
     
     name = company_data['CompanyName']
     industry = company_data['Industry']
-    loc = company_data['Lcoation']
+    loc = company_data['Location']
     size = company_data['Size']
     manager = company_data['ProfileManager']
 
@@ -56,5 +56,38 @@ def add_new_comp():
     db.get_db().commit()
 
     response = make_response('Successfully added company profile!')
+    response.status_code = 200
+    return response
+
+# Update an existing company profile
+@companies.route('/companies', methods=['PUT'])
+def updated_company_profile():
+
+    company_data = request.json
+
+    required_fields = ['CompanyName', 'Industry', 'Location', 'Size', 'ProfileManager',
+                       'CompanyID']
+    if not all(field in company_data for field in required_fields):
+        return "Missing required fields in the request data."
+    
+    name = company_data['CompanyName']
+    industry = company_data['Industry']
+    loc = company_data['Location']
+    size = company_data['Size']
+    manager = company_data['ProfileManager']
+    id = company_data['CompanyID']
+
+    data = (name, industry, loc, size, manager, id)
+
+    query = '''UPDATE companies
+               SET CompanyName = %s, Industry = %s, Location = %s,
+                   Size = %s, ProfileManager = %s
+               WHERE CompanyID = %s
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query, data)
+    db.get_db().commit()
+
+    response = make_response('Successfully updated company profile!')
     response.status_code = 200
     return response
