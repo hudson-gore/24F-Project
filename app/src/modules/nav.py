@@ -102,3 +102,25 @@ def SideBarLinks(show_home=False):
             del st.session_state["role"]
             del st.session_state["authenticated"]
             st.switch_page("Home.py")
+
+        # Add search bar
+    query = st.sidebar.text_input("Search for a person...", placeholder="Type name or role")
+
+    if query:
+        # Search for people whose name or role matches the query (case-insensitive)
+        results = [
+            person
+            for person in people_db
+            if query.lower() in person["name"].lower() or query.lower() in person["role"].lower()
+        ]
+
+        # Display search results
+        if results:
+            st.sidebar.write(f"Found {len(results)} result(s):")
+            for result in results:
+                st.sidebar.write(f"**{result['name']}** - {result['role']} ({result['location']})")
+        else:
+            st.sidebar.write("No results found.")
+
+    else:
+        st.sidebar.write("Start typing to search...")
