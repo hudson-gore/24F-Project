@@ -105,6 +105,76 @@ def add_profile(type):
     response = make_response('Successfully added profile!')
     response.status_code = 200
     return response
+
+# Edit the information of an existing profile
+@profile.route('/profile/<type>', methods=['PUT'])
+def update_profile(type):
     
+    if type not in ['student', 'employee']:
+        abort(400, description="Invalid contact type. Use 'student' or 'employee'.")
+
+    profile_data = request.json
+
+    if type == 'student':
+        required_fields = ['FirstName', 'LastName', 'Major', 'ExpectedGrad', 'Year', 
+                           'ProfileDetails', 'Phone', 'Email', 'ProfileManager', 'StudentID']
+        if not all(field in profile_data for field in required_fields):
+            return "Missing required fields in request data."
+        
+        first = profile_data['FirstName']
+        last = profile_data['LastName']
+        major = profile_data['Major']
+        grad = profile_data['ExpectedGrad']
+        year = profile_data['Year']
+        bio = profile_data['ProfileDetails']
+        phone = profile_data['Phone']
+        email = profile_data['Email']
+        prof_manager = profile_data['ProfileManager']
+        id = profile_data['StudentID']
+
+        data = (first, last, major, grad, year, bio, phone, email, prof_manager, id)
+        
+    elif type == 'employee':
+        required_fields = ['FirstName', 'LastName', 'JobTitle', 'ProfileDetails', 'Phone', 
+                           'Email', 'ContactManager', 'ProfileManager', 'Company', 'EmployeeID']
+        if not all(field in profile_data for field in required_fields):
+            return "Missing required fields in request data."
+        
+        first = profile_data['FirstName']
+        last = profile_data['LastName']
+        title = profile_data['JobTilte']
+        bio = profile_data['ProfileDetails']
+        phone = profile_data['Phone']
+        email = profile_data['Email']
+        con_manager = profile_data['ContactManager']
+        prof_manager = profile_data['ProfileManager']
+        company = profile_data['Company']
+        id = profile_data['EmployeeID']
+
+        data = (first, last, title, bio, phone, email, con_manager, prof_manager, company, id)
+
+    queries = {
+        'student': '''UPDATE students
+                      SET FirstName = %s, LastName = %s, Major = %s, ExpectedGrad = %s, Year = %s,
+                          ProfileDetails = %s, Phone = %s, Email = %s, ProfileManager = %s
+                      WHERE EmployeeID = %s
+                    ''',
+        'employee': '''UPDATE employees
+                       SET FirstName = %s, LastName = %s, JobTitle = %s, ProfileDetails = %s, Phone = %s, 
+                           Email = %s, ContactManager = %s, ProfileManager = %s, Company = %s
+                       WHERE EmployeeID = %s
+                    '''
+    }
+
+    query = queries[type]
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, data)
+    db.get_db().commit()
+
+    response = make_response('Successfully updated profile!')
+    response.status_code = 200
+    return response
+
         
     
