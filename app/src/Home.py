@@ -1,7 +1,6 @@
 import logging
 import streamlit as st
 from modules.nav import SideBarLinks
-
 # Set up logging
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -14,7 +13,6 @@ st.session_state['authenticated'] = False
 
 # Use the SideBarLinks function from modules/nav.py for navigation
 SideBarLinks(show_home=True)
-
 # Content for the home page
 logger.info("Loading the Home page of the app")
 st.title('NetWorkHub')
