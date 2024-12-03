@@ -1,6 +1,7 @@
 import logging
 import streamlit as st
-
+from modules.nav import SideBarLinks
+SideBarLinks(show_home=True)
 # Set up logging
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -34,15 +35,15 @@ if hiring_manager_role == "hiring_manager":
         st.switch_page("pages/post_job.py")
 
     if st.button("Review Job Applications"):
-        st.session_state.page = "review_applications"
+        st.switch_page("pages/review_applications.py")
         st.experimental_rerun()
 
     if st.button("Search for Candidates"):
-        st.session_state.page = "search_candidates"
+        st.switch_page("pages/search_candidates.py")
         st.experimental_rerun()
 
     if st.button("Track Job Listing Status"):
-        st.session_state.page = "job_listing_status"
+        st.switch_page("pages/job_listing_status.py")
         st.experimental_rerun()
 
 else:

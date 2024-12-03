@@ -30,15 +30,15 @@ if student_role == "jordan_thompson":
 
     # Display actionable buttons or links
     if st.button("Search for Alumni in Big Tech"):
-        st.session_state.page = "alumni_search"
+        st.switch_page = "pages/alumni_search.py"
         st.experimental_rerun()
 
     if st.button("Find Students Who Co-oped at Toast"):
-        st.session_state.page = "co_op_search"
+        st.switch_page("pages/co_op_search.py")
         st.experimental_rerun()
 
     if st.button("Update Your Profile"):
-        st.session_state.page = "profile_update"
+        st.switch_page("pages/profile_update.py")
         st.experimental_rerun()
 
 elif student_role == "maya_chen":
@@ -61,9 +61,8 @@ elif student_role == "maya_chen":
         st.experimental_rerun()
 
     if st.button("Track Co-op Outcomes"):
-        st.session_state.page = "co_op_outcomes"
+        st.switch_page("pages/co_op_outcomes,.py")
         st.experimental_rerun()
-
 else:
     st.error("Unknown student role. Please log in again.")
     logger.error(f"Unknown student role: {student_role}")

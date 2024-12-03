@@ -27,14 +27,14 @@ if st.button("Jordan Thompson", type='primary', use_container_width=True):
     st.session_state['role'] = 'jordan_thompson'
     st.session_state['first_name'] = 'Jordan'
     logger.info("Logging in as Jordan Thompson")
-    st.switch_page('pages/01_Student_Home.py') 
+    st.switch_page("pages/01_Student_Home.py")
 
 if st.button("Maya Chen", type='primary', use_container_width=True):
     st.session_state['authenticated'] = True
-    st.session_state['role'] = 'student'
+    st.session_state['role'] = 'maya_chen'
     st.session_state['first_name'] = 'Maya'
     logger.info("Logging in as Maya Chen")
-    st.switch_page('pages/02_Student_Home.py')  
+    st.switch_page('pages/01_Student_Home.py')  
 
 if st.button("Alex Rivera", type='primary', use_container_width=True):
     st.session_state['authenticated'] = True
