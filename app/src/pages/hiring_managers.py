@@ -1,7 +1,5 @@
 import streamlit as st
 from modules.nav import SideBarLinks
-import requests
-
 # Set page config for Streamlit
 st.set_page_config(layout="wide")
 SideBarLinks(show_home=True)
@@ -25,7 +23,7 @@ if company_name:
     # Call the Flask API to search for hiring managers
     try:
         # Adjust the base URL as per your Flask app's location
-        response = requests.get('http://localhost:8501/hiring_managers')
+        response = requests.get(f'http://localhost:8501/search_hiring_managers?company_name={company_name}')
 
         # If the API call is successful, display the results
         if response.status_code == 200:
