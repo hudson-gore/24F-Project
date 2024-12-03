@@ -42,7 +42,7 @@ if st.button("Alex Rivera (Hiring Manager)", type='primary', use_container_width
     st.session_state['role'] = 'hiring_manager'
     st.session_state['first_name'] = 'Alex'
     logger.info("Logging in as Alex Rivera")
-    st.switch_page('pages/03_Hiring_Manager_Home.py')  
+    st.switch_page('pages/02_Hiring_Manager_Home.py')  
 
 if st.button("Dr. Sarah Patel (Coop Advisor)", type='primary', use_container_width=True):
     st.session_state['authenticated'] = True
