@@ -28,3 +28,33 @@ def get_comp_prof(id):
     the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     return the_response
+
+# Add a new company profile into the database
+@companies.route('/companies', methods=['POST'])
+def add_new_comp():
+
+    company_data = request.json
+
+    required_fields = ['CompanyName', 'Industry', 'Location', 'Size', 'ProfileManager']
+    if not all(field in company_data for field in required_fields):
+        return "Missing required fields in the request data."
+    
+    name = company_data['CompanyName']
+    industry = company_data['Industry']
+    loc = company_data['Lcoation']
+    size = company_data['Size']
+    manager = company_data['ProfileManager']
+
+    data = (name, industry, loc, size, manager)
+
+    query = '''INSERT INTO companies (CompanyName, Industry, Location, Size,
+                                      ProfileManager)
+               VALUES (%s, %s, %s, %s, %s)
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query, data)
+    db.get_db().commit()
+
+    response = make_response('Successfully added company profile!')
+    response.status_code = 200
+    return response
