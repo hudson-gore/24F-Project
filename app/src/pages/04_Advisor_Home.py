@@ -30,17 +30,17 @@ As an advisor, you can use this platform to:
 # Navigation buttons
 if st.button("View Student Profiles"):
     st.write("Navigating to View Student Profiles...")
-    st.experimental_set_query_params(page="view_student_profiles")
+    st.switch_page("pages/view_student_profiles.py")
 
 if st.button("Analyze Job Placement Statistics"):
     st.write("Navigating to Job Placement Statistics...")
-    st.experimental_set_query_params(page="job_placement_statistics")
+    st.switch_page("pages/job_placement_statistics.py")
 
 if st.button("Share Resources"):
     st.write("Navigating to Share Resources...")
-    st.experimental_set_query_params(page="share_resources")
+    st.swtich_page("pages/share_resources.py")
+
 
 if st.button("Provide Feedback"):
     st.write("Navigating to Provide Feedback...")
-    st.experimental_set_query_params(page="provide_feedback")
-    
+    st.switch_page("pages/provide_feedback.py")

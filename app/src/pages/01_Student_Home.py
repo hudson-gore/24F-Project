@@ -57,7 +57,7 @@ elif student_role == "maya_chen":
         st.experimental_rerun()
 
     if st.button("Search for Hiring Managers"):
-        st.switch_page("pages/hiring_manager_search.py")
+        st.switch_page("pages/hiring_managers.py")
         st.experimental_rerun()
 
     if st.button("Track Co-op Outcomes"):
