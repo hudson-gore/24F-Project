@@ -1,8 +1,3 @@
-##################################################
-# student_home.py
-##################################################
-
-# Import necessary libraries
 import logging
 import streamlit as st
 
@@ -36,11 +31,16 @@ if student_role == "jordan_thompson":
 
     # Display actionable buttons or links
     if st.button("Search for Alumni in Big Tech"):
-        st.write("Navigating to Alumni Search Page... (Not yet implemented)")
+        st.session_state.page = "alumni_search"
+        st.experimental_rerun()
+
     if st.button("Find Students Who Co-oped at Toast"):
-        st.write("Navigating to Co-op Search Page... (Not yet implemented)")
+        st.session_state.page = "co_op_search"
+        st.experimental_rerun()
+
     if st.button("Update Your Profile"):
-        st.write("Navigating to Profile Update Page... (Not yet implemented)")
+        st.session_state.page = "profile_update"
+        st.experimental_rerun()
 
 elif student_role == "maya_chen":
     st.title(f"Welcome, {student_name}!")
@@ -54,12 +54,37 @@ elif student_role == "maya_chen":
 
     # Display actionable buttons or links
     if st.button("Find Alumni in Accounting and Finance"):
-        st.write("Navigating to Alumni Search Page... (Not yet implemented)")
+        st.session_state.page = "alumni_search"
+        st.experimental_rerun()
+
     if st.button("Search for Hiring Managers"):
-        st.write("Navigating to Hiring Managers Page... (Not yet implemented)")
+        st.session_state.page = "hiring_manager_search"
+        st.experimental_rerun()
+
     if st.button("Track Co-op Outcomes"):
-        st.write("Navigating to Co-op Outcomes Page... (Not yet implemented)")
+        st.session_state.page = "co_op_outcomes"
+        st.experimental_rerun()
 
 else:
     st.error("Unknown student role. Please log in again.")
     logger.error(f"Unknown student role: {student_role}")
+
+# Import pages based on session state for navigation
+if 'page' in st.session_state:
+    page = st.session_state.page
+else:
+    page = None
+
+if page == "alumni_search":
+    import alumni_search
+elif page == "co_op_search":
+    import co_op_search
+elif page == "profile_update":
+    import profile_update
+elif page == "hiring_manager_search":
+    import hiring_managers
+elif page == "co_op_outcomes":
+    import co_op_outcomes
+else:
+    st.write("Home Page (Default)")
+

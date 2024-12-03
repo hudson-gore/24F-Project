@@ -15,3 +15,4 @@ if st.button('Update ML Models',
              type='primary',
              use_container_width=True):
   st.switch_page('pages/21_ML_Model_Mgmt.py')
+  
