@@ -307,3 +307,23 @@ def update_contact_info(type):
     db_connection.commit()
 
     return "Contact info updated successfully!"
+
+# Delete an existing contact
+@contacts.route('/contact/<type>/<id>', methods=['DELETE'])
+def delete_contact(type, id):
+    
+    if type not in ['student', 'employee']:
+        return make_response("Invalid contact type. Use 'student' or 'employee'.", 400)
+
+    queries = {
+        'student': '''DELETE FROM students WHERE StudentID = %s''',
+        'employee': '''DELETE FROM employees WHERE EmployeeID = %s'''
+    }
+    query = queries[type]
+
+    db_connection = db.get_db()
+    cursor = db_connection.cursor()
+    cursor.execute(query, (id,))
+    db_connection.commit()
+
+    return "Contact Deleted Successfully!"
