@@ -120,7 +120,7 @@ def delete_company_profile(id):
     response.status_code = 200
     return response
 
-@companies.route('/search_hiring_managers', methods=['GET'])
+@companies.route('/hiring_managers', methods=['GET'])
 def search_hiring_managers():
     company_name = request.args.get('company_name')
 
