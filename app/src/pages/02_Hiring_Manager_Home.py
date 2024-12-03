@@ -90,7 +90,6 @@ recent_interactions = [
     ('Sarah Patel', 'patel.s@northeastern.edu'),
     ('maya Chen', 'maya.l@northeastern.edu'),
     ('Jordan Thompson', 'jordan.n@northeastern.edu'),
-    ('Mia Patel', 'patel.m@northeastern.edu')
 ]
 
 # Set up the Streamlit page
