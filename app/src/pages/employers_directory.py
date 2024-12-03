@@ -14,9 +14,9 @@ st.write("""
 
 # Example input to search Employers
 industry = st.text_input("Enter an Industry Name:")
-tag = st.text_input("Comapny Name:")
+company = st.text_input("Comapny Name:")
 
-print(industry, tag )
+print(industry, company )
 
 with st.expander("Role Type"):
     roles = st.multiselect(
@@ -25,10 +25,10 @@ with st.expander("Role Type"):
     st.write(f"Selected {len(roles)}/5")
 
 # Ensure both inputs are non-empty
-if industry and tag:  # This checks if both fields are not empty
+if industry and company:  # This checks if both fields are not empty
     try:
         # Make the API call
-        response = requests.get(f"http://api:4000/con/contacts/industry/tag/{industry}/{tag}")
+        response = requests.get(f"http://api:4000/con/contacts/industry/tag/{industry}/{company}")
         # If the request was successful, parse the JSON response
         if response.status_code == 200:
             data = response.json()
