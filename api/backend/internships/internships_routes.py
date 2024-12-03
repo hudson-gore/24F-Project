@@ -29,3 +29,32 @@ def internship_holders(position):
     the_response = make_response(jsonify(theData))
     the_response.status = 200
     return the_response
+
+# Add a new intership experience for a specific student
+@internships.route('/internships', methods=['POST'])
+def internship_experience():
+    
+    job_data = request.json
+    required_fields = ['JobTitle', 'StartDate', 'EndDate', 'Company', 'PositionHolder',
+                       'Supervisor']
+    if not all(field in job_data for field in required_fields):
+        return "Missing required fields in the request data."
+    
+    title = job_data['JobTitle']
+    start = job_data['StartDate']
+    end = job_data['EndDate']
+    company = job_data['Company']
+    intern = job_data['PositionHolder']
+    manager = job_data['Supervisor']
+
+    query = '''INSERT INTO internships (JobTitle, StartDate, EndDate, Company, 
+                                        PositionHolder, Supervisor)
+               VALUES (%s, %s, %s, %s, %s, %s)
+            '''
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    response = make_response("Successfully Added Internship Experience!")
+    response.status_code = 200
+    return response
