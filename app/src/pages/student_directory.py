@@ -1,21 +1,20 @@
 import streamlit as st
 from modules.nav import SideBarLinks
+import requests
+
 # Page configuration
-st.set_page_config(layout="wide")
+st.set_page_config(layout="centered")
 SideBarLinks(show_home=True)
 
-# Title for the page
+# Title and subheader for the page
 st.title("Student Directory")
+st.subheader("Use this page to search and view profiles of students seeking co-op and full-time opportunities.")
 
-# Description
-st.write("""
-    Use this page to search and view profiles of students seeking co-op and full-time opportunities.
-""")
 
-# Example input field for searching student profiles
-student_name = st.text_input("Enter a student name:")
+# Example input to search hiring managers
+company_name = st.text_input("Enter a company name (e.g., Deloitte, EY):")
 
-# Placeholder logic for searching profiles
-if student_name:
-    st.write(f"Searching for student profiles matching: {student_name}")
+if company_name:
+    st.write(f"Searching for hiring managers at {company_name}...")
+    # Placeholder for actual search logic
     st.write("This feature is under construction.")
