@@ -96,6 +96,9 @@ recent_interactions = [
 # Set up the Streamlit page
 st.set_page_config(layout="wide")
 
+hiring_manager_name = st.session_state.get('first_name', '')
+hiring_manager_role = st.session_state.get('role', '')
+
 # Dashboard Header
 st.title('Dashboard')
 if hiring_manager_role == "hiring_manager":
