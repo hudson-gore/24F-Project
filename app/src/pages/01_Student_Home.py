@@ -12,7 +12,6 @@ st.set_page_config(layout="wide")
 if not st.session_state.get('authenticated', False):
     st.error("Please log in to access this page.")
     st.stop()
-
 # Get student information from the session state
 student_role = st.session_state.get('role', '')
 student_name = st.session_state.get('first_name', '')
@@ -54,11 +53,11 @@ elif student_role == "maya_chen":
 
     # Display actionable buttons or links
     if st.button("Find Alumni in Accounting and Finance"):
-        st.session_state.page = "alumni_search"
+        st.switch_page("pages/alumni_search.py")
         st.experimental_rerun()
 
     if st.button("Search for Hiring Managers"):
-        st.session_state.page = "hiring_manager_search"
+        st.switch_page = "pages/hiring_manager_search.py"
         st.experimental_rerun()
 
     if st.button("Track Co-op Outcomes"):
@@ -87,4 +86,3 @@ elif page == "co_op_outcomes":
     import co_op_outcomes
 else:
     st.write("Home Page (Default)")
-

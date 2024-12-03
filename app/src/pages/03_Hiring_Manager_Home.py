@@ -31,8 +31,7 @@ if hiring_manager_role == "hiring_manager":
 
     # Actionable buttons for navigation
     if st.button("Post a New Job Opening"):
-        st.session_state.page = "post_job"
-        st.experimental_rerun()
+        st.switch_page("pages/post_job.py")
 
     if st.button("Review Job Applications"):
         st.session_state.page = "review_applications"
