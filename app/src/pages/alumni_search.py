@@ -19,11 +19,13 @@ st.write("""
 industry = st.text_input("Enter an Industry Name:")
 tag = st.text_input("Enter a Tag Name:")
 
+print(industry, tag)
+
 # Ensure both inputs are non-empty
 if industry and tag:  # This checks if both fields are not empty
     try:
         # Make the API call
-        response = requests.get(f"http://api:4000/con/contacts/employees/{industry}/{tag}")
+        response = requests.get(f"http://api:4000/con/contacts/industry/tag/{industry}/{tag}")
         # If the request was successful, parse the JSON response
         if response.status_code == 200:
             data = response.json()

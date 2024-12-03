@@ -51,18 +51,20 @@ def get_contacts_pos_ind(position, industry):
     return the_response
 
 # Get all the contacts in a specifc industry with a specific tag
-@contacts.route('/contacts/employees/<industry>/<tag>', methods=['GET'])
+@contacts.route('/contacts/industry/tag/<industry>/<tag>', methods=['GET'])
 def get_contacts_ind_tag(industry, tag):
     cursor = db.get_db().cursor()
-    
-    query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Phone, e.Email 
+
+    query = '''
+               SELECT e.FirstName, e.LastName, e.JobTitle, e.Phone, e.Email 
                FROM employees e
                JOIN people p ON p.ID = e.EmployeeID
                JOIN tags t ON p.ID = t.TaggedUser
                JOIN companies c ON e.Company = c.CompanyID
-               WHERE c.Industry = %s AND t.TagName = %s'''
-    cursor.execute(query, (industry, tag))
+               WHERE c.Industry = %s AND t.TagName = %s
+            '''
 
+    cursor.execute(query, (industry, tag))
     theData = cursor.fetchall()
 
     the_response = make_response(jsonify(theData))
