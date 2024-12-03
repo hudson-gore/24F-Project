@@ -14,24 +14,33 @@ if not st.session_state.get('authenticated', False):
     st.stop()
 
 # Get advisor information from the session state
-advisor_name = st.session_state.get('first_name', 'Advisor')
+advisor_name = st.session_state.get('first_name', '')
 
-# Page title and description
+# Display the title and welcome message
 st.title(f"Welcome, {advisor_name}!")
-st.subheader("Your Dashboard for Student Guidance and Career Insights")
+st.subheader("Advisor Home Page")
 st.write("""
-    As an advisor, you can use this platform to:
-    - Guide students in finding relevant co-op and full-time opportunities.
-    - Monitor job placement statistics for your department.
-    - Share resources and provide feedback on student profiles.
+As an advisor, you can use this platform to:
+- View student profiles.
+- Analyze job placement statistics.
+- Share resources with students.
+- Provide feedback on student materials.
 """)
 
-# Actionable buttons for navigation
+# Navigation buttons
 if st.button("View Student Profiles"):
-    st.write("Navigating to Student Profiles Page... (Not yet implemented)")
-if st.button("Job Placement Statistics"):
-    st.write("Navigating to Job Placement Statistics Page... (Not yet implemented)")
+    st.write("Navigating to View Student Profiles...")
+    st.experimental_set_query_params(page="view_student_profiles")
+
+if st.button("Analyze Job Placement Statistics"):
+    st.write("Navigating to Job Placement Statistics...")
+    st.experimental_set_query_params(page="job_placement_statistics")
+
 if st.button("Share Resources"):
-    st.write("Navigating to Resources Page... (Not yet implemented)")
+    st.write("Navigating to Share Resources...")
+    st.experimental_set_query_params(page="share_resources")
+
 if st.button("Provide Feedback"):
-    st.write("Navigating to Feedback Page... (Not yet implemented)")
+    st.write("Navigating to Provide Feedback...")
+    st.experimental_set_query_params(page="provide_feedback")
+    
