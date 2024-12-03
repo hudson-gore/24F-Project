@@ -176,5 +176,19 @@ def update_profile(type):
     response.status_code = 200
     return response
 
+# Delete an existing comapny profile
+@profile.route('/profile/<id>', methods=['DELETE'])
+def delete_profile(id):
+    
+    query = '''DELETE FROM companies WHERE CompanyID = %s'''
+    
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (id,))
+    db.get_db().commit()
+
+    response = make_response('Successfully deleted profile!')
+    response.status_code = 200
+    return response
+
         
     
