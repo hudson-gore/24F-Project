@@ -18,8 +18,8 @@ student_name = st.session_state.get('first_name', '')
 
 # Define content based on the persona
 if student_role == "jordan_thompson":
-    st.title(f"Welcome, {student_name}!")
-    st.subheader("Your Journey to Big Tech Starts Here")
+    st.title(f"hi, {student_name}!")
+    st.subheader("Your wda to Big Tech Starts Here")
     st.write("""
     As an undergraduate computer science student looking to break into the tech industry, 
     you can use this platform to:

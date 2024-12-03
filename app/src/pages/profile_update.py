@@ -1,24 +1,48 @@
 import streamlit as st
 from modules.nav import SideBarLinks
-# Set page config for Streamlit
+
 st.set_page_config(layout="wide")
 SideBarLinks(show_home=True)
 
-# Title of the page
-st.title("Update Your Profile")
+student_ = st.session_state.get('role', '')
+student_role = st.session_state.get('role', '')
 
-# Add description or instructions
-st.write("""
-    Here you can update your profile information, such as contact details, resume, and other personal information.
-""")
+st.title("Jordan Thompson")
+st.caption("Undergraduate: Computer Science - May 2026")
+st.caption("Northeastern University")
 
-# Example fields for updating profile
-name = st.text_input("Enter your name:")
-email = st.text_input("Enter your email:")
-location = st.text_input("Enter your location:")
-bio = st.text_input("Enter your bio:")
+# Resume and Transcript Uploads
+col1, col2 = st.columns(2)
+with col1:
+    resume_uploaded = st.file_uploader("Resume Attach")
+with col2:
+    transcript_uploaded = st.file_uploader("Unofficial Transcript")
 
-if st.button("Save Profile"):
-    st.write("Saving your profile information...")
-    # Placeholder for actual profile update logic
-    st.write("This feature is under construction.")
+with st.expander("Personal Statement"):
+    personal_statement = st.text_area("Add a compelling description showcasing yourself")
+
+with st.expander("Skills"):
+    skills = st.text_input(
+        "Add your skills (comma-separated)", "Java, SQL, Data Structures, Algorithms, HTTP/HTTPS, Cloud Computing"
+    )
+    skills_list = [skill.strip() for skill in skills.split(',') if skill.strip()]
+
+with st.expander("Projects"):
+    st.text_area("Showcase your best project and link your GitHub links")
+
+with st.expander("Roles Interested In"):
+    roles = st.multiselect(
+        "Select Roles you are interested in", ["Software Engineer", "Data Analyst", "Cloud Engineer", "QRole"], default=["QRole"]
+    )
+    st.write(f"Selected {len(roles)}/5")
+
+st.markdown(
+    """
+    <style>
+    .stFileUploader > label {font-weight: bold;}
+    .st-expander > .streamlit-expanderHeader {font-size: 16px; font-weight: bold;}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+

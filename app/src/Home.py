@@ -18,6 +18,7 @@ SideBarLinks(show_home=True)
 # Content for the home page
 logger.info("Loading the Home page of the app")
 st.title('NetWorkHub')
+st.title('TEST NAME')
 st.write('\n\n')
 st.write('Welcome to NetWorkHub! Please select a user persona to proceed:')
 
@@ -49,10 +50,3 @@ if st.button("Dr. Sarah Patel (Coop Advisor)", type='primary', use_container_wid
     st.session_state['first_name'] = 'Sarah'
     logger.info("Logging in as Dr. Sarah Patel")
     st.switch_page('pages/04_Advisor_Home.py')
-
-if st.button("API TEST BUTTON", type='primary', use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'co_op_advisor'
-    st.session_state['first_name'] = 'Sarah'
-    logger.info("Logging in as Dr. Sarah Patel")
-    st.switch_page('pages/12_API_Test.py')
