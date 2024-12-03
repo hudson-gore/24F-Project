@@ -4,11 +4,11 @@ from modules.nav import SideBarLinks
 st.set_page_config(layout="wide")
 SideBarLinks(show_home=True)
 
-student_ = st.session_state.get('role', '')
-student_role = st.session_state.get('role', '')
+student_major = st.session_state.get('Major', '')
+student_Grad = st.session_state.get('Expected_grad', '')
 
 st.title("Jordan Thompson")
-st.caption("Undergraduate: Computer Science - May 2026")
+st.caption(f"Undergraduate: {student_major} - {student_Grad}")
 st.caption("Northeastern University")
 
 # Resume and Transcript Uploads
