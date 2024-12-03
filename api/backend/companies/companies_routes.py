@@ -119,30 +119,4 @@ def delete_company_profile(id):
     response = make_response('Successfully company profile!')
     response.status_code = 200
     return response
-
-@companies.route('/companies/<company_name>', methods=['GET'])
-def search_hiring_managers(company_name):
-    # Sanitize the company name input if necessary (e.g., for SQL injection)
-    company_name = company_name.strip()
-
-    if not company_name:
-        return jsonify({"error": "Company name is required"}), 400
-
-    query = '''
-        SELECT e.FirstName, e.LastName, e.JobTitle, c.CompanyName
-        FROM employees e
-        JOIN companies c ON e.Company = c.CompanyID
-        WHERE c.CompanyName LIKE %s AND e.JobTitle LIKE %s
-    '''
-    cursor = db.get_db().cursor()
-    cursor.execute(query, (f"%{company_name}%", "%Hiring Manager%"))
-
-    hiring_managers_data = cursor.fetchall()
-
-    if not hiring_managers_data:
-        return jsonify({"message": "No hiring managers found for this company."}), 404
-
-    # Format results to match the Streamlit display
-    result = [{"FirstName": row[0], "LastName": row[1], "JobTitle": row[2], "CompanyName": row[3]} for row in hiring_managers_data]
-
-    return jsonify(result), 200
+    
