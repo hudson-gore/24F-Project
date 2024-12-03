@@ -22,7 +22,7 @@ company_name = st.text_input("Enter a company name (e.g., Deloitte, EY):")
 if company_name:  # This checks if the input is not empty
     try:
         # Make the API call
-        response = requests.get(f"http://api:4000/companies/company_name={company_name}")
+        response = requests.get(f"http://api:4000/companies/{company_name}")
         
         # If the request was successful, parse the JSON response
         if response.status_code == 200:
