@@ -1,10 +1,14 @@
 import streamlit as st
 from modules.nav import SideBarLinks
 
-st.title("Profile")
-student_Major = st.session_state.get('Major', '')
-student_grad = st.session_state.get('Expected_Grad', '')
-st.caption(f"{student_Major} - {student_grad}")
+st.set_page_config(layout="wide")
+SideBarLinks(show_home=True)
+
+student_ = st.session_state.get('role', '')
+student_role = st.session_state.get('role', '')
+
+st.title("Jordan Thompson")
+st.caption("Undergraduate: Computer Science - May 2026")
 st.caption("Northeastern University")
 
 # Resume and Transcript Uploads
@@ -18,9 +22,10 @@ with st.expander("Personal Statement"):
     personal_statement = st.text_area("Add a compelling description showcasing yourself")
 
 with st.expander("Skills"):
-    skills = st.tags_input(
-        "Add your skills", ["Java", "SQL", "Data Structures", "Algorithms", "HTTP/HTTPS", "Cloud Computing"]
+    skills = st.text_input(
+        "Add your skills (comma-separated)", "Java, SQL, Data Structures, Algorithms, HTTP/HTTPS, Cloud Computing"
     )
+    skills_list = [skill.strip() for skill in skills.split(',') if skill.strip()]
 
 with st.expander("Projects"):
     st.text_area("Showcase your best project and link your GitHub links")
@@ -40,3 +45,4 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
