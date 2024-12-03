@@ -58,3 +58,48 @@ def internship_experience():
     response = make_response("Successfully Added Internship Experience!")
     response.status_code = 200
     return response
+
+# Edit internship experiences for specific students existing in the system
+@internships.route('/internships', methods=['PUT'])
+def update_internship():
+    
+    current_app.logger.info('PUT /internships route')
+
+    intern_info = request.json
+    required_fields = ['JobTitle', 'StartDate', 'EndDate', 'Company', 'PositionHolder',
+                       'Supervisor']
+    if not all(field in intern_info for field in required_fields):
+        return "Missing required fields in the request data."
+    
+    title = intern_info['JobTitle']
+    start = intern_info['StartDate']
+    end = intern_info['EndDate']
+    company = intern_info['Company']
+    intern = intern_info['PositionHolder']
+    manager = intern_info['Supervisor']
+    id = intern_info['PositionID']
+
+    query = '''UPDATE internships
+               SET JobTitle = %s, StartDate = %s, EndDate = %s, Company = %s,
+                   PositionHolder = %s, Supervisor = %s
+               WHERE PositionID = %s
+            '''
+    data = (title, start, end, company, intern, manager, id)
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query, data)
+    db.get_db().commit()
+
+    return "Contact info updated successfully!"
+
+# Delete a specific internship role from the system
+@internships.route('/internships/<position>', methods=['DELETE'])
+def delete_internship(position):
+
+    query = '''DELETE FROM internships WHERE PositionID = %s'''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return "Internship deleted successfully!"
