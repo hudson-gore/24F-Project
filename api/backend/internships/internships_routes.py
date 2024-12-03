@@ -14,7 +14,7 @@ internships = Blueprint('internships', __name__)
 # Routes
 
 # Return all of the internship experiences in the database
-@internships.routes('/internships', methods=['GET'])
+@internships.route('/internships', methods=['GET'])
 def get_all_internships():
     cursor = db.get_db().cursor()
 

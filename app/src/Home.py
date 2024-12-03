@@ -23,28 +23,28 @@ st.write('\n\n')
 st.write('Welcome to NetWorkHub! Please select a user persona to proceed:')
 
 # Persona buttons
-if st.button("Jordan Thompson", type='primary', use_container_width=True):
+if st.button("Jordan Thompson (Undergraduate Student)", type='primary', use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'jordan_thompson'
     st.session_state['first_name'] = 'Jordan'
     logger.info("Logging in as Jordan Thompson")
     st.switch_page('pages/01_Student_Home.py')
 
-if st.button("Maya Chen", type='primary', use_container_width=True):
+if st.button("Maya Chen (Undergraduate Student)", type='primary', use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'maya_chen'
     st.session_state['first_name'] = 'Maya'
     logger.info("Logging in as Maya Chen")
     st.switch_page('pages/01_Student_Home.py')  
 
-if st.button("Alex Rivera", type='primary', use_container_width=True):
+if st.button("Alex Rivera (Hiring Manager)", type='primary', use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'hiring_manager'
     st.session_state['first_name'] = 'Alex'
     logger.info("Logging in as Alex Rivera")
     st.switch_page('pages/03_Hiring_Manager_Home.py')  
 
-if st.button("Dr. Sarah Patel", type='primary', use_container_width=True):
+if st.button("Dr. Sarah Patel (Coop Advisor)", type='primary', use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'co_op_advisor'
     st.session_state['first_name'] = 'Sarah'
