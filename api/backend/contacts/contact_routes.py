@@ -264,7 +264,7 @@ def add_contact_info(type):
 
 
     response = make_response("Successfully added contact.")
-    response.status_code = 201
+    response.status_code = 200
     return response
 
 # Update the info in an existing contact
