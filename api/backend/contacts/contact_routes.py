@@ -17,14 +17,14 @@ contacts = Blueprint('contacts', __name__)
 @contacts.route('/contacts/<type>', methods=['GET'])
 def get_contacts(type):
 
-    allowed_tables = {'employees, students'}
+    allowed_tables = {'employees', 'students'}
 
     if type not in allowed_tables:
         return make_response(jsonify({"error": "Invalid type specified"}))
     
     cursor = db.get_db().cursor()
 
-    query = ''' SELECT * FROM {type}'''
+    query = f''' SELECT * FROM {type}'''
     cursor.execute(query)
 
     theData = cursor.fetchall()
