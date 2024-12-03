@@ -27,10 +27,12 @@ As an advisor, you can use this platform to:
 - Provide feedback on student materials.
 """)
 
+seach_query = st.text_input("Search for a student:", "")
+
 # Navigation buttons
-if st.button("View Student Profiles"):
-    st.write("Navigating to View Student Profiles...")
-    st.switch_page("pages/view_student_profiles.py")
+if st.button("Student Directory"):
+    st.write("Navigating to Student Directory...")
+    st.switch_page("pages/student_directory.py")
 
 if st.button("Analyze Job Placement Statistics"):
     st.write("Navigating to Job Placement Statistics...")
