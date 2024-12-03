@@ -205,48 +205,44 @@ def get_contacts_taggged(tag):
 @contacts.route('/contact/<type>/<id>', methods=['GET'])
 def get_contact_info(type, id):
     cursor = db.get_db().cursor()
-    try:
         
-        if type not in ['student', 'employee']:
-            abort(400, description="Invalid contact type. Use 'student' or 'employee'.")
+    if type not in ['student', 'employee']:
+        abort(400, description="Invalid contact type. Use 'student' or 'employee'.")
 
-        
-        queries = {
-            'student': '''SELECT s.FirstName, s.LastName, s.Email, s.Phone
-                          FROM students s
-                          WHERE s.StudentID = %s''',
-            'employee': '''SELECT e.FirstName, e.LastName, e.Email, e.Phone
-                          FROM employees e
-                          WHERE e.EmployeeID = %s'''
-        }
-
-        query = queries[type]
-        cursor.execute(query, (id,))
-        theData = cursor.fetchall()
-
-        the_response = make_response(jsonify(theData))
-        the_response.status_code = 200
-        
-
-        if not theData:
-            abort(404, description="Contact not found.")
-
-        return the_response
     
-    except Exception as e:
-        return make_response(jsonify({"error": str(e)}), 500)
+    queries = {
+        'student': '''SELECT s.FirstName, s.LastName, s.Email, s.Phone
+                        FROM students s
+                        WHERE s.StudentID = %s''',
+        'employee': '''SELECT e.FirstName, e.LastName, e.Email, e.Phone
+                        FROM employees e
+                        WHERE e.EmployeeID = %s'''
+    }
+
+    query = queries[type]
+    cursor.execute(query, (id,))
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    
+
+    if not theData:
+        abort(404, description="Contact not found.")
+
+    return the_response
     
 # Add a new contact
 @contacts.route('/contact/<type>', methods=['POST'])
 def add_contact_info(type):
     
     if type not in ['student', 'employee']:
-        return make_response("Invalid contact type. Use 'student' or 'employee'.", 400)
+        return "Invalid contact type. Use 'student' or 'employee'."
 
     the_data = request.json
     required_fields = ['FirstName', 'LastName', 'Email', 'Phone']
     if not all(field in the_data for field in required_fields):
-        return make_response("Missing required fields in request data.", 400)
+        return "Missing required fields in request data."
 
     firstname = the_data['FirstName']
     lastname = the_data['LastName']
@@ -278,12 +274,12 @@ def update_contact_info(type):
     current_app.logger.info('PUT /contacts route')
 
     if type not in ['student', 'employee']:
-        return make_response("Invalid contact type. Use 'student' or 'employee'.", 400)
+        return "Invalid contact type. Use 'student' or 'employee'."
 
     contact_info = request.json
     required_fields = ['ID', 'FirstName', 'LastName', 'Email', 'Phone']
     if not all(field in contact_info for field in required_fields):
-        return make_response("Missing required fields in request data.", 400)
+        return "Missing required fields in request data."
 
     contact_id = contact_info['ID']
     firstname = contact_info['FirstName']
@@ -313,7 +309,7 @@ def update_contact_info(type):
 def delete_contact(type, id):
     
     if type not in ['student', 'employee']:
-        return make_response("Invalid contact type. Use 'student' or 'employee'.", 400)
+        return "Invalid contact type. Use 'student' or 'employee'."
 
     queries = {
         'student': '''DELETE FROM students WHERE StudentID = %s''',
