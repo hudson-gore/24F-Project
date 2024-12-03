@@ -16,7 +16,24 @@ st.write("""
 # Example input to search hiring managers
 company_name = st.text_input("Enter a company name (e.g., Deloitte, EY):")
 
+# Check if the user has entered a company name
 if company_name:
     st.write(f"Searching for hiring managers at {company_name}...")
-    # Placeholder for actual search logic
-    st.write("This feature is under construction.")
+    
+    # Call the Flask API to search for hiring managers
+    try:
+        # Adjust the base URL as per your Flask app's location
+        response = requests.get('http://localhost:8501/hiring_managers')
+
+        # If the API call is successful, display the results
+        if response.status_code == 200:
+            hiring_managers = response.json()
+            for manager in hiring_managers:
+                st.write(f"Name: {manager['FirstName']} {manager['LastName']}")
+                st.write(f"Job Title: {manager['JobTitle']}")
+                st.write(f"Company: {manager['CompanyName']}")
+                st.write("---")
+        else:
+            st.write(response.json()['message'])  # Display error message from the API
+    except Exception as e:
+        st.write(f"An error occurred while fetching the data: {e}")
