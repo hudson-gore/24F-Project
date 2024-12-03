@@ -1,8 +1,8 @@
 import streamlit as st
 from modules.nav import SideBarLinks
-SideBarLinks(show_home=True)
 # Set page configuration
 st.set_page_config(layout="wide")
+SideBarLinks(show_home=True)
 
 # Title for the page
 st.title("Post a New Job Opening")

@@ -1,9 +1,8 @@
 import streamlit as st
 from modules.nav import SideBarLinks
-SideBarLinks(show_home=True)
 # Set page config for Streamlit
-
-
+st.set_page_config(layout="wide")
+SideBarLinks(show_home=True)
 # Title of the page
 st.title("Search for Alumni")
 
