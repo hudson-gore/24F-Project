@@ -46,3 +46,7 @@ if st.button("Share Resources"):
 if st.button("Provide Feedback"):
     st.write("Navigating to Provide Feedback...")
     st.switch_page("pages/provide_feedback.py")
+
+if st.button("Employers"):
+    st.write("Navigative to Employers...")
+    st.switch_page("pages/employers_directory.py")
