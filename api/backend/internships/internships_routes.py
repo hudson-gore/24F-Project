@@ -13,6 +13,21 @@ internships = Blueprint('internships', __name__)
 
 # Routes
 
+# Return all of the internship experiences in the database
+@internships.routes('/internships', methods=['GET'])
+def get_all_internships():
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT *
+               FROM internships
+            '''
+    cursor.execute(query)
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status = 200
+    return the_response
+
+
 # Returns all of the students that have held a specific internship
 # in the past and their contact info
 @internships.route('/internships/<position>', methods=['GET'])
