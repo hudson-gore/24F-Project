@@ -236,5 +236,34 @@ def get_profiles_w_tag(tag):
 
     return the_response
 
+# Add a new tag to a profile
+@profile.route('/profile/tag', methods=['POST'])
+def add_tag_to_profile():
+
+    cursor = db.get_db().cursor()
+
+    tag_data = request.json
+
+    required_fields = ['TagName', 'TagOwner', 'TaggedUser']
+
+    if not all(field in tag_data for field in required_fields):
+        return "Missing required fields in the request data."
+    
+    name = tag_data['TagName']
+    owner = tag_data['TagOwner']
+    tagged = tag_data['TaggedUser']
+
+    data = (name, owner, tagged)
+
+    query = '''INSERT INTO tags (TagName, TagOwner, TaggedUser)
+               VALUES (%s, %s, %s)
+            '''
+    cursor.execute(query, data)
+    db.get_db().commit()
+
+    response = make_response('Successfully added tag!')
+    response.status_code = 200
+    return response
+
         
     
