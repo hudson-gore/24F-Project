@@ -29,12 +29,16 @@ if student_role == "jordan_thompson":
     """)
 
     # Display actionable buttons or links
-    if st.button("Search for Alumni in Big Tech"):
-        st.switch_page("pages/alumni_search.py")
+    if st.button("Coops"):
+        st.switch_page("pages/co_op_search.py")
         st.experimental_rerun()
 
-    if st.button("Find Students Who Co-oped at Toast"):
-        st.switch_page("pages/co_op_search.py")
+    if st.button("Interns"):
+        st.switch_page("pages/interns_search.py")
+        st.experimental_rerun()
+
+    if st.button("Alumni"):
+        st.switch_page("pages/alumni_search.py")
         st.experimental_rerun()
 
     if st.button("Update Your Profile"):
