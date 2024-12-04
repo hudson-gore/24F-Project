@@ -18,7 +18,7 @@ tag = 'Alumni'
 # Make the api call
 data = {} 
 try:
-  data = requests.get(f"http://api:4000/con/employees/degree/tag/{degree}/{tag}")
+  data = requests.get(f"http://api:4000/con/contacts/employees/degree/tag/{degree}/{tag}")
 except:
   st.write("**Important**: Could not connect to sample api, so using dummy data.")
   data = {"a":{"b": "123", "c": "hello"}, "z": {"b": "456", "c": "goodbye"}}
