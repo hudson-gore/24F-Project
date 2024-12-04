@@ -15,32 +15,6 @@ def update_profile(type, profile_data):
     else:
         st.error(f"Error: {response.text}")
 
-# Function to delete a profile
-def delete_profile(id):
-    url = f"{API_URL}/profile/{id}"
-    response = requests.delete(url)
-    
-    if response.status_code == 200:
-        st.success("Profile deleted successfully!")
-    else:
-        st.error(f"Error: {response.text}")
-
-# Function to get profiles by tag
-def get_profiles_by_tag(tag):
-    url = f"{API_URL}/profile/{tag}"
-    response = requests.get(url)
-    
-    if response.status_code == 200:
-        profiles = response.json()
-        if profiles:
-            st.write("Profiles found:")
-            for profile in profiles:
-                st.write(profile)
-        else:
-            st.warning(f"No profiles found with tag {tag}")
-    else:
-        st.error(f"Error: {response.text}")
-
 # Streamlit page content
 st.title("Student Profiles")
 
@@ -84,7 +58,7 @@ with st.form(key="update_form"):
         else:
             st.error("Please fill in all fields.")
         
-# Delete a profile section
+# Check Profile
 st.header("Updated Profile")
 update_button = st.button("See Updated Profile")
 if update_button:

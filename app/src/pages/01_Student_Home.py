@@ -62,7 +62,7 @@ elif student_role == "maya_chen":
         st.experimental_rerun()
 
     if st.button("Aggregate a list of hiring managers in Accounting and Finance", type='primary', use_container_width=True):
-        st.switch_page("pages/co_op_outcomes.py")
+        st.switch_page("pages/2_3_hiring_managers.py")
         st.experimental_rerun()
 
     if st.button("Add my co-op experiences to the data-base", type='primary', use_container_width=True):
