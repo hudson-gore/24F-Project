@@ -30,14 +30,12 @@ messages = [
 ]
 
 message = random.choice(messages)
-
-# Make it fancy using HTML
 st.markdown(f"""
 
     <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; 
                 text-align: center; font-size: 24px; font-weight: bold; 
                 color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-     <span style="color: #ff6347;">{message}</span>
+     <span style="color: #11178f;">{message}</span>
     </div>
     """, unsafe_allow_html=True)
 st.text("\n")

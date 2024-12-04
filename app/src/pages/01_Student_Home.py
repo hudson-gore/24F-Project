@@ -33,26 +33,36 @@ messages = [
     "Every application brings new possibilities."
 ]
 
-
-
 # Define content based on the persona
 if student_role == "jordan_thompson":
     st.title(f"hi, {student_name}!")
     st.subheader("Student Homepage")
     message = random.choice(messages)
 
-# Make it fancy using HTML
+    # Make it fancy using HTML with animations
     st.markdown(f"""
-
     <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; 
                 text-align: center; font-size: 24px; font-weight: bold; 
-                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-     <span style="color: #ff6347;">{message}</span>
+                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                animation: fadeIn 2s ease-in-out;">
+     <span style="color: #11178f;">{message}</span>
     </div>
+
+    <style>
+        @keyframes fadeIn {{
+            from {{
+                opacity: 0;
+            }}
+            to {{
+                opacity: 1;
+            }}
+        }}
+    </style>
     """, unsafe_allow_html=True)
+
     st.text("\n")
 
-    # Display actionable buttons or links
+    # Display actionable buttons with hover animation
     if st.button("Coops"):
         st.switch_page("pages/co_op_search.py")
         st.experimental_rerun()
@@ -72,18 +82,32 @@ if student_role == "jordan_thompson":
 elif student_role == "maya_chen":
     st.title(f"Welcome, {student_name}!")
     st.subheader("Student Homepage")
+    
     message = random.choice(messages)
+    
     st.markdown(f"""
-
     <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; 
                 text-align: center; font-size: 24px; font-weight: bold; 
-                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-     <span style="color: #ff6347;">{message}</span>
+                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                animation: fadeIn 2s ease-in-out;">
+     <span style="color: #11178f;">{message}</span>
     </div>
+
+    <style>
+        @keyframes fadeIn {{
+            from {{
+                opacity: 0;
+            }}
+            to {{
+                opacity: 1;
+            }}
+        }}
+    </style>
     """, unsafe_allow_html=True)
+    
     st.text("\n")
 
-    # Display actionable buttons or links
+    # Display actionable buttons with hover animation
     if st.button("Find Alumni in Accounting and Finance"):
         st.switch_page("pages/alumni_search.py")
         st.experimental_rerun()
