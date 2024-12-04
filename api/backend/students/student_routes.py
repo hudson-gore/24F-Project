@@ -30,4 +30,17 @@ def get_all_students():
     the_response.mimetype = 'application/json'
     return the_response
 
-# returns student(s) with given name
+# returns student(s) with given first name name
+@students.route('/students/<studentFirstName>', methods=['GET'])
+def get_students_by_name(studentFirstName):
+    cursor = db.get_db().cursor()
+    
+    query = '''SELECT s.FirstName, s.LastName, s.Year, s.Major, s.Email
+               FROM students AS s
+               WHERE s.FirstName = %s
+            '''
+    cursor.execute(query, (studentFirstName,))
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status = 200
+    return the_response
