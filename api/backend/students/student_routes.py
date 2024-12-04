@@ -25,7 +25,7 @@ def get_all_students():
     cursor.execute(query)
     theData = cursor.fetchall()
 
-    the_response = make_response(theData)
+    the_response = make_response(jsonify(theData))
     the_response.status_code = 200
     the_response.mimetype = 'application/json'
     return the_response
