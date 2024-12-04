@@ -11,36 +11,50 @@ SideBarLinks(show_home=True)
 st.title("Student Directory")
 st.subheader("Use this page to search and view profiles of students seeking co-op and full-time opportunities.")
 
-# Backend API endpoint
-API_URL = "http://127.0.0.1:4000/students"  # Replace with the actual backend URL if running in Docker, e.g., "http://api:4000/students"
+# Backend API endpoints
+BASE_API_URL = "http://api:4000"
+ALL_STUDENTS_ENDPOINT = f"{BASE_API_URL}/s/students"
+SEARCH_STUDENTS_ENDPOINT = f"{BASE_API_URL}/s/students/{{}}"
 
-# Fetch the list of students from the backend
-try:
-    response = requests.get(API_URL)
-    response.raise_for_status()  # Raise an error if the request fails
-    students_data = response.json()["students"]  # Extract the list of students
-except requests.RequestException as e:
-    st.error("Error fetching student data. Please try again later.")
-    st.stop()
+# Function to fetch all students
+def fetch_all_students():
+    try:
+        response = requests.get(ALL_STUDENTS_ENDPOINT)
+        response.raise_for_status()  # Raise an error if the request fails
+        return pd.DataFrame(response.json())  # Convert to DataFrame
+    except requests.RequestException as e:
+        st.error(f"Error fetching all students: {e}")
+        return pd.DataFrame()  # Return an empty DataFrame
 
-# Convert students data to a DataFrame for display
-students_df = pd.DataFrame(students_data)
+# Function to search students by first name
+def search_students_by_name(first_name):
+    try:
+        response = requests.get(SEARCH_STUDENTS_ENDPOINT.format(first_name))
+        response.raise_for_status()  # Raise an error if the request fails
+        return pd.DataFrame(response.json())  # Convert to DataFrame
+    except requests.RequestException as e:
+        st.error(f"Error fetching student data for '{first_name}': {e}")
+        return pd.DataFrame()  # Return an empty DataFrame
+
+# Fetch all students initially
+students_df = fetch_all_students()
 
 # Search bar for filtering student names
-search_query = st.text_input("Search for a student (by name):")
+st.write("### Search for a Student")
+search_query = st.text_input("Enter the first name of the student you are looking for:")
 
-# Filter the DataFrame based on the search query
 if search_query:
-    filtered_students = students_df[
-        (students_df["first_name"].str.contains(search_query, case=False, na=False)) |
-        (students_df["last_name"].str.contains(search_query, case=False, na=False))
-    ]
+    # Search by name and display results
+    st.write(f"### Search Results for '{search_query}'")
+    search_results = search_students_by_name(search_query)
+    if not search_results.empty:
+        st.dataframe(search_results)
+    else:
+        st.write("No students found with that name.")
 else:
-    filtered_students = students_df
-
-# Display the filtered students in a table
-st.write("### Student List")
-if not filtered_students.empty:
-    st.dataframe(filtered_students)
-else:
-    st.write("No students found matching your search.")
+    st.write("### All Students")
+    if not students_df.empty:
+        # Display all students in a scrollable window
+        st.dataframe(students_df)
+    else:
+        st.write("No students data available.")
