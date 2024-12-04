@@ -13,6 +13,7 @@ st.session_state['authenticated'] = False
 
 # Use the SideBarLinks function from modules/nav.py for navigation
 SideBarLinks(show_home=True)
+
 # Content for the home page
 logger.info("Loading the Home page of the app")
 st.title('NetWorkHub')

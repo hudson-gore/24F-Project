@@ -64,6 +64,7 @@ CREATE TABLE employees(
     ProfileDetails text,
     Phone varchar(50),
     Email varchar(50),
+    Degree varchar(100),
     ContactManager INT NOT NULL,
     ProfileManager INT NOT NULL,
     Company INT NOT NULL,
@@ -134,18 +135,18 @@ VALUES (100, 'Amazon', 'Tech', 'Seattle', 1000000,
         (102, 'Wayfair', 'Retail', 'Boston', 14400,
          2);
 
-# Insert two employees into the companies table
+# Insert two employees into the employees table
 INSERT INTO employees(EmployeeID, FirstName, LastName, JobTitle, ProfileDetails, Phone, Email,
-                      ContactManager, ProfileManager, Company)
+                      Degree, ContactManager, ProfileManager, Company)
 VALUES (5, 'Alex', 'Rivera', 'Hiring Manager',
         'I am the Hiring Manager for Wayfairs Northeastern Co-ops', '(555) 392-1684',
-        'arivera@wayfair.com',5, 1, 102),
+        'arivera@wayfair.com','Communications', 5, 1, 102),
         (6, 'Michael', 'Roberts', 'Senior Consultant, Advisory Services',
          'Senior Consultant @ PWC', '(555) 473-9261', 'michael.roberts@pwc.com',
-         6, 2, 101),
+         'Accounting & Finance', 6, 2, 101),
         (7, 'Emily', 'Carter', 'Software Engineer',
          'Software Engineer @ SWE', '(555) 742-6159', 'ecarter@wayfair.com',
-         5, 1, 102);
+         'Computer Science', 5, 1, 102);
 
 # Insert two tags into the tags table
 INSERT INTO tags(TagID, TagName, TagOwner, TaggedUser)
