@@ -62,4 +62,4 @@ if st.button("Provide Feedback"):
 
 if st.button("Employers"):
     st.write("Navigative to Employers...")
-    st.switch_page("pages/employers_directory.py")
+    st.switch_page("pages/advisor_view_employers.py")
