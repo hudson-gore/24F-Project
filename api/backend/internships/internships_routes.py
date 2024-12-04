@@ -105,5 +105,17 @@ def update_internship():
     cursor = db.get_db().cursor()
     cursor.execute(query, data)
     db.get_db().commit()
-
+    
     return "Contact info updated successfully!"
+
+# Delete a specific internship role from the system
+@internships.route('/internships/<position>', methods=['DELETE'])
+def delete_internship(position):
+
+    query = '''DELETE FROM internships WHERE PositionID = %s'''
+
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    db.get_db().commit()
+
+    return "Internship deleted successfully!"
