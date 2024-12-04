@@ -16,51 +16,12 @@ if not st.session_state.get('authenticated', False):
 # Get student information from the session state
 student_role = st.session_state.get('role', '')
 student_name = st.session_state.get('first_name', '')
-messages = [
-    "Your journey to success starts here!",
-    "Unlock your potential, step by step.",
-    "Learn, grow, and make an impact.",
-    "Curiosity leads to opportunities.",
-    "Dream big, work hard, achieve more.",
-    "The world is ready for your talents.",
-    "Every effort takes you closer to your goals.",
-    "Turning ideas into opportunities starts now.",
-    "Your career future is full of possibilities.",
-    "Break boundaries and build your path.",
-    "Charting the way to your dreams.",
-    "Design the future you want to see.",
-    "Where passion meets purpose.",
-    "Every application brings new possibilities."
-]
+
 
 # Define content based on the persona
 if student_role == "jordan_thompson":
     st.title(f"hi, {student_name}!")
     st.subheader("Student Homepage")
-    message = random.choice(messages)
-
-    # Make it fancy using HTML with animations
-    st.markdown(f"""
-    <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; 
-                text-align: center; font-size: 24px; font-weight: bold; 
-                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                animation: fadeIn 2s ease-in-out;">
-     <span style="color: #11178f;">{message}</span>
-    </div>
-
-    <style>
-        @keyframes fadeIn {{
-            from {{
-                opacity: 0;
-            }}
-            to {{
-                opacity: 1;
-            }}
-        }}
-    </style>
-    """, unsafe_allow_html=True)
-
-    st.text("\n")
 
     # Display actionable buttons with hover animation
     if st.button("Coops"):
@@ -81,42 +42,29 @@ if student_role == "jordan_thompson":
 
 elif student_role == "maya_chen":
     st.title(f"Welcome, {student_name}!")
-    st.subheader("Student Homepage")
+    st.text("Maya Chen is an undergraduate student at Northeastern University studying \
+            Accounting and Finance. Maya is in their first semester of her senior year \
+            and thus far has successfully completed a co-op in Audit at PWC and as a \
+            Financial Analyst for Fidelity. As her time at Northeastern comes to a close \
+            she is looking for a full-time position, but is unsure if she wants to stay \
+            in Finance or go back to Accounting. ")
+    st.subheader(" ")
     
-    message = random.choice(messages)
-    
-    st.markdown(f"""
-    <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; 
-                text-align: center; font-size: 24px; font-weight: bold; 
-                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                animation: fadeIn 2s ease-in-out;">
-     <span style="color: #11178f;">{message}</span>
-    </div>
-
-    <style>
-        @keyframes fadeIn {{
-            from {{
-                opacity: 0;
-            }}
-            to {{
-                opacity: 1;
-            }}
-        }}
-    </style>
-    """, unsafe_allow_html=True)
-    
-    st.text("\n")
 
     # Display actionable buttons with hover animation
-    if st.button("Find Alumni in Accounting and Finance"):
+    if st.button("Find alumni who graduated with an Accounting and Finance Degree", type='primary', use_container_width=True):
         st.switch_page("pages/alumni_search.py")
         st.experimental_rerun()
 
-    if st.button("Search for Hiring Managers"):
+    if st.button("Adjust my profile to indicated I am looking for a job", type='primary', use_container_width=True):
         st.switch_page("pages/hiring_managers.py")
         st.experimental_rerun()
 
-    if st.button("Track Co-op Outcomes"):
+    if st.button("Aggregate a list of hiring managers in Accounting and Finance", type='primary', use_container_width=True):
+        st.switch_page("pages/co_op_outcomes.py")
+        st.experimental_rerun()
+
+    if st.button("Add my co-op experiences to the data-base", type='primary', use_container_width=True):
         st.switch_page("pages/co_op_outcomes.py")
         st.experimental_rerun()
 else:
@@ -139,5 +87,3 @@ elif page == "hiring_manager_search":
     import hiring_managers
 elif page == "co_op_outcomes":
     import co_op_outcomes
-else:
-    st.write("Home Page (Default)")
