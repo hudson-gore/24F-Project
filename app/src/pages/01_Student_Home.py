@@ -53,7 +53,7 @@ elif student_role == "maya_chen":
 
     # Display actionable buttons with hover animation
     if st.button("Find alumni who graduated with an Accounting and Finance Degree", type='primary', use_container_width=True):
-        st.switch_page("pages/alumni_search.py")
+        st.switch_page("pages/2_1_alumni_search.py")
         st.experimental_rerun()
 
     if st.button("Adjust my profile to indicated I am looking for a job", type='primary', use_container_width=True):

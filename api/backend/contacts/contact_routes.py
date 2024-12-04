@@ -128,7 +128,7 @@ def get_contacts_ind_sz_tag(industry, size, tag):
     
 # Get all of the employees who graduated with a specifc degree and 
 # have a specfic tag
-@contacts.route('/contacts/employees/<degree>/<tag>', methods=['GET'])
+@contacts.route('/contacts/employees/degree/tag/<degree>/<tag>', methods=['GET'])
 def get_contacts_deg_tag(degree, tag):
     cursor = db.get_db().cursor()
 
