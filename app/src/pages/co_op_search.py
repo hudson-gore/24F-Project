@@ -6,8 +6,9 @@ SideBarLinks(show_home=True)
 # Title of the page
 st.title("Find Students Who Co-oped at Toast")
 
-# Add description or instructions
-import streamlit as st
+
+
+
 
 # Set page configuration
 st.set_page_config(page_title="Filters Sidebar", page_icon="⚙️", layout="wide")
