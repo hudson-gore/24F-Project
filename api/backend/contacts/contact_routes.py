@@ -137,6 +137,7 @@ def get_contacts_deg_tag(degree, tag):
                JOIN people p ON e.EmployeeID = p.ID
                JOIN tags t ON p.ID = t.TaggedUser
                WHERE e.Degree = %s AND t.TagName = %s'''
+    
     cursor.execute(query, (degree, tag))
 
     theData = cursor.fetchall()
