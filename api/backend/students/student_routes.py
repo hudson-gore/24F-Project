@@ -16,7 +16,6 @@ students = Blueprint('students', __name__)
 @students.route('/students', methods=['GET'])
 def get_all_students():
 
-    current_app.logger.info()
     cursor = db.get_db().cursor()
 
     query = '''SELECT s.FirstName, s.LastName, s.Major, s.Email
