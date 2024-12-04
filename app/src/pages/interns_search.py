@@ -1,80 +1,76 @@
 import streamlit as st
 import pandas as pd
-import requests  # To make API requests
-from modules.nav import SideBarLinks  # Import your custom module
+import requests
+from datetime import datetime
 
-# Set page configuration (must be the first Streamlit command)
-st.set_page_config(page_title="Filters Sidebar", page_icon="⚙️", layout="wide")
+# Function to fetch all internships from the API
+def fetch_all_internships():
+    api_url = "http://api:4000/internships/<position>"  # Replace with your actual API base URL
+    
+    try:
+        response = requests.get(api_url)
+        st.write("API Request URL:", response.url)
+        st.write("Raw API Response:", response.json())  # Debugging output
+        if response.status_code == 200:
+            data = response.json()
+            if isinstance(data, list):  # Ensure the response is a list of records
+                return pd.DataFrame(data)
+            else:
+                st.error("Unexpected API response format. Expected a list of records.")
+                return pd.DataFrame()  # Return an empty DataFrame
+        else:
+            st.error(f"Error: Received status code {response.status_code}")
+            return pd.DataFrame()  # Return an empty DataFrame
+    except requests.exceptions.RequestException as e:
+        st.error(f"API request failed: {e}")
+        return pd.DataFrame()  # Return an empty DataFrame
 
-# Add navigation links (custom function from your module)
-SideBarLinks(show_home=True)
-
-# Sidebar Navigation
+# Sidebar Filters
 st.sidebar.title("Filters")
 
-# Internships Filter
-st.sidebar.subheader("Internships")
-internship_selection = st.sidebar.radio(
-    "Status:",
-    options=["current", "past"],
-    index=0,
-    label_visibility="collapsed"
+# Filter for internship status (current or past)
+status = st.sidebar.radio("Internship Status:", ["current", "past"], index=0)
+
+# Filter for internship location
+locations = st.sidebar.multiselect(
+    "Locations:", ["Boston", "New York", "Chicago"], default=[]
 )
 
-# Location Filter
-st.sidebar.subheader("Location")
-locations = ["Boston", "New York", "Chicago"]
-selected_locations = st.sidebar.multiselect(
-    label="",
-    options=locations,
-    default=["Boston"],  # Default selection
+# Filter for company
+companies = st.sidebar.multiselect(
+    "Companies:", ["Google", "Amazon", "Meta", "Oracle"], default=[]
 )
 
-# Company Filter
-st.sidebar.subheader("Company")
-companies = ["Google", "Amazon", "Meta", "Oracle"]
-selected_companies = st.sidebar.multiselect(
-    label="",
-    options=companies,
-    default=["Google", "Amazon"],  # Default selection
-)
+# Fetch all internships
+st.title("Filtered Internship Data")
+df = fetch_all_internships()
 
-# Display selected filters
-st.write("### Selected Filters:")
-st.write(f"**Internship Status:** {internship_selection}")
-st.write(f"**Locations:** {', '.join(selected_locations) if selected_locations else 'None'}")
-st.write(f"**Companies:** {', '.join(selected_companies) if selected_companies else 'None'}")
+if not df.empty:
+    # Ensure StartDate and EndDate columns are in datetime format
+    df["StartDate"] = pd.to_datetime(df["StartDate"])
+    df["EndDate"] = pd.to_datetime(df["EndDate"])
 
-# Fetch data from API
-if internship_selection and selected_locations and selected_companies:
-    try:
-        # Build the API request URL and query parameters
-        base_url = "http://api:4000/con/contacts/companies/advsisors/students/"  # Replace with your API base URL
-        params = {
-            "status": internship_selection,
-            "location[]": ",".join(selected_locations),
-            "CompanyName[]": ",".join(selected_companies),
-        }
-        
-        # Send GET request to the API
-        response = requests.get(base_url, params=params)
-        
-        # Check if the response is successful
-        if response.status_code == 200:
-            data = response.json()  # Parse the JSON response
-            
-            # Convert to DataFrame if the data is in list format
-            if isinstance(data, list):
-                df = pd.DataFrame(data)
-                if not df.empty:
-                    st.dataframe(df)  # Display the data in a table
-                else:
-                    st.write("No results found for the selected filters.")
-            else:
-                st.write("Unexpected response format from API.")
-        else:
-            st.write(f"Error: Received status code {response.status_code} from the API.")
-    except requests.exceptions.RequestException as e:
-        st.write(f"API error: {e}")
+    # Filter by internship status (current or past)
+    today = datetime.now()
+    if status == "current":
+        df = df[df["StartDate"] <= today]  # Internship has started
+        df = df[df["EndDate"] >= today]  # Internship hasn't ended
+    elif status == "past":
+        df = df[df["EndDate"] < today]  # Internship ended in the past
+
+    # Filter by location
+    if locations:
+        df = df[df["Location"].isin(locations)]
+
+    # Filter by company
+    if companies:
+        df = df[df["CompanyName"].isin(companies)]
+
+    # Display the filtered data
+    if not df.empty:
+        st.write("### Filtered Internship Data")
+        st.dataframe(df)  # Display the DataFrame
+    else:
+        st.write("No results found for the selected filters.")
 else:
-    st.write("Please select all filters.")
+    st.write("Failed to load internship data. Please check the API or your connection.")
