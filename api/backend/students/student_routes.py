@@ -6,7 +6,6 @@ from flask import make_response
 from flask import current_app
 from flask import abort
 from backend.db_connection import db
-from backend.students import students_data
 
 # new Blueprint object
 students = Blueprint('students', __name__)
