@@ -3,9 +3,9 @@ import pandas as pd
 import requests
 from datetime import datetime
 
-# Function to fetch all internships from the database
+# Function to fetch all internships from the API
 def fetch_all_internships():
-    api_url = "http://api:4000/internships"  # Use the `/internships` route
+    api_url = "http://localhost:4000/internships"  # Replace with your actual API base URL
     try:
         response = requests.get(api_url)
         st.write("API Request URL:", response.url)  # Debugging
@@ -24,9 +24,9 @@ def fetch_all_internships():
         st.error(f"API request failed: {e}")
         return pd.DataFrame()
 
-# Function to fetch students for a specific internship position
+# Function to fetch internship holders for a specific position
 def fetch_internship_holders(position):
-    api_url = f"http://api:4000/internships/{position}"  # Use the `/internships/<position>` route
+    api_url = f"http://localhost:4000/internships/{position}"  # Replace with your actual API base URL
     try:
         response = requests.get(api_url)
         st.write("API Request URL:", response.url)  # Debugging
@@ -61,10 +61,10 @@ companies = st.sidebar.multiselect(
     "Companies:", ["Google", "Amazon", "Meta", "Oracle"], default=[]
 )
 
-# Input for Position ID (to fetch specific internship holders)
+# Input for Position ID (optional)
 position_id = st.sidebar.text_input("Position ID (Optional):")
 
-# Fetch data based on the user's choice
+# Fetch data based on filters
 st.title("Filtered Internship Data")
 if position_id:
     # Fetch specific internship holders
@@ -101,6 +101,6 @@ if not df.empty:
         st.write("### Filtered Internship Data")
         st.dataframe(df)
     else:
-        st.write("No results found for the selected filters.")
+        st.write("### Sorry, there is nothing for these selections.")
 else:
-    st.write("Failed to load internship data. Please check the API or your connection.")
+    st.write("### Sorry, there is nothing for these selections.")
