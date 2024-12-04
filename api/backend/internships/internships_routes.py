@@ -1,120 +1,106 @@
-# Import statements
-from flask import Blueprint
-from flask import request
-from flask import jsonify
-from flask import make_response
-from flask import current_app
-from flask import abort
-from backend.db_connection import db
-from backend.ml_models.model01 import predict
+import streamlit as st
+import pandas as pd
+import requests
+from datetime import datetime
 
-# Creating new blueprint object
-internships = Blueprint('internships', __name__)
+# Function to fetch all internships from the database
+def fetch_all_internships():
+    api_url = "http://api:4000/internships"  # Use the `/internships` route
+    try:
+        response = requests.get(api_url)
+        st.write("API Request URL:", response.url)  # Debugging
+        if response.status_code == 200:
+            data = response.json()
+            st.write("Raw API Response:", data)  # Debugging
+            if isinstance(data, list):  # Ensure the response is a list of records
+                return pd.DataFrame(data)
+            else:
+                st.error("Unexpected API response format. Expected a list of records.")
+                return pd.DataFrame()
+        else:
+            st.error(f"Error: Received status code {response.status_code}")
+            return pd.DataFrame()
+    except requests.exceptions.RequestException as e:
+        st.error(f"API request failed: {e}")
+        return pd.DataFrame()
 
-# Routes
+# Function to fetch students for a specific internship position
+def fetch_internship_holders(position):
+    api_url = f"http://api:4000/internships/{position}"  # Use the `/internships/<position>` route
+    try:
+        response = requests.get(api_url)
+        st.write("API Request URL:", response.url)  # Debugging
+        if response.status_code == 200:
+            data = response.json()
+            st.write("Raw API Response:", data)  # Debugging
+            if isinstance(data, list):  # Ensure the response is a list of records
+                return pd.DataFrame(data)
+            else:
+                st.error("Unexpected API response format. Expected a list of records.")
+                return pd.DataFrame()
+        else:
+            st.error(f"Error: Received status code {response.status_code}")
+            return pd.DataFrame()
+    except requests.exceptions.RequestException as e:
+        st.error(f"API request failed: {e}")
+        return pd.DataFrame()
 
-# Return all of the internship experiences in the database
-@internships.route('/internships', methods=['GET'])
-def get_all_internships():
-    cursor = db.get_db().cursor()
+# Sidebar Filters
+st.sidebar.title("Filters")
 
-    query = '''SELECT *
-               FROM internships
-            '''
-    cursor.execute(query)
-    theData = cursor.fetchall()
-    the_response = make_response(jsonify(theData))
-    the_response.status = 200
-    return the_response
+# Filter for internship status (current or past)
+status = st.sidebar.radio("Internship Status:", ["current", "past"], index=0)
 
+# Filter for internship location
+locations = st.sidebar.multiselect(
+    "Locations:", ["Boston", "New York", "Chicago"], default=[]
+)
 
-# Returns all of the students that have held a specific internship
-# in the past and their contact info
-@internships.route('/internships/<position>', methods=['GET'])
-def internship_holders(position):
-    cursor = db.get_db().cursor()
+# Filter for company
+companies = st.sidebar.multiselect(
+    "Companies:", ["Google", "Amazon", "Meta", "Oracle"], default=[]
+)
 
-    query = '''SELECT s.FirstName, s.LastName, s.Year, s.Major, s.Email, s.Phone
-               FROM students s
-               JOIN internships i ON s.StudentID = i.PositionHolder
-               WHERE i.PositionID = %s'''
-    
-    cursor.execute(query, (position,))
-    theData = cursor.fetchall()
-    the_response = make_response(jsonify(theData))
-    the_response.status = 200
-    return the_response
+# Input for Position ID (to fetch specific internship holders)
+position_id = st.sidebar.text_input("Position ID (Optional):")
 
-# Add a new intership experience for a specific student
-@internships.route('/internships', methods=['POST'])
-def internship_experience():
-    
-    job_data = request.json
-    required_fields = ['JobTitle', 'StartDate', 'EndDate', 'Company', 'PositionHolder',
-                       'Supervisor']
-    if not all(field in job_data for field in required_fields):
-        return "Missing required fields in the request data."
-    
-    title = job_data['JobTitle']
-    start = job_data['StartDate']
-    end = job_data['EndDate']
-    company = job_data['Company']
-    intern = job_data['PositionHolder']
-    manager = job_data['Supervisor']
+# Fetch data based on the user's choice
+st.title("Filtered Internship Data")
+if position_id:
+    # Fetch specific internship holders
+    df = fetch_internship_holders(position_id)
+else:
+    # Fetch all internships
+    df = fetch_all_internships()
 
-    query = '''INSERT INTO internships (JobTitle, StartDate, EndDate, Company, 
-                                        PositionHolder, Supervisor)
-               VALUES (%s, %s, %s, %s, %s, %s)
-            '''
-    cursor = db.get_db().cursor()
-    cursor.execute(query)
-    db.get_db().commit()
+if not df.empty:
+    # Ensure StartDate and EndDate columns are in datetime format
+    if "StartDate" in df.columns:
+        df["StartDate"] = pd.to_datetime(df["StartDate"])
+    if "EndDate" in df.columns:
+        df["EndDate"] = pd.to_datetime(df["EndDate"])
 
-    response = make_response("Successfully Added Internship Experience!")
-    response.status_code = 200
-    return response
+    # Filter by internship status (current or past)
+    if "StartDate" in df.columns and "EndDate" in df.columns:
+        today = datetime.now()
+        if status == "current":
+            df = df[(df["StartDate"] <= today) & (df["EndDate"] >= today)]
+        elif status == "past":
+            df = df[df["EndDate"] < today]
 
-# Edit internship experiences for specific students existing in the system
-@internships.route('/internships', methods=['PUT'])
-def update_internship():
-    
-    current_app.logger.info('PUT /internships route')
+    # Filter by location
+    if locations and "Location" in df.columns:
+        df = df[df["Location"].isin(locations)]
 
-    intern_info = request.json
-    required_fields = ['JobTitle', 'StartDate', 'EndDate', 'Company', 'PositionHolder',
-                       'Supervisor']
-    if not all(field in intern_info for field in required_fields):
-        return "Missing required fields in the request data."
-    
-    title = intern_info['JobTitle']
-    start = intern_info['StartDate']
-    end = intern_info['EndDate']
-    company = intern_info['Company']
-    intern = intern_info['PositionHolder']
-    manager = intern_info['Supervisor']
-    id = intern_info['PositionID']
+    # Filter by company
+    if companies and "Company" in df.columns:
+        df = df[df["Company"].isin(companies)]
 
-    query = '''UPDATE internships
-               SET JobTitle = %s, StartDate = %s, EndDate = %s, Company = %s,
-                   PositionHolder = %s, Supervisor = %s
-               WHERE PositionID = %s
-            '''
-    data = (title, start, end, company, intern, manager, id)
-
-    cursor = db.get_db().cursor()
-    cursor.execute(query, data)
-    db.get_db().commit()
-
-    return "Contact info updated successfully!"
-
-# Delete a specific internship role from the system
-@internships.route('/internships/<position>', methods=['DELETE'])
-def delete_internship(position):
-
-    query = '''DELETE FROM internships WHERE PositionID = %s'''
-
-    cursor = db.get_db().cursor()
-    cursor.execute(query)
-    db.get_db().commit()
-
-    return "Internship deleted successfully!"
+    # Display the filtered data
+    if not df.empty:
+        st.write("### Filtered Internship Data")
+        st.dataframe(df)
+    else:
+        st.write("No results found for the selected filters.")
+else:
+    st.write("Failed to load internship data. Please check the API or your connection.")

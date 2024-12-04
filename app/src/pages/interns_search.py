@@ -1,23 +1,16 @@
 import streamlit as st
 import pandas as pd
 import requests
+from datetime import datetime
 
-# Function to fetch internships with parameters
-def fetch_all_internships(internship_type, locations, companies):
-    api_url = "http://api:4000/con/contacts/internships"  # Replace with your actual API base URL
-    params = {
-        "type": internship_type,  # Send the type parameter (e.g., "current" or "past")
-        "locations": ",".join(locations),  # Convert list to comma-separated string
-        "companies": ",".join(companies),  # Convert list to comma-separated string
-    }
+# Function to fetch all internships from the API
+def fetch_all_internships():
+    api_url = "http://api:4000/internships/<position>"  # Replace with your actual API base URL
+    
     try:
-        # Send GET request with parameters
-        response = requests.get(api_url, params=params)
-        
-        # Debugging: Print the request URL and response
+        response = requests.get(api_url)
         st.write("API Request URL:", response.url)
-        st.write("Raw API Response:", response.json())
-        
+        st.write("Raw API Response:", response.json())  # Debugging output
         if response.status_code == 200:
             data = response.json()
             if isinstance(data, list):  # Ensure the response is a list of records
@@ -50,11 +43,34 @@ companies = st.sidebar.multiselect(
 
 # Fetch all internships
 st.title("Filtered Internship Data")
-if status and (locations or companies):  # Ensure at least one filter is selected
-    df = fetch_all_internships(status, locations, companies)
+df = fetch_all_internships()
+
+if not df.empty:
+    # Ensure StartDate and EndDate columns are in datetime format
+    df["StartDate"] = pd.to_datetime(df["StartDate"])
+    df["EndDate"] = pd.to_datetime(df["EndDate"])
+
+    # Filter by internship status (current or past)
+    today = datetime.now()
+    if status == "current":
+        df = df[df["StartDate"] <= today]  # Internship has started
+        df = df[df["EndDate"] >= today]  # Internship hasn't ended
+    elif status == "past":
+        df = df[df["EndDate"] < today]  # Internship ended in the past
+
+    # Filter by location
+    if locations:
+        df = df[df["Location"].isin(locations)]
+
+    # Filter by company
+    if companies:
+        df = df[df["CompanyName"].isin(companies)]
+
+    # Display the filtered data
     if not df.empty:
-        st.dataframe(df)  # Display the filtered data
+        st.write("### Filtered Internship Data")
+        st.dataframe(df)  # Display the DataFrame
     else:
         st.write("No results found for the selected filters.")
 else:
-    st.write("Please select at least one filter.")
+    st.write("Failed to load internship data. Please check the API or your connection.")
