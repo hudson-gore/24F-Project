@@ -12,9 +12,9 @@ st.title("Student Directory")
 st.subheader("Use this page to search and view profiles of students seeking co-op and full-time opportunities.")
 
 # Backend API endpoints
-BASE_API_URL = "http://api:4000"
-ALL_STUDENTS_ENDPOINT = f"{BASE_API_URL}/s/students"
-SEARCH_STUDENTS_ENDPOINT = f"{BASE_API_URL}/s/students/{{}}"
+BASE_API_URL = "http://api:4000/s"
+ALL_STUDENTS_ENDPOINT = f"{BASE_API_URL}/students"
+SEARCH_STUDENTS_ENDPOINT = f"{BASE_API_URL}/students/{{}}"  # Placeholder for student search by first name
 
 # Function to fetch all students
 def fetch_all_students():
