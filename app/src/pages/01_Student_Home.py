@@ -57,7 +57,7 @@ elif student_role == "maya_chen":
         st.experimental_rerun()
 
     if st.button("Adjust my profile to indicated I am looking for a job", type='primary', use_container_width=True):
-        st.switch_page("pages/hiring_managers.py")
+        st.switch_page("pages/2_2_profile_update.py")
         st.experimental_rerun()
 
     if st.button("Aggregate a list of hiring managers in Accounting and Finance", type='primary', use_container_width=True):
