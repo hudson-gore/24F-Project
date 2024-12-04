@@ -1,6 +1,7 @@
 import logging
 import streamlit as st
 from modules.nav import SideBarLinks
+import random
 # Set up logging
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -19,13 +20,25 @@ advisor_name = st.session_state.get('first_name', '')
 # Display the title and welcome message
 st.title(f"Welcome, {advisor_name}!")
 st.subheader("Advisor Home Page")
-st.write("""
-As an advisor, you can use this platform to:
-- View student profiles.
-- Analyze job placement statistics.
-- Share resources with students.
-- Provide feedback on student materials.
-""")
+messages = [
+    "Shape the future of careers with your guidance!",
+    "Empower students to achieve their professional goals.",
+    "Your advice leads to successful career paths.",
+    "Mentorship that makes a lasting impact.",
+    "Transforming ambition into real-world success.",
+    "Guiding the next generation of professionals."
+]
+
+message = random.choice(messages)
+st.markdown(f"""
+
+    <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; 
+                text-align: center; font-size: 24px; font-weight: bold; 
+                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+     <span style="color: #11178f;">{message}</span>
+    </div>
+    """, unsafe_allow_html=True)
+st.text("\n")
 
 seach_query = st.text_input("Search for a student:", "")
 

@@ -16,7 +16,6 @@ SideBarLinks(show_home=True)
 # Content for the home page
 logger.info("Loading the Home page of the app")
 st.title('NetWorkHub')
-st.title('TEST NAME')
 st.write('\n\n')
 st.write('Welcome to NetWorkHub! Please select a user persona to proceed:')
 
