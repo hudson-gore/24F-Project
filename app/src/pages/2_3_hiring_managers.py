@@ -6,18 +6,15 @@ import pandas as pd
 st.title("Employee Contacts by Position and Industry")
 
 # Input fields for position and industry
-position = st.text_input("Enter Job Position:", placeholder="e.g., Software Engineer")
-industry = st.text_input("Enter Industry:", placeholder="e.g., Technology")
+position = st.text_input("Enter Job Position:", placeholder="e.g., Hiring Manager")
+industry = st.text_input("Enter Industry:", placeholder="e.g., Retail")
 
 # Submit button
 if st.button("Search"):
     if position and industry:
-        # URL of the API endpoint
-        api_url = f"http://localhost:4000/con/contacts/employees/{position}/{industry}"
-        
         try:
             # Make the GET request
-            response = requests.get(api_url)
+            response = requests.get(f"http://localhost:4000/con/contacts/employees/pos/ind/{position}/{industry}")
             
             if response.status_code == 200:
                 # Convert JSON response to DataFrame

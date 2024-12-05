@@ -34,7 +34,7 @@ def get_contacts(type):
     return the_response
 
 # Get all the contacts for a specific position and indsutry
-@contacts.route('/contacts/employees/<position>/<industry>', methods=['GET'])
+@contacts.route('/contacts/employees/pos/ind/<position>/<industry>', methods=['GET'])
 def get_contacts_pos_ind(position, industry):
     cursor = db.get_db().cursor()
     
@@ -42,6 +42,7 @@ def get_contacts_pos_ind(position, industry):
                FROM employees e
                JOIN companies c ON e.Company = c.CompanyID
                WHERE e.JobTitle = %s AND c.Industry = %s'''
+    
     cursor.execute(query, (position, industry))
 
     theData = cursor.fetchall()
