@@ -168,7 +168,7 @@ insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (5, 'Grace', 'Gemmill', 'Political Science', 'Psychology', 2028, 'Third', 'Male', '878-768-8495', 'ggemmill4@nytimes.com', 5);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (6, 'Elihu', 'McIlwreath', 'Computer Science', 'Creative Writing', 2026, 'First', 'Software Engineer', '699-833-0954', 'emcilwreath5@xinhuanet.com', 6);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (7, 'Hewet', 'Galton', 'Mechanical Engineering', 'Film Studies', 2024, 'Fourth', 'Male', '240-955-0239', 'hgalton6@drupal.org', 7);
-insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (8, 'Maribeth', 'Johns', 'Biology', 'Psychology', 2029, 'Fourth', '25 years old', '812-889-3781', 'mjohns7@linkedin.com', 8);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (8, 'Maribeth', 'Johns', 'Software Engineer', 'Psychology', 2029, 'Fourth', '25 years old', '812-889-3781', 'mjohns7@linkedin.com', 8);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (9, 'Beale', 'Garlee', 'Sociology', 'Dance', 2025, 'Second', 'Hiking enthusiast', '535-170-9185', 'bgarlee8@imgur.com', 9);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (10, 'Archer', 'Brinded', 'Mechanical Engineering', 'Urban Planning', 2024, 'Third', 'Fluent in Spanish', '157-803-0456', 'abrinded9@quantcast.com', 10);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (11, 'Rolfe', 'Banker', 'Biology', 'Public Health', 2028, 'First', 'Coffee lover', '430-965-3029', 'rbankera@loc.gov', 11);
@@ -180,7 +180,7 @@ insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (17, 'Petronilla', 'Edgson', 'Political Science', 'Psychology', 2025, 'Third', 'Guitar player', '530-984-8589', 'pedgsong@g.co', 17);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (18, 'Beale', 'Sherbrooke', 'Psychology', 'Urban Planning', 2029, 'Fourth', 'Guitar player', '664-753-2529', 'bsherbrookeh@census.gov', 18);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (19, 'Shaughn', 'Greenset', 'Accounting', 'Environmental Studies', 2024, 'First', 'Coffee lover', '648-916-1753', 'sgreenseti@taobao.com', 19);
-insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (20, 'Brigida', 'O''Heaney', 'Art History', 'Public Health', 2027, 'First', 'John Doe', '144-376-5060', 'boheaneyj@globo.com', 20);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (20, 'Brigida', 'O''Heaney', 'Software Engineer', 'Public Health', 2027, 'First', 'John Doe', '144-376-5060', 'boheaneyj@globo.com', 20);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (21, 'Pall', 'Blaszczak', 'Computer Science', 'Film Studies', 2028, 'Second', 'Guitar player', '797-725-4080', 'pblaszczakk@sina.com.cn', 21);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (22, 'Tito', 'McKelvie', 'English Literature', 'Urban Planning', 2024, 'First', 'Male', '997-664-0823', 'tmckelviel@desdev.cn', 22);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (23, 'Adelind', 'Langlais', 'Sociology', 'Film Studies', 2025, 'First', 'Software Engineer', '341-425-1668', 'alanglaism@mit.edu', 23);
@@ -192,10 +192,10 @@ insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (29, 'Jerri', 'Wehnerr', 'Business Administration', 'Computer Science', 2024, 'Third', 'NY', '827-575-7001', 'jwehnerrs@bizjournals.com', 29);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (30, 'Robbin', 'Storkes', 'Biology', 'Criminology', 2026, 'First', 'Male', '471-359-5647', 'rstorkest@vinaora.com', 30);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (31, 'Fina', 'Langston', 'Political Science', 'Music Theory', 2028, 'First', 'Hiking enthusiast', '156-989-8758', 'flangstonu@privacy.gov.au', 31);
-insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (32, 'Marcelia', 'Snewin', 'Biology', 'Sociology', 2024, 'Second', 'Traveler', '610-738-7809', 'msnewinv@stumbleupon.com', 32);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (32, 'Marcelia', 'Snewin', 'Software Engineer', 'Sociology', 2024, 'Second', 'Traveler', '610-738-7809', 'msnewinv@stumbleupon.com', 32);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (33, 'Bond', 'Gonzalez', 'English Literature', 'Environmental Studies', 2025, 'Second', 'NY', '282-372-2661', 'bgonzalezw@omniture.com', 33);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (34, 'Melitta', 'Hallawell', 'Sociology', 'Environmental Studies', 2028, 'Third', 'Fluent in Spanish', '325-815-0914', 'mhallawellx@thetimes.co.uk', 34);
-insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (35, 'Gerti', 'Odby', 'Chemistry', 'Film Studies', 2029, 'Second', 'Male', '770-888-0042', 'godbyy@slashdot.org', 35);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (35, 'Gerti', 'Odby', 'Software Engineer', 'Film Studies', 2029, 'Second', 'Male', '770-888-0042', 'godbyy@slashdot.org', 35);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (36, 'Trixi', 'Reyna', 'Computer Science', 'Urban Planning', 2026, 'First', 'Coffee lover', '461-448-3784', 'treynaz@spotify.com', 36);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (37, 'Carmencita', 'Cowburn', 'Psychology', 'Nutrition', 2026, 'First', 'Software Engineer', '445-540-6360', 'ccowburn10@state.tx.us', 37);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (38, 'Helge', 'Semens', 'Political Science', 'Urban Planning', 2028, 'Second', 'Software Engineer', '999-370-5513', 'hsemens11@wordpress.com', 38);
@@ -436,13 +436,13 @@ INSERT INTO internships (PositionID, JobTitle, StartDate, EndDate, Company, Posi
 (28, 'Junior Architect', '2025-04-01', '2025-10-01', 28, 13, 23),
 (29, 'Research Assistant', '2025-05-15', '2025-11-15', 29, 24, 29),
 (30, 'Engineering Intern', '2025-06-01', '2025-12-01', 30, 50, 3),
-(31, 'Marketing Assistant', '2025-07-10', '2026-01-10', 31, 5, 4),
-(32, 'Community Outreach Intern', '2025-08-05', '2026-02-05', 32, 22, 19),
-(33, 'Database Administrator', '2025-09-15', '2026-03-15', 33, 36, 12),
-(34, 'Engineering Assistant', '2025-10-20', '2026-04-20', 34, 1, 30),
-(35, 'Marketing Analyst', '2025-11-25', '2026-05-25', 35, 11, 5),
-(36, 'Product Design Intern', '2025-12-10', '2026-06-10', 36, 38, 6),
-(37, 'Legal Assistant', '2026-01-05', '2026-07-05', 37, 2, 22),
-(38, 'Customer Experience Intern', '2026-02-15', '2026-08-15', 38, 27, 18),
-(39, 'Environmental Consultant', '2026-03-25', '2026-09-25', 39, 10, 13),
-(40, 'Operations Intern', '2026-04-10', '2026-10-10', 40, 3, 4);
+(31, 'Marketing Assistant', '2025-07-10', '2026-01-10', 9, 5, 4),
+(32, 'Community Outreach Intern', '2025-08-05', '2026-02-05', 30, 22, 19),
+(33, 'Database Administrator', '2025-09-15', '2026-03-15', 31, 36, 12),
+(34, 'Engineering Assistant', '2025-10-20', '2026-04-20', 31, 1, 30),
+(35, 'Marketing Analyst', '2025-11-25', '2026-05-25', 31, 11, 5),
+(36, 'Product Design Intern', '2025-12-10', '2026-06-10', 5, 38, 6),
+(37, 'Legal Assistant', '2026-01-05', '2026-07-05', 4, 2, 22),
+(38, 'Customer Experience Intern', '2026-02-15', '2026-08-15', 3, 27, 18),
+(39, 'Environmental Consultant', '2026-03-25', '2026-09-25', 2, 10, 13),
+(40, 'Operations Intern', '2026-04-10', '2026-10-10', 1, 3, 4);
