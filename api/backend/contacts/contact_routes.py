@@ -236,27 +236,60 @@ def add_contact_info(type):
     if type not in ['student', 'employee']:
         return "Invalid contact type. Use 'student' or 'employee'."
 
-    the_data = request.json
-    required_fields = ['FirstName', 'LastName', 'Email', 'Phone']
-    if not all(field in the_data for field in required_fields):
-        return "Missing required fields in request data."
+    if type == 'student':
+        the_data = request.json
+        required_fields = ['StudentID', 'FirstName', 'LastName', 'Email', 'Phone', 'Major',
+                           'ExpectedGrad', 'Year', 'ProfileDetails', 'ProfileManager']
+        if not all(field in the_data for field in required_fields):
+            return "Missing required fields in request data."
 
-    firstname = the_data['FirstName']
-    lastname = the_data['LastName']
-    email = the_data['Email']
-    phone = the_data['Phone']
+        id = the_data['StudentID']
+        firstname = the_data['FirstName']
+        lastname = the_data['LastName']
+        email = the_data['Email']
+        phone = the_data['Phone']
+        major = the_data['Major']
+        grad = the_data['ExpectedGrad']
+        year = the_data['Year']
+        bio = the_data['ProfileDetails']
+        prof_manager = the_data['ProfileManager']
+
+        data = (firstname, lastname, email, phone, major, grad, year, bio, prof_manager, id)
+
+    if type == 'employee':
+        the_data = request.json
+        required_fields = ['EmployeeID', 'FirstName', 'LastName', 'Email', 'Phone', 'Degree',
+                           'JobTitle', 'ContactManager', 'ProfileDetails', 'ProfileManager', 'Company']
+        if not all(field in the_data for field in required_fields):
+            return "Missing required fields in request data."
+
+        id = the_data['EmployeeID']
+        firstname = the_data['FirstName']
+        lastname = the_data['LastName']
+        email = the_data['Email']
+        phone = the_data['Phone']
+        degree = the_data['Degree']
+        title = the_data['JobTitle']
+        con_manager = the_data['ContactManager']
+        bio = the_data['ProfileDetails']
+        prof_manager = the_data['ProfileManager']
+        comp = the_data['Company']
+
+        data = (id, firstname, lastname, title, bio, email, phone, degree, con_manager, prof_manager, comp)
 
     queries = {
-        'student': '''INSERT INTO students (FirstName, LastName, Email, Phone)
-                        VALUES (%s, %s, %s, %s)''',
-        'employee': '''INSERT INTO employees (FirstName, LastName, Email, Phone)
-                        VALUES (%s, %s, %s, %s)'''
+        'student': '''INSERT INTO students (FirstName, LastName, Email, Phone, Major, ExpectedGrad, 
+                        Year, ProfileDetails, ProfileManager, StudentID)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)''',
+        'employee': '''INSERT INTO employees (EmployeeID, FirstName, LastName, JobTitle, ProfileDetails,
+                        Email, Phone, Degree, ContactManager, ProfileManager, Company)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'''
     }
     query = queries[type]
 
     db_connection = db.get_db()
     cursor = db_connection.cursor()
-    cursor.execute(query, (firstname, lastname, email, phone))
+    cursor.execute(query, data)
     db_connection.commit()
 
 

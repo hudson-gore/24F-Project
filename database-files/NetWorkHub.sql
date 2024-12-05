@@ -10,7 +10,7 @@ USE NetWorkHub;
 
 # Create the Advisors Table
 CREATE TABLE advisors(
-    AdvisorID INT PRIMARY KEY,
+    AdvisorID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName varchar(50),
     LastName varchar(50),
     Email varchar(50),
@@ -19,7 +19,7 @@ CREATE TABLE advisors(
 
 # Create the Students table
 CREATE TABLE students(
-    StudentID INT PRIMARY KEY,
+    StudentID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName varchar(50),
     LastName varchar(50),
     Major varchar(50),
@@ -48,7 +48,7 @@ CREATE TABLE companies(
 
 # Create the Employees Table
 CREATE TABLE employees(
-    EmployeeID INT PRIMARY KEY,
+    EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName varchar(50),
     LastName varchar(50),
     JobTitle varchar(100),
