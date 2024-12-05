@@ -102,7 +102,7 @@ CREATE TABLE internships(
     Supervisor INT NOT NULL,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
         ON UPDATE cascade ON DELETE restrict,
-    FOREIGN KEY (PositionHolder) REFERENCES  student(StudentID)
+    FOREIGN KEY (PositionHolder) REFERENCES  students(StudentID)
         ON UPDATE cascade ON DELETE restrict,
     FOREIGN KEY (Supervisor) REFERENCES employees(EmployeeID)
         ON UPDATE cascade ON DELETE restrict
