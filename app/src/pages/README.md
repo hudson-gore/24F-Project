@@ -35,16 +35,34 @@ Home.py:
 
 
 3_Hiring_Mangager_Home.py:
+    the Hiring Manager Home Page within the broader NetWorkHub platform. It provides a personalized 
+    interface for hiring managers to access tools and resources for managing co-op students and maintaining 
+    relationships between their organization and Northeastern University.
+    
+    CLICK one of the 4 buttons to see the features available to this user.
 
 
 3_1_student_tags.py:
+    this defines the Students by Tag page within the broader NetWorkHub platform. The page allows users,
+    such as hiring managers or advisors, to search for students based on specific tags stored in the database. 
+    The results are dynamically fetched and displayed in an interactive table.
+
+    CLICK on the dropdown menu below "Select Tag:", then click search to see results. 
+    or
+    TYPE a valid tag name into the field and click search to see results. 
 
 
 3_2_dashboard.py:
+    it provides hiring managers with visual insights into the student population based on their academic 
+    major and year, as well as a detailed list of all students in the database.
+
+    
 
 
 3_3_add_profile.py:
-
+    users to create and manage employee profiles in the NetWorkHub platform. It provides a user-friendly form 
+    to submit employee data to the database, retrieve individual profiles, and view all employee profiles for 
+    a specific company.
 
 3_4_delete_profile.py:
 
