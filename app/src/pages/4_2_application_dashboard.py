@@ -39,10 +39,10 @@ def get_students_with_tag(tag):
         return []
 
 # Streamlit page title
-st.title("Student Tags Analysis")
+st.title("Student Dashboard")
 
 # Fetch tags and display bar chart
-st.subheader("Tag Counts")
+st.subheader(" ")
 tag_counts = get_tags()
 
 if tag_counts:
@@ -55,18 +55,15 @@ if tag_counts:
     plt.xticks(rotation=45)
     st.pyplot(fig)
 
-    # Dropdown to select a tag
-    selected_tag = st.selectbox("Select a tag to view students:", options=list(tag_counts.keys()))
+    # Automatically fetch and display students for all tags
 
-    # Fetch and display students associated with the selected tag
-    if st.button("Show Students with Selected Tag"):
-        students = get_students_with_tag(selected_tag)
-        if students:
-            # Convert to DataFrame for better display
-            df = pd.DataFrame(students, columns=["FirstName", "LastName", "Major", "Year", "Email", "Phone"])
-            st.subheader(f"Students with tag '{selected_tag}'")
-            st.dataframe(df)
-        else:
-            st.warning(f"No students found with tag '{selected_tag}'.")
+    st.subheader("Students who have applied:")
+    students = get_students_with_tag('Applied')
+    if students:
+        # Convert to DataFrame for better display
+        df = pd.DataFrame(students, columns=["FirstName", "LastName", "Major", "Year", "Email", "Phone"])
+        st.dataframe(df)
+    else:
+        st.warning("No students found")
 else:
     st.warning("No tags found in the database.")
