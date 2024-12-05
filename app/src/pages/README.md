@@ -56,13 +56,35 @@ Home.py:
     it provides hiring managers with visual insights into the student population based on their academic 
     major and year, as well as a detailed list of all students in the database.
 
-    
-
 
 3_3_add_profile.py:
     users to create and manage employee profiles in the NetWorkHub platform. It provides a user-friendly form 
     to submit employee data to the database, retrieve individual profiles, and view all employee profiles for 
     a specific company.
+
+    EXAMPLE INPUT:
+
+        First Name:
+                - "John"
+        Last Name:
+                - "Doe"
+        Job Title:
+                - "Hiring Manager"
+        Profile Details:
+                - "Hiring Manager @ PWC"
+        Phone:
+                - [put whatever number you want to test it out]
+        Email:
+                - "john.doe@pwc.com"
+        Contact Manager:
+                - 6
+        Profile Manager:
+                - 2
+        Company:
+                - 101 (pwc)
+        EmployeeID:
+                - [put any number you want that is >1000 to avoid conflicts with existing IDs in database]
+
 
 3_4_delete_profile.py:
 
