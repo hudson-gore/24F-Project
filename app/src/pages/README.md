@@ -109,6 +109,16 @@ Home.py:
 
 
 4_1_delete_company.py:
+    the Manage Company Profiles page for the NetWorkHub platform. It enables users, such as 
+    co-op advisors, to view a list of all companies in the database and delete company profiles 
+    when necessary. This page is designed to maintain an up-to-date and accurate database by 
+    removing severed or outdated company relationships.
+
+    CLICK on the dropdown menu to and CLICK on a company
+    or 
+    TYPE the name of a valid company
+
+    CLICK "Delete Company" button to remove the company
 
 
 4_2_application_dashboard.py:
