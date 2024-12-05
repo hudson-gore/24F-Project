@@ -66,7 +66,7 @@ elif student_role == "maya_chen":
         st.experimental_rerun()
 
     if st.button("Add my co-op experiences to the data-base", type='primary', use_container_width=True):
-        st.switch_page("pages/co_op_outcomes.py")
+        st.switch_page("pages/2_4_add_internship.py")
         st.experimental_rerun()
 
 else:
