@@ -6,7 +6,7 @@ import pandas as pd
 st.title("Student Internships by Position and Industry")
 
 # Input fields for position and industry
-position = st.text_input("Enter Job Position:", placeholder="e.g., Software Engineer Co-op")
+position = st.text_input("Enter Job Position:", placeholder="e.g., Software Engineer")
 industry = st.text_input("Enter Industry:", placeholder="e.g., Tech")
 
 # Submit button

@@ -42,21 +42,22 @@ def get_students_with_tag(tag):
 st.title("Student Dashboard")
 
 # Fetch tags and display bar chart
-st.subheader(" ")
+st.subheader("Tag Counts")
 tag_counts = get_tags()
 
 if tag_counts:
-    # Display bar chart
-    fig, ax = plt.subplots()
-    ax.bar(tag_counts.keys(), tag_counts.values(), color='skyblue')
+    # Display bar chart with horizontal bars for better readability
+    fig, ax = plt.subplots(figsize=(10, 6))  # Set a specific figure size
+    ax.barh(list(tag_counts.keys()), list(tag_counts.values()), color='skyblue')
     ax.set_title("Tag Counts")
-    ax.set_xlabel("Tags")
-    ax.set_ylabel("Count")
-    plt.xticks(rotation=45)
+    ax.set_xlabel("Count")
+    ax.set_ylabel("Tags")
+
+    # Adjust layout to make room for labels
+    plt.tight_layout()
     st.pyplot(fig)
 
     # Automatically fetch and display students for all tags
-
     st.subheader("Students who have applied:")
     students = get_students_with_tag('Applied')
     if students:
@@ -64,6 +65,6 @@ if tag_counts:
         df = pd.DataFrame(students, columns=["FirstName", "LastName", "Major", "Year", "Email", "Phone"])
         st.dataframe(df)
     else:
-        st.warning("No students found")
+        st.warning("No students found with the 'Applied' tag.")
 else:
     st.warning("No tags found in the database.")
