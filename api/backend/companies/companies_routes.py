@@ -28,7 +28,7 @@ def get_all_companies():
     return the_response
 
 # Return the company profile of a specific company
-@companies.route('/companies/<id>', methods=['GET'])
+@companies.route('/companies/profile/<id>', methods=['GET'])
 def get_comp_prof(id):
     cursor = db.get_db().cursor()
 
