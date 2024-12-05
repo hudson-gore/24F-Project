@@ -14,7 +14,7 @@ if st.button("Search"):
     if position and industry:
         try:
             # Make the GET request
-            response = requests.get(f"http://localhost:4000/con/contacts/employees/pos/ind/{position}/{industry}")
+            response = requests.get(f"http://api:4000/con/contacts/employees/pos/ind/{position}/{industry}")
             
             if response.status_code == 200:
                 # Convert JSON response to DataFrame

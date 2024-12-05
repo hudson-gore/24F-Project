@@ -63,12 +63,14 @@ def internship_experience():
     intern = job_data['PositionHolder']
     manager = job_data['Supervisor']
 
+    data = (title, start, end, company, intern, manager)
+
     query = '''INSERT INTO internships (JobTitle, StartDate, EndDate, Company, 
                                         PositionHolder, Supervisor)
                VALUES (%s, %s, %s, %s, %s, %s)
             '''
     cursor = db.get_db().cursor()
-    cursor.execute(query)
+    cursor.execute(query, data)
     db.get_db().commit()
 
     response = make_response("Successfully Added Internship Experience!")

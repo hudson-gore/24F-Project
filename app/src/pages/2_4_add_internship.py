@@ -33,7 +33,7 @@ if submit_button:
 
     # Make POST request to the API
     try:
-        api_url = "http://localhost:4000/i/internships"  
+        api_url = "http://api:4000/i/internships"  
         response = requests.post(api_url, json=payload)
         response.raise_for_status()  
 
