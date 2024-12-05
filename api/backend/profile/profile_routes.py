@@ -328,7 +328,7 @@ def delete_emp_tag(tag, profile):
 
 # Get all of the employee tags in the database
 @profile.route('/profile/students/tags', methods=['GET'])
-def get_all_tags():
+def get_students_tag():
 
     cursor = db.get_db().cursor()
 
