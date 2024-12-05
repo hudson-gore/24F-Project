@@ -9,7 +9,7 @@ SHOW DATABASES;
 USE NetWorkHub;
 
 # Create the Advisors Table
-CREATE TABLE dvisors(
+CREATE TABLE advisors(
     AdvisorID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName varchar(50),
     LastName varchar(50),
@@ -18,7 +18,7 @@ CREATE TABLE dvisors(
 );
 
 # Create the Students table
-CREATE TABLE tudents(
+CREATE TABLE students(
     StudentID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName varchar(50),
     LastName varchar(50),
@@ -402,7 +402,6 @@ INSERT INTO student_tags (TagID, TagName, TagOwner, TaggedUser) VALUES
 (48, 'Organized', 48, 48),
 (49, 'Creative Thinker', 49, 49),
 (50, 'Tech Innovator', 50, 50);
-
 
 
 # Insert POSITIONS CO-Op
