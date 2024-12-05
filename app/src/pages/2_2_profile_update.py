@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import json
+import pandas as pd
 
 API_URL = "http://api:4000/p"  
 
@@ -61,12 +62,16 @@ with st.form(key="update_form"):
 # Check Profile
 st.header("Updated Profile")
 update_button = st.button("See Updated Profile")
-if update_button:
+if update_button:    
     data = {} 
     try:
-        data = requests.get(f"http://api:4000/p/profile/student/{student_id}")
-    except:
-        st.write("**Important**: Could not connect to sample api, so using dummy data.")
-        data = {"a":{"b": "123", "c": "hello"}, "z": {"b": "456", "c": "goodbye"}}
-
-    st.dataframe(data)
+        response = requests.get(f"http://api:4000/p/profile/student/{student_id}")
+        response.raise_for_status() 
+        data = response.json()
+        if isinstance(data, list) and data:
+            df = pd.DataFrame(data)
+            st.dataframe(df)
+        else:
+            st.write("No data available for the selected criteria.")
+    except Exception as e:
+        st.write(f"Error fetching data: {e}")
