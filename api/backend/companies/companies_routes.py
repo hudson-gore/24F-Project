@@ -18,7 +18,7 @@ companies = Blueprint('companies', __name__)
 def get_all_companies():
     cursor = db.get_db().cursor()
 
-    query = '''SELECT * FROM companies'''
+    query = '''SELECT DISTINCT CompanyName FROM companies'''
 
     cursor.execute(query)
     theData = cursor.fetchall()
@@ -107,13 +107,13 @@ def updated_company_profile():
     return response
 
 # Delete an existing profile from the database
-@companies.route('/companies/<id>', methods=['DELETE'])
-def delete_company_profile(id):
+@companies.route('/companies/<company>', methods=['DELETE'])
+def delete_company_profile(company):
 
-    query = '''DELETE FROM companies WHERE CompanyID = %s'''
+    query = '''DELETE FROM companies WHERE CompanyName = %s'''
 
     cursor = db.get_db().cursor()
-    cursor.execute(query, (id,))
+    cursor.execute(query, (company,))
     db.get_db().commit()
 
     response = make_response('Successfully company profile!')
