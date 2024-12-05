@@ -38,7 +38,7 @@ if student_role == "jordan_thompson":
         st.switch_page("pages/1_2_alumni_industry.py")
         st.experimental_rerun()
 
-    if st.button("Looking for a specific employer's profile", type='primary', use_container_width=True):
+    if st.button("Looking for a specific employer's profile and add a tag", type='primary', use_container_width=True):
         st.switch_page("pages/1_3_specific_profile.py")
         st.experimental_rerun()
 
