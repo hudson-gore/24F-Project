@@ -33,7 +33,7 @@ def get_contacts(type):
     the_response.status_code = 200
     return the_response
 
-# Get all the contacts for a specific position and indsutry
+# Get all the employees for a specific position and indsutry
 @contacts.route('/contacts/employees/pos/ind/<position>/<industry>', methods=['GET'])
 def get_contacts_pos_ind(position, industry):
     cursor = db.get_db().cursor()
@@ -42,6 +42,26 @@ def get_contacts_pos_ind(position, industry):
                FROM employees e
                JOIN companies c ON e.Company = c.CompanyID
                WHERE e.JobTitle = %s AND c.Industry = %s'''
+    
+    cursor.execute(query, (position, industry))
+
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
+# Get all the employees for a specific position and indsutry
+@contacts.route('/contacts/students/pos/ind/<position>/<industry>', methods=['GET'])
+def get_students_pos_ind(position, industry):
+    cursor = db.get_db().cursor()
+    
+    query = '''SELECT s.FirstName, s.LastName, s.Phone, s.Email 
+               FROM students s
+               JOIN people p ON p.ID = s.StudentID
+               JOIN internships i ON i.PositionHolder = p.ID
+               JOIN companies c ON c.CompanyID = i.Company
+               WHERE i.JobTitle = %s AND c.Industry = %s'''
     
     cursor.execute(query, (position, industry))
 

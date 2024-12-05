@@ -21,24 +21,29 @@ student_name = st.session_state.get('first_name', '')
 
 # Define content based on the persona
 if student_role == "jordan_thompson":
-    st.title(f"hi, {student_name}!")
-    st.subheader("Student Homepage")
+    st.title(f"Welcome, {student_name}!")
+    st.text('Jordan Thompson is an undergraduate student at Northeastern University majoring in computer science, \
+            with a minor in applied mathematics. Jordan is currently in the second year of his degree and has begun \
+            searching for a co-op for the upcoming spring semester. He is most interested in being a software \
+            developer for one of the larger tech companies (Google, Amazon, Apple. Meta, Microsoft, etc.), but is \
+            open to other opportunities in the start-up space as well.')
+    st.subheader(" ")
 
     # Display actionable buttons with hover animation
-    if st.button("Coops"):
-        st.switch_page("pages/co_op_search.py")
+    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
+        st.switch_page("pages/1_1_intern_search.py")
         st.experimental_rerun()
 
-    if st.button("Interns"):
-        st.switch_page("pages/interns_search.py")
+    if st.button("Alumni who work in Tech", type='primary', use_container_width=True):
+        st.switch_page("pages/1_2_alumni_industry.py")
         st.experimental_rerun()
 
-    if st.button("Alumni"):
-        st.switch_page("pages/alumni_search.py")
+    if st.button("Looking for a specific employer's profile", type='primary', use_container_width=True):
+        st.switch_page("pages/1_3_specific_profile.py")
         st.experimental_rerun()
 
-    if st.button("Update Your Profile"):
-        st.switch_page("pages/profile_update.py")
+    if st.button("Student's who have done Software Development at Toast", type='primary', use_container_width=True):
+        st.switch_page("pages/1_4_students_internships.py")
         st.experimental_rerun()
 
 elif student_role == "maya_chen":
