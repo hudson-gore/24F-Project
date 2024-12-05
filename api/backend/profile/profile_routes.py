@@ -101,24 +101,25 @@ def add_profile(type):
         
         first = profile_data['FirstName']
         last = profile_data['LastName']
-        title = profile_data['JobTilte']
+        title = profile_data['JobTitle']
         bio = profile_data['ProfileDetails']
         phone = profile_data['Phone']
         email = profile_data['Email']
         con_manager = profile_data['ContactManager']
         prof_manager = profile_data['ProfileManager']
         company = profile_data['Company']
+        employee_id = profile_data['EmployeeID']
 
-        data = (first, last, title, bio, phone, email, con_manager, prof_manager, company)
+        data = (first, last, title, bio, phone, email, con_manager, prof_manager, company, employee_id)
 
     queries = {
         'student': '''INSERT INTO students (FirstName, LastName, Major, ExpectedGrad, Year, 
                                              ProfileDetails, Phone, Email, ProfileManager)
                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                     ''',
-        'employee': '''INSERT INTO employees (FirstName, LastName, JobTile, ProfileDetails, Phone,
-                                              Email, ContactManager, ProfileManager, Company)
-                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        'employee': '''INSERT INTO employees (FirstName, LastName, JobTitle, ProfileDetails, Phone,
+                                              Email, ContactManager, ProfileManager, Company, EmployeeID)
+                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     '''
     }
 
@@ -168,7 +169,7 @@ def update_profile(type):
         
         first = profile_data['FirstName']
         last = profile_data['LastName']
-        title = profile_data['JobTilte']
+        title = profile_data['JobTitle']
         bio = profile_data['ProfileDetails']
         phone = profile_data['Phone']
         email = profile_data['Email']
@@ -264,7 +265,7 @@ def add_tag_to_profile():
     response.status_code = 200
     return response
 
-# Removing a tag from a specifc  students profile
+# Removing a tag from a specifc students profile
 @profile.route('/profile/student/<tag>/<profile>', methods=['DELETE'])
 def delete_tag(tag, profile):
     cursor = db.get_db().cursor()
@@ -341,4 +342,23 @@ def get_all_tags():
     the_response.status_code = 200
 
     return the_response 
+
+# Get all the profiles from a specific company
+@profile.route('/profile/employees/company/<company>', methods=['GET'])
+def get_company_profiles(company):
+
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT *
+               FROM employees e
+               WHERE e.Company = %s'''
+    
+    cursor.execute(query, (company,))
+
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+
+    return the_response
+
     
