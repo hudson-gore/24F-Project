@@ -324,5 +324,21 @@ def delete_emp_tag(tag, profile):
     response = make_response('Successfully deleted tag!')
     response.status_code = 200
     return response
-        
+
+# Get all of the employee tags in the database
+@profile.route('/profile/students/tags', methods=['GET'])
+def get_all_tags():
+
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT DISTINCT TagName
+               FROM employee_tags
+            '''
+    cursor.execute(query)
+
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+
+    return the_response 
     

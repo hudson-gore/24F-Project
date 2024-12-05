@@ -54,14 +54,3 @@ if 'page' in st.session_state:
     page = st.session_state.page
 else:
     page = None
-
-if page == "post_job":
-    import post_job
-elif page == "review_applications":
-    import review_applications
-elif page == "search_candidates":
-    import search_candidates
-elif page == "job_listing_status":
-    import job_listing_status
-else:
-    st.write("Hiring Manager Home Page (Default)")
