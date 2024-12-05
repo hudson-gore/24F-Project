@@ -175,11 +175,11 @@ insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (12, 'Marcile', 'Poytres', 'Chemistry', 'Psychology', 2029, 'Fourth', 'Guitar player', '864-744-0690', 'mpoytresb@hc360.com', 12);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (13, 'Simonette', 'Mirralls', 'Computer Science', 'Music Theory', 2027, 'First', 'New York', '511-840-2190', 'smirrallsc@furl.net', 13);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (14, 'Tony', 'Cretney', 'Chemistry', 'Nutrition', 2026, 'Third', 'Traveler', '581-606-5326', 'tcretneyd@omniture.com', 14);
-insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (15, 'Delainey', 'Mathie', 'Sociology', 'Criminology', 2024, 'Fourth', '25 years old', '725-823-8542', 'dmathiee@naver.com', 15);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (15, 'Delainey', 'Mathie', 'Accounting', 'Criminology', 2024, 'Fourth', '25 years old', '725-823-8542', 'dmathiee@naver.com', 15);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (16, 'Melba', 'Grumell', 'Sociology', 'Dance', 2028, 'Second', 'NY', '656-580-7595', 'mgrumellf@prlog.org', 16);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (17, 'Petronilla', 'Edgson', 'Political Science', 'Psychology', 2025, 'Third', 'Guitar player', '530-984-8589', 'pedgsong@g.co', 17);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (18, 'Beale', 'Sherbrooke', 'Psychology', 'Urban Planning', 2029, 'Fourth', 'Guitar player', '664-753-2529', 'bsherbrookeh@census.gov', 18);
-insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (19, 'Shaughn', 'Greenset', 'Political Science', 'Environmental Studies', 2024, 'First', 'Coffee lover', '648-916-1753', 'sgreenseti@taobao.com', 19);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (19, 'Shaughn', 'Greenset', 'Accounting', 'Environmental Studies', 2024, 'First', 'Coffee lover', '648-916-1753', 'sgreenseti@taobao.com', 19);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (20, 'Brigida', 'O''Heaney', 'Art History', 'Public Health', 2027, 'First', 'John Doe', '144-376-5060', 'boheaneyj@globo.com', 20);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (21, 'Pall', 'Blaszczak', 'Computer Science', 'Film Studies', 2028, 'Second', 'Guitar player', '797-725-4080', 'pblaszczakk@sina.com.cn', 21);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (22, 'Tito', 'McKelvie', 'English Literature', 'Urban Planning', 2024, 'First', 'Male', '997-664-0823', 'tmckelviel@desdev.cn', 22);
@@ -248,7 +248,7 @@ INSERT INTO companies (CompanyID, CompanyName, Industry, Location, Size, Profile
 INSERT INTO employees (EmployeeID, FirstName, LastName, JobTitle, ProfileDetails, Phone, Email, Degree, ContactManager, ProfileManager, Company) VALUES
 (1, 'John', 'Doe', 'Software Engineer', 'Experienced in web development', '123-456-7890', 'johndoe@apple.com', 'Computer Science', 1, 1, 1),
 (2, 'Jane', 'Smith', 'Marketing Manager', 'Expert in digital marketing and strategy', '123-456-7891', 'janesmith@apple.com', 'Business Administration', 2, 2, 1),
-(3, 'David', 'Johnson', 'Project Manager', 'Specializes in managing large tech projects', '123-456-7892', 'davidjohnson@microsoft.com', 'MBA', 3, 3, 2),
+(3, 'David', 'Johnson', 'Software Engineer', 'Specializes in managing large tech projects', '123-456-7892', 'davidjohnson@microsoft.com', 'MBA', 3, 3, 2),
 (4, 'Emily', 'Brown', 'Sales Lead', 'Expert in retail and online sales strategies', '123-456-7893', 'emilybrown@microsoft.com', 'Marketing', 4, 4, 2),
 (5, 'Michael', 'Davis', 'Data Analyst', 'Specializes in data analysis and insights', '123-456-7894', 'michaeldavis@amazon.com', 'Data Science', 5, 5, 3),
 (6, 'Sarah', 'Miller', 'HR Manager', 'Skilled in employee relations and recruitment', '123-456-7895', 'sarahmiller@amazon.com', 'Human Resources', 6, 6, 3),
@@ -283,19 +283,19 @@ INSERT INTO employees (EmployeeID, FirstName, LastName, JobTitle, ProfileDetails
 (35, 'Ella', 'Robinson', 'Software Developer', 'Develops enterprise software for tech clients', '123-456-7924', 'ellarobinson@ibm.com', 'Computer Science', 35, 35, 18),
 (36, 'Jacob', 'Wright', 'Data Scientist', 'Analyzes data for technology applications', '123-456-7925', 'jacobwright@ibm.com', 'Data Science', 36, 36, 18),
 (37, 'Oliver', 'Lopez', 'Cloud Solutions Architect', 'Designs cloud computing solutions for enterprises', '123-456-7926', 'oliverlopez@oracle.com', 'Information Technology', 37, 37, 19),
-(5,  'Alex', 'Rivera', 'Hiring Manager', 'I am the Hiring Manager for Wayfairs Northeastern Co-ops', '(555) 392-1684', 'arivera@wayfair.com','Communications', 5, 1, 31),
+(39, 'Alex', 'Rivera', 'Hiring Manager', 'I am the Hiring Manager for Wayfairs Northeastern Co-ops', '(555) 392-1684', 'arivera@wayfair.com','Communications', 5, 1, 31),
 (38, 'Elijah', 'Hill', 'Business Intelligence Analyst', 'Provides insights using business intelligence tools', '123-456-7927', 'elijahhill@oracle.com', 'Business Intelligence', 38, 38, 19),
 (40, 'Mila', 'Gonzalez', 'Customer Success Manager', 'Focuses on customer retention and satisfaction', '123-456-7929', 'milagonzalez@att.com', 'Business Administration', 40, 40, 20),
 (41, 'Benjamin', 'Young', 'Cybersecurity Specialist', 'Works on securing enterprise networks and systems', '123-456-7930', 'benjaminyoung@cisco.com', 'Cybersecurity', 41, 41, 21),
 (42, 'Lily', 'King', 'Network Engineer', 'Designs and maintains network infrastructure', '123-456-7931', 'lilyking@cisco.com', 'Information Technology', 42, 42, 21),
 (43, 'Samuel', 'Lee', 'AI Researcher', 'Conducts research in artificial intelligence technologies', '123-456-7932', 'samuellee@openai.com', 'Artificial Intelligence', 43, 43, 22),
-(44, 'Chloe', 'Martinez', 'Product Engineer', 'Designs AI-powered products and solutions', '123-456-7933', 'chloemartinez@openai.com', 'Engineering', 44, 44, 22),
+(44, 'Chloe', 'Martinez', 'Software Engineer', 'Designs AI-powered products and solutions', '123-456-7933', 'chloemartinez@openai.com', 'Engineering', 44, 44, 22),
 (45, 'Michael', 'Hernandez', 'Software Engineer', 'Develops software for cloud-based applications', '123-456-7934', 'michaelhernandez@amazon.com', 'Computer Science', 45, 45, 3),
-(46, 'Grace', 'Jackson', 'Marketing Director', 'Leads marketing efforts for tech products', '123-456-7935', 'gracejackson@amazon.com', 'Marketing', 46, 46, 3),
+(46, 'Grace', 'Jackson', 'Software Engineer', 'Leads marketing efforts for tech products', '123-456-7935', 'gracejackson@amazon.com', 'Marketing', 46, 46, 3),
 (47, 'Daniel', 'Wilson', 'Chief Technology Officer', 'Oversees technological innovations for a major startup', '123-456-7936', 'danielwilson@startup.com', 'Technology Management', 47, 47, 23),
 (48, 'Evelyn', 'Perez', 'Operations Manager', 'Manages operations for a growing tech company', '123-456-7937', 'evelynperez@startup.com', 'Operations Management', 48, 48, 23),
 (49, 'Henry', 'Thompson', 'Chief Financial Officer', 'Handles financial strategies for a tech company', '123-456-7938', 'henrythompson@startup.com', 'Finance', 49, 49, 23),
-(50, 'Abigail', 'White', 'Head of HR', 'Leads the human resources department for a major corporation', '123-456-7939', 'abigailwhite@startup.com', 'Human Resources', 50, 50, 23);
+(50, 'Abigail', 'White', 'Software Engineer', 'Leads the human resources department for a major corporation', '123-456-7939', 'abigailwhite@startup.com', 'Human Resources', 50, 50, 23);
 
 # Insert Employee TAGS
 INSERT INTO employee_tags (TagID, TagName, TagOwner, TaggedUser) VALUES
