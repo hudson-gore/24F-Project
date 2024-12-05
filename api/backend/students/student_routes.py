@@ -51,3 +51,26 @@ def get_students_by_name(studentFirstName):
     the_response = make_response(jsonify(theData))
     the_response.status = 200
     return the_response
+
+
+# Delete a student based on their name and ID
+@students.route('/students/<int:studentID>/<studentFirstName>', methods=['DELETE'])
+def delete_student(studentID, studentFirstName):
+    cursor = db.get_db().cursor()
+
+    # SQL query to delete the student based on their ID and first name
+    query = '''DELETE FROM students 
+               WHERE StudentID = %s AND FirstName = %s'''
+    try:
+        cursor.execute(query, (studentID, studentFirstName))
+        db.get_db().commit()
+
+        # Check if any rows were affected (i.e., if the student was found and deleted)
+        if cursor.rowcount == 0:
+            return jsonify({"message": "Student not found or deletion failed"}), 404
+
+        return jsonify({"message": "Student deleted successfully!"}), 200
+
+    except Exception as e:
+        current_app.logger.error(f"Error deleting student: {e}")
+        return jsonify({"error": f"An error occurred: {e}"}), 500
