@@ -1,7 +1,6 @@
 import logging
 import streamlit as st
 from modules.nav import SideBarLinks
-import requests
 
 # Set up logging
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
@@ -83,14 +82,3 @@ if 'page' in st.session_state:
     page = st.session_state.page
 else:
     page = None
-
-if page == "alumni_search":
-    import alumni_search
-elif page == "co_op_search":
-    import co_op_search
-elif page == "profile_update":
-    import profile_update
-elif page == "hiring_manager_search":
-    import hiring_managers
-elif page == "co_op_outcomes":
-    import co_op_outcomes

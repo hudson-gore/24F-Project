@@ -30,19 +30,19 @@ if hiring_manager_role == "hiring_manager":
     st.subheader(' ')
 
     # Actionable buttons for navigation
-    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
-        st.switch_page("pages/post_job.py")
+    if st.button("Students Looking For Co-ops", type='primary', use_container_width=True):
+        st.switch_page("pages/3_1_students_tags.py")
 
-    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
-        st.switch_page("pages/review_applications.py")
+    if st.button("Student Dashboard", type='primary', use_container_width=True):
+        st.switch_page("pages/3_2_dashboard.py")
         st.experimental_rerun()
 
-    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
-        st.switch_page("pages/search_candidates.py")
+    if st.button("Add Profile For One of My Colleagues", type='primary', use_container_width=True):
+        st.switch_page("pages/3_3_add_profile.py")
         st.experimental_rerun()
 
-    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
-        st.switch_page("pages/job_listing_status.py")
+    if st.button("Remove Colleagues Profile", type='primary', use_container_width=True):
+        st.switch_page("pages/3_4_delete_profile.py")
         st.experimental_rerun()
 
 else:
