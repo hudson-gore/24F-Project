@@ -40,8 +40,6 @@ st.markdown(f"""
     """, unsafe_allow_html=True)
 st.text("\n")
 
-seach_query = st.text_input("Search for a student:", "")
-
 # Navigation buttons
 if st.button("Student Directory"):
     st.write("Navigating to Student Directory...")
