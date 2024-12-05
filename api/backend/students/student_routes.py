@@ -18,7 +18,10 @@ def get_all_students():
 
     cursor = db.get_db().cursor()
 
-    query = '''SELECT s.FirstName, s.LastName, s.Major, s.Email
+    query = '''SELECT CONCAT(s.FirstName, ' ', s.LastName) AS 'Name', 
+                      s.ExpectedGrad AS 'Grad Year', 
+                      s.Major, 
+                      s.Email
                FROM students AS s
                ORDER BY s.LastName'''
     
@@ -35,9 +38,13 @@ def get_all_students():
 def get_students_by_name(studentFirstName):
     cursor = db.get_db().cursor()
     
-    query = '''SELECT s.FirstName, s.LastName, s.Year, s.Major, s.Email
+    query = '''SELECT CONCAT(s.FirstName, ' ', s.LastName) AS 'Name',
+                      s.ExpectedGrad AS 'Grad Year', 
+                      s.Major, 
+                      s.Email
                FROM students AS s
                WHERE s.FirstName = %s
+               ORDER BY s.LastName
             '''
     cursor.execute(query, (studentFirstName,))
     theData = cursor.fetchall()
