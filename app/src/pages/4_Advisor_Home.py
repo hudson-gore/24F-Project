@@ -19,7 +19,10 @@ advisor_name = st.session_state.get('first_name', '')
 
 # Display the title and welcome message
 st.title(f"Welcome, {advisor_name}!")
-st.subheader("Advisor Home Page")
+st.text("Dr. Sarah Patel is a co-op advisor at Northeastern University dedicated to guiding students \
+        on the journey to finding their first, second, or third co-op. She is in charge of overseeing \
+        all of the resources available to students for networking with employers, other students, or alumni.")
+st.subheader(" ")
 
 # Navigation buttons
 if st.button("Delete Severed Relationships", type='primary', use_container_width=True):
