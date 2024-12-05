@@ -150,11 +150,11 @@ VALUES (1, 'Alumni', 3, 6),
 # Insert two tags into the employee tags table
 INSERT INTO employee_tags(TagID, TagName, TagOwner, TaggedUser)
 VALUES (1, 'Candidate', 5, 3),
-        (2, 'Graduating Senior', 5, 4)
+        (2, 'Graduating Senior', 5, 4);
 
 # Insert two positions into the internships table
 INSERT INTO internships(PositionID, JobTitle, StartDate, EndDate, Company, PositionHolder, Supervisor)
 VALUES (1, 'Accounting Co-op', '2023-07-10', '2023-12-22', 101, 4, 6),
-        (2, 'Software Engineer Co-op', '2022-07-10', '2023-12-22', 102, 7, 7);
+        (2, 'Software Engineer Co-op', '2022-07-10', '2023-12-22', 102, 3, 7);
 
 
