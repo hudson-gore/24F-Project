@@ -1,7 +1,8 @@
 import logging
 import streamlit as st
 from modules.nav import SideBarLinks
-import random
+import requests
+
 # Set up logging
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -61,12 +62,13 @@ elif student_role == "maya_chen":
         st.experimental_rerun()
 
     if st.button("Aggregate a list of hiring managers in Accounting and Finance", type='primary', use_container_width=True):
-        st.switch_page("pages/co_op_outcomes.py")
+        st.switch_page("pages/2_3_hiring_managers.py")
         st.experimental_rerun()
 
     if st.button("Add my co-op experiences to the data-base", type='primary', use_container_width=True):
         st.switch_page("pages/co_op_outcomes.py")
         st.experimental_rerun()
+
 else:
     st.error("Unknown student role. Please log in again.")
     logger.error(f"Unknown student role: {student_role}")
