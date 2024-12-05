@@ -9,7 +9,7 @@ SHOW DATABASES;
 USE NetWorkHub;
 
 # Create the Advisors Table
-CREATE TABLE advisors(
+CREATE TABLE dvisors(
     AdvisorID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName varchar(50),
     LastName varchar(50),
@@ -18,7 +18,7 @@ CREATE TABLE advisors(
 );
 
 # Create the Students table
-CREATE TABLE students(
+CREATE TABLE tudents(
     StudentID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName varchar(50),
     LastName varchar(50),
@@ -109,110 +109,108 @@ CREATE TABLE internships(
 );
 
 # Insert Advisors
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (1, 'Sarah', 'Patel', 'spatel@northeastern.edu', '385-622-8096');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (2, 'Rodger', 'Kiddle', 'rkiddle1@stanford.edu', '185-571-7664');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (3, 'Carney', 'Rosone', 'crosone2@geocities.jp', '567-716-8697');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (4, 'Hugh', 'Bonhan', 'hbonhan3@mlb.com', '585-316-7160');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (5, 'Danya', 'Zamora', 'dzamora4@altervista.org', '838-166-6408');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (6, 'Kendrick', 'Rothermel', 'krothermel5@washingtonpost.com', '685-470-3194');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (7, 'Darren', 'Roll', 'droll6@comcast.net', '600-758-7402');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (8, 'Paige', 'Hanwell', 'phanwell7@yahoo.com', '761-514-0003');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (9, 'Lib', 'Josephson', 'ljosephson8@weather.com', '210-170-3098');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (10, 'Haley', 'Paddington', 'hpaddington9@1und1.de', '382-732-2552');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (11, 'Bear', 'Gabbett', 'bgabbetta@shutterfly.com', '891-741-6171');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (12, 'Loralyn', 'Gerbl', 'lgerblb@github.io', '973-987-5031');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (13, 'Petr', 'Skyppe', 'pskyppec@biglobe.ne.jp', '788-324-6756');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (14, 'Stevy', 'Metherell', 'smetherelld@networkadvertising.org', '310-429-2136');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (15, 'Joly', 'McCowen', 'jmccowene@home.pl', '805-792-2176');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (16, 'Amara', 'Bullerwell', 'abullerwellf@jiathis.com', '901-576-8234');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (17, 'Sherwin', 'Lesmonde', 'slesmondeg@netscape.com', '765-944-8683');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (18, 'Amii', 'Buttler', 'abuttlerh@mapy.cz', '519-810-1505');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (19, 'Etan', 'Perryn', 'eperryni@diigo.com', '575-399-4500');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (20, 'Angela', 'Durnin', 'adurninj@webmd.com', '609-215-7239');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (21, 'Sibyl', 'Leithgoe', 'sleithgoek@unblog.fr', '787-966-9459');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (22, 'Zenia', 'Redwood', 'zredwoodl@shareasale.com', '434-201-0731');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (23, 'Doloritas', 'Studman', 'dstudmanm@forbes.com', '632-416-9362');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (24, 'Ellerey', 'Straniero', 'estranieron@java.com', '774-378-1753');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (25, 'Zebedee', 'Seally', 'zseallyo@apple.com', '843-673-0145');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (26, 'Melanie', 'Samwaye', 'msamwayep@netscape.com', '917-899-7945');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (27, 'Elnora', 'Antonelli', 'eantonelliq@youtube.com', '186-135-9356');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (28, 'Casar', 'Postins', 'cpostinsr@ibm.com', '444-180-4423');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (29, 'Jase', 'Tritten', 'jtrittens@cyberchimps.com', '854-133-7760');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (30, 'Doralia', 'Comettoi', 'dcomettoit@barnesandnoble.com', '153-718-0097');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (31, 'Corrie', 'Breewood', 'cbreewoodu@cdc.gov', '734-990-9198');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (32, 'Keefe', 'Flindall', 'kflindallv@toplist.cz', '579-177-0850');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (33, 'Cherise', 'Penny', 'cpennyw@woothemes.com', '201-345-3041');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (34, 'Madella', 'Balharrie', 'mbalharriex@kickstarter.com', '185-825-2187');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (35, 'Beth', 'Garry', 'bgarryy@usa.gov', '512-515-0234');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (36, 'Berty', 'Bails', 'bbailsz@unblog.fr', '460-757-5912');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (37, 'Cherye', 'Celier', 'ccelier10@nymag.com', '868-698-5111');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (38, 'Cayla', 'Meatcher', 'cmeatcher11@hatena.ne.jp', '492-523-6585');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (39, 'Georges', 'Lidgertwood', 'glidgertwood12@illinois.edu', '352-180-9583');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (40, 'Lucila', 'Blinco', 'lblinco13@engadget.com', '555-341-2897');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (41, 'Arny', 'Boshard', 'aboshard14@dot.gov', '779-805-1278');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (42, 'Cherida', 'Bamell', 'cbamell15@dell.com', '154-973-0037');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (43, 'Danny', 'Jellyman', 'djellyman16@yelp.com', '719-460-1365');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (44, 'Jocelin', 'Goslin', 'jgoslin17@fc2.com', '291-411-8743');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (45, 'Dotti', 'Heaysman', 'dheaysman18@bing.com', '347-279-7271');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (46, 'Freda', 'Stammler', 'fstammler19@yellowbook.com', '200-427-2960');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (47, 'Sumner', 'Gohn', 'sgohn1a@wordpress.org', '294-322-2067');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (48, 'Ariana', 'Burleigh', 'aburleigh1b@yahoo.com', '957-195-0326');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (49, 'Aurelie', 'Olivello', 'aolivello1c@telegraph.co.uk', '114-972-5449');
-insert into Advisors (AdvisorID, FirstName, LastName, Email, Phone) values (50, 'Kaila', 'Gillian', 'kgillian1d@elpais.com', '652-763-1417');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (1, 'Sarah', 'Patel', 'spatel@northeastern.edu', '385-622-8096');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (2, 'Rodger', 'Kiddle', 'rkiddle1@stanford.edu', '185-571-7664');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (3, 'Carney', 'Rosone', 'crosone2@geocities.jp', '567-716-8697');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (4, 'Hugh', 'Bonhan', 'hbonhan3@mlb.com', '585-316-7160');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (5, 'Danya', 'Zamora', 'dzamora4@altervista.org', '838-166-6408');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (6, 'Kendrick', 'Rothermel', 'krothermel5@washingtonpost.com', '685-470-3194');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (7, 'Darren', 'Roll', 'droll6@comcast.net', '600-758-7402');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (8, 'Paige', 'Hanwell', 'phanwell7@yahoo.com', '761-514-0003');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (9, 'Lib', 'Josephson', 'ljosephson8@weather.com', '210-170-3098');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (10, 'Haley', 'Paddington', 'hpaddington9@1und1.de', '382-732-2552');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (11, 'Bear', 'Gabbett', 'bgabbetta@shutterfly.com', '891-741-6171');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (12, 'Loralyn', 'Gerbl', 'lgerblb@github.io', '973-987-5031');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (13, 'Petr', 'Skyppe', 'pskyppec@biglobe.ne.jp', '788-324-6756');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (14, 'Stevy', 'Metherell', 'smetherelld@networkadvertising.org', '310-429-2136');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (15, 'Joly', 'McCowen', 'jmccowene@home.pl', '805-792-2176');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (16, 'Amara', 'Bullerwell', 'abullerwellf@jiathis.com', '901-576-8234');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (17, 'Sherwin', 'Lesmonde', 'slesmondeg@netscape.com', '765-944-8683');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (18, 'Amii', 'Buttler', 'abuttlerh@mapy.cz', '519-810-1505');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (19, 'Etan', 'Perryn', 'eperryni@diigo.com', '575-399-4500');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (20, 'Angela', 'Durnin', 'adurninj@webmd.com', '609-215-7239');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (21, 'Sibyl', 'Leithgoe', 'sleithgoek@unblog.fr', '787-966-9459');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (22, 'Zenia', 'Redwood', 'zredwoodl@shareasale.com', '434-201-0731');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (23, 'Doloritas', 'Studman', 'dstudmanm@forbes.com', '632-416-9362');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (24, 'Ellerey', 'Straniero', 'estranieron@java.com', '774-378-1753');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (25, 'Zebedee', 'Seally', 'zseallyo@apple.com', '843-673-0145');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (26, 'Melanie', 'Samwaye', 'msamwayep@netscape.com', '917-899-7945');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (27, 'Elnora', 'Antonelli', 'eantonelliq@youtube.com', '186-135-9356');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (28, 'Casar', 'Postins', 'cpostinsr@ibm.com', '444-180-4423');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (29, 'Jase', 'Tritten', 'jtrittens@cyberchimps.com', '854-133-7760');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (30, 'Doralia', 'Comettoi', 'dcomettoit@barnesandnoble.com', '153-718-0097');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (31, 'Corrie', 'Breewood', 'cbreewoodu@cdc.gov', '734-990-9198');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (32, 'Keefe', 'Flindall', 'kflindallv@toplist.cz', '579-177-0850');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (33, 'Cherise', 'Penny', 'cpennyw@woothemes.com', '201-345-3041');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (34, 'Madella', 'Balharrie', 'mbalharriex@kickstarter.com', '185-825-2187');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (35, 'Beth', 'Garry', 'bgarryy@usa.gov', '512-515-0234');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (36, 'Berty', 'Bails', 'bbailsz@unblog.fr', '460-757-5912');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (37, 'Cherye', 'Celier', 'ccelier10@nymag.com', '868-698-5111');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (38, 'Cayla', 'Meatcher', 'cmeatcher11@hatena.ne.jp', '492-523-6585');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (39, 'Georges', 'Lidgertwood', 'glidgertwood12@illinois.edu', '352-180-9583');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (40, 'Lucila', 'Blinco', 'lblinco13@engadget.com', '555-341-2897');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (41, 'Arny', 'Boshard', 'aboshard14@dot.gov', '779-805-1278');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (42, 'Cherida', 'Bamell', 'cbamell15@dell.com', '154-973-0037');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (43, 'Danny', 'Jellyman', 'djellyman16@yelp.com', '719-460-1365');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (44, 'Jocelin', 'Goslin', 'jgoslin17@fc2.com', '291-411-8743');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (45, 'Dotti', 'Heaysman', 'dheaysman18@bing.com', '347-279-7271');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (46, 'Freda', 'Stammler', 'fstammler19@yellowbook.com', '200-427-2960');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (47, 'Sumner', 'Gohn', 'sgohn1a@wordpress.org', '294-322-2067');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (48, 'Ariana', 'Burleigh', 'aburleigh1b@yahoo.com', '957-195-0326');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (49, 'Aurelie', 'Olivello', 'aolivello1c@telegraph.co.uk', '114-972-5449');
+insert into advisors (AdvisorID, FirstName, LastName, Email, Phone) values (50, 'Kaila', 'Gillian', 'kgillian1d@elpais.com', '652-763-1417');
 
 # Insert Students
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (1, 'Paxton', 'Ornillos', 'English Literature', 'Sociology', 2027, 'Second', 'Coffee lover', '601-132-3302', 'pornillos0@geocities.jp', 1);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (2, 'Francene', 'Doulton', 'Psychology', 'Music Theory', 2028, 'Second', 'Guitar player', '391-732-7210', 'fdoulton1@myspace.com', 2);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (3, 'Ryann', 'Marzello', 'English Literature', 'Fashion Design', 2028, 'Second', 'Traveler', '534-405-1316', 'rmarzello2@xrea.com', 3);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (4, 'Neile', 'Sammon', 'Psychology', 'Gender Studies', 2025, 'Second', 'Guitar player', '281-280-7932', 'nsammon3@dmoz.org', 4);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (5, 'Grace', 'Gemmill', 'Political Science', 'Psychology', 2028, 'Third', 'Male', '878-768-8495', 'ggemmill4@nytimes.com', 5);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (6, 'Elihu', 'McIlwreath', 'Computer Science', 'Creative Writing', 2026, 'First', 'Software Engineer', '699-833-0954', 'emcilwreath5@xinhuanet.com', 6);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (7, 'Hewet', 'Galton', 'Mechanical Engineering', 'Film Studies', 2024, 'Fourth', 'Male', '240-955-0239', 'hgalton6@drupal.org', 7);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (8, 'Maribeth', 'Johns', 'Biology', 'Psychology', 2029, 'Fourth', '25 years old', '812-889-3781', 'mjohns7@linkedin.com', 8);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (9, 'Beale', 'Garlee', 'Sociology', 'Dance', 2025, 'Second', 'Hiking enthusiast', '535-170-9185', 'bgarlee8@imgur.com', 9);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (10, 'Archer', 'Brinded', 'Mechanical Engineering', 'Urban Planning', 2024, 'Third', 'Fluent in Spanish', '157-803-0456', 'abrinded9@quantcast.com', 10);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (11, 'Rolfe', 'Banker', 'Biology', 'Public Health', 2028, 'First', 'Coffee lover', '430-965-3029', 'rbankera@loc.gov', 11);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (12, 'Marcile', 'Poytres', 'Chemistry', 'Psychology', 2029, 'Fourth', 'Guitar player', '864-744-0690', 'mpoytresb@hc360.com', 12);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (13, 'Simonette', 'Mirralls', 'Computer Science', 'Music Theory', 2027, 'First', 'New York', '511-840-2190', 'smirrallsc@furl.net', 13);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (14, 'Tony', 'Cretney', 'Chemistry', 'Nutrition', 2026, 'Third', 'Traveler', '581-606-5326', 'tcretneyd@omniture.com', 14);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (15, 'Delainey', 'Mathie', 'Sociology', 'Criminology', 2024, 'Fourth', '25 years old', '725-823-8542', 'dmathiee@naver.com', 15);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (16, 'Melba', 'Grumell', 'Sociology', 'Dance', 2028, 'Second', 'NY', '656-580-7595', 'mgrumellf@prlog.org', 16);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (17, 'Petronilla', 'Edgson', 'Political Science', 'Psychology', 2025, 'Third', 'Guitar player', '530-984-8589', 'pedgsong@g.co', 17);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (18, 'Beale', 'Sherbrooke', 'Psychology', 'Urban Planning', 2029, 'Fourth', 'Guitar player', '664-753-2529', 'bsherbrookeh@census.gov', 18);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (19, 'Shaughn', 'Greenset', 'Political Science', 'Environmental Studies', 2024, 'First', 'Coffee lover', '648-916-1753', 'sgreenseti@taobao.com', 19);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (20, 'Brigida', 'O''Heaney', 'Art History', 'Public Health', 2027, 'First', 'John Doe', '144-376-5060', 'boheaneyj@globo.com', 20);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (21, 'Pall', 'Blaszczak', 'Computer Science', 'Film Studies', 2028, 'Second', 'Guitar player', '797-725-4080', 'pblaszczakk@sina.com.cn', 21);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (22, 'Tito', 'McKelvie', 'English Literature', 'Urban Planning', 2024, 'First', 'Male', '997-664-0823', 'tmckelviel@desdev.cn', 22);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (23, 'Adelind', 'Langlais', 'Sociology', 'Film Studies', 2025, 'First', 'Software Engineer', '341-425-1668', 'alanglaism@mit.edu', 23);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (24, 'Boyce', 'Syratt', 'Political Science', 'Creative Writing', 2025, 'Third', 'New York', '695-302-4669', 'bsyrattn@abc.net.au', 24);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (25, 'Anatol', 'Beavis', 'Sociology', 'Anthropology', 2024, 'First', 'Software Engineer', '609-268-3895', 'abeaviso@bloglovin.com', 25);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (26, 'Maryjo', 'Slemmonds', 'Art History', 'Psychology', 2026, 'Third', 'New York', '940-597-4486', 'mslemmondsp@time.com', 26);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (27, 'Justine', 'Colebeck', 'Art History', 'Criminology', 2029, 'Second', 'Traveler', '402-307-9001', 'jcolebeckq@ow.ly', 27);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (28, 'Zaccaria', 'Beales', 'Sociology', 'Criminology', 2025, 'Third', 'Hiking enthusiast', '583-311-2723', 'zbealesr@de.vu', 28);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (29, 'Jerri', 'Wehnerr', 'Business Administration', 'Computer Science', 2024, 'Third', 'NY', '827-575-7001', 'jwehnerrs@bizjournals.com', 29);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (30, 'Robbin', 'Storkes', 'Biology', 'Criminology', 2026, 'First', 'Male', '471-359-5647', 'rstorkest@vinaora.com', 30);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (31, 'Fina', 'Langston', 'Political Science', 'Music Theory', 2028, 'First', 'Hiking enthusiast', '156-989-8758', 'flangstonu@privacy.gov.au', 31);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (32, 'Marcelia', 'Snewin', 'Biology', 'Sociology', 2024, 'Second', 'Traveler', '610-738-7809', 'msnewinv@stumbleupon.com', 32);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (33, 'Bond', 'Gonzalez', 'English Literature', 'Environmental Studies', 2025, 'Second', 'NY', '282-372-2661', 'bgonzalezw@omniture.com', 33);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (34, 'Melitta', 'Hallawell', 'Sociology', 'Environmental Studies', 2028, 'Third', 'Fluent in Spanish', '325-815-0914', 'mhallawellx@thetimes.co.uk', 34);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (35, 'Gerti', 'Odby', 'Chemistry', 'Film Studies', 2029, 'Second', 'Male', '770-888-0042', 'godbyy@slashdot.org', 35);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (36, 'Trixi', 'Reyna', 'Computer Science', 'Urban Planning', 2026, 'First', 'Coffee lover', '461-448-3784', 'treynaz@spotify.com', 36);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (37, 'Carmencita', 'Cowburn', 'Psychology', 'Nutrition', 2026, 'First', 'Software Engineer', '445-540-6360', 'ccowburn10@state.tx.us', 37);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (38, 'Helge', 'Semens', 'Political Science', 'Urban Planning', 2028, 'Second', 'Software Engineer', '999-370-5513', 'hsemens11@wordpress.com', 38);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (39, 'Gale', 'Mordacai', 'Political Science', 'Music Theory', 2025, 'Fourth', 'Software Engineer', '329-966-4282', 'gmordacai12@usda.gov', 39);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (40, 'Edithe', 'Jacobsson', 'Business Administration', 'Creative Writing', 2025, 'First', 'NY', '796-321-8546', 'ejacobsson13@furl.net', 40);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (41, 'Isac', 'Stebbing', 'Art History', 'Dance', 2029, 'Fourth', 'Hiking enthusiast', '160-234-6129', 'istebbing14@ed.gov', 41);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (42, 'Ulla', 'Hotton', 'Political Science', 'Environmental Studies', 2025, 'First', 'Coffee lover', '923-731-4650', 'uhotton15@is.gd', 42);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (43, 'Doti', 'Campe', 'Chemistry', 'Psychology', 2028, 'First', 'Hiking enthusiast', '315-498-5982', 'dcampe16@bbb.org', 43);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (44, 'Jacques', 'Ranyelld', 'Biology', 'Music Theory', 2028, 'Fourth', 'Software Engineer', '910-906-0572', 'jranyelld17@vk.com', 44);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (45, 'Aurelea', 'Pyner', 'Sociology', 'Music Theory', 2027, 'Fourth', 'Coffee lover', '314-697-9295', 'apyner18@ft.com', 45);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (46, 'Karyl', 'Ridewood', 'Biology', 'Urban Planning', 2026, 'Second', 'NY', '571-570-9942', 'kridewood19@surveymonkey.com', 46);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (47, 'Kevan', 'Keers', 'Business Administration', 'Public Health', 2028, 'Second', '25 years old', '971-657-9339', 'kkeers1a@edublogs.org', 47);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (48, 'Ariadne', 'Danforth', 'Art History', 'Psychology', 2024, 'Third', 'Fluent in Spanish', '363-172-2910', 'adanforth1b@a8.net', 48);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (49, 'Maya', 'Chen', 'Accounting', 'Gender Studies', 2029, 'First', 'John Doe', '398-740-0252', 'meate1c@jiathis.com', 49);
-insert into Students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (50, 'Jordan', 'Thompson', 'Computer Science', 'Applied Math', 2026, 'First', 'Fluent in Spanish', '938-386-6627', 'npantlin1d@google.fr', 50);
-
-
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (1, 'Paxton', 'Ornillos', 'Accounting', 'Sociology', 2027, 'Second', 'Coffee lover', '601-132-3302', 'pornillos0@geocities.jp', 1);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (2, 'Francene', 'Doulton', 'Psychology', 'Music Theory', 2028, 'Second', 'Guitar player', '391-732-7210', 'fdoulton1@myspace.com', 2);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (3, 'Ryann', 'Marzello', 'Accounting', 'Fashion Design', 2028, 'Second', 'Traveler', '534-405-1316', 'rmarzello2@xrea.com', 3);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (4, 'Neile', 'Sammon', 'Accounting', 'Gender Studies', 2025, 'Second', 'Guitar player', '281-280-7932', 'nsammon3@dmoz.org', 4);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (5, 'Grace', 'Gemmill', 'Political Science', 'Psychology', 2028, 'Third', 'Male', '878-768-8495', 'ggemmill4@nytimes.com', 5);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (6, 'Elihu', 'McIlwreath', 'Computer Science', 'Creative Writing', 2026, 'First', 'Software Engineer', '699-833-0954', 'emcilwreath5@xinhuanet.com', 6);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (7, 'Hewet', 'Galton', 'Mechanical Engineering', 'Film Studies', 2024, 'Fourth', 'Male', '240-955-0239', 'hgalton6@drupal.org', 7);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (8, 'Maribeth', 'Johns', 'Biology', 'Psychology', 2029, 'Fourth', '25 years old', '812-889-3781', 'mjohns7@linkedin.com', 8);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (9, 'Beale', 'Garlee', 'Sociology', 'Dance', 2025, 'Second', 'Hiking enthusiast', '535-170-9185', 'bgarlee8@imgur.com', 9);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (10, 'Archer', 'Brinded', 'Mechanical Engineering', 'Urban Planning', 2024, 'Third', 'Fluent in Spanish', '157-803-0456', 'abrinded9@quantcast.com', 10);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (11, 'Rolfe', 'Banker', 'Biology', 'Public Health', 2028, 'First', 'Coffee lover', '430-965-3029', 'rbankera@loc.gov', 11);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (12, 'Marcile', 'Poytres', 'Chemistry', 'Psychology', 2029, 'Fourth', 'Guitar player', '864-744-0690', 'mpoytresb@hc360.com', 12);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (13, 'Simonette', 'Mirralls', 'Computer Science', 'Music Theory', 2027, 'First', 'New York', '511-840-2190', 'smirrallsc@furl.net', 13);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (14, 'Tony', 'Cretney', 'Chemistry', 'Nutrition', 2026, 'Third', 'Traveler', '581-606-5326', 'tcretneyd@omniture.com', 14);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (15, 'Delainey', 'Mathie', 'Sociology', 'Criminology', 2024, 'Fourth', '25 years old', '725-823-8542', 'dmathiee@naver.com', 15);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (16, 'Melba', 'Grumell', 'Sociology', 'Dance', 2028, 'Second', 'NY', '656-580-7595', 'mgrumellf@prlog.org', 16);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (17, 'Petronilla', 'Edgson', 'Political Science', 'Psychology', 2025, 'Third', 'Guitar player', '530-984-8589', 'pedgsong@g.co', 17);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (18, 'Beale', 'Sherbrooke', 'Psychology', 'Urban Planning', 2029, 'Fourth', 'Guitar player', '664-753-2529', 'bsherbrookeh@census.gov', 18);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (19, 'Shaughn', 'Greenset', 'Political Science', 'Environmental Studies', 2024, 'First', 'Coffee lover', '648-916-1753', 'sgreenseti@taobao.com', 19);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (20, 'Brigida', 'O''Heaney', 'Art History', 'Public Health', 2027, 'First', 'John Doe', '144-376-5060', 'boheaneyj@globo.com', 20);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (21, 'Pall', 'Blaszczak', 'Computer Science', 'Film Studies', 2028, 'Second', 'Guitar player', '797-725-4080', 'pblaszczakk@sina.com.cn', 21);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (22, 'Tito', 'McKelvie', 'English Literature', 'Urban Planning', 2024, 'First', 'Male', '997-664-0823', 'tmckelviel@desdev.cn', 22);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (23, 'Adelind', 'Langlais', 'Sociology', 'Film Studies', 2025, 'First', 'Software Engineer', '341-425-1668', 'alanglaism@mit.edu', 23);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (24, 'Boyce', 'Syratt', 'Political Science', 'Creative Writing', 2025, 'Third', 'New York', '695-302-4669', 'bsyrattn@abc.net.au', 24);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (25, 'Anatol', 'Beavis', 'Sociology', 'Anthropology', 2024, 'First', 'Software Engineer', '609-268-3895', 'abeaviso@bloglovin.com', 25);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (26, 'Maryjo', 'Slemmonds', 'Art History', 'Psychology', 2026, 'Third', 'New York', '940-597-4486', 'mslemmondsp@time.com', 26);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (27, 'Justine', 'Colebeck', 'Art History', 'Criminology', 2029, 'Second', 'Traveler', '402-307-9001', 'jcolebeckq@ow.ly', 27);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (28, 'Zaccaria', 'Beales', 'Sociology', 'Criminology', 2025, 'Third', 'Hiking enthusiast', '583-311-2723', 'zbealesr@de.vu', 28);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (29, 'Jerri', 'Wehnerr', 'Business Administration', 'Computer Science', 2024, 'Third', 'NY', '827-575-7001', 'jwehnerrs@bizjournals.com', 29);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (30, 'Robbin', 'Storkes', 'Biology', 'Criminology', 2026, 'First', 'Male', '471-359-5647', 'rstorkest@vinaora.com', 30);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (31, 'Fina', 'Langston', 'Political Science', 'Music Theory', 2028, 'First', 'Hiking enthusiast', '156-989-8758', 'flangstonu@privacy.gov.au', 31);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (32, 'Marcelia', 'Snewin', 'Biology', 'Sociology', 2024, 'Second', 'Traveler', '610-738-7809', 'msnewinv@stumbleupon.com', 32);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (33, 'Bond', 'Gonzalez', 'English Literature', 'Environmental Studies', 2025, 'Second', 'NY', '282-372-2661', 'bgonzalezw@omniture.com', 33);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (34, 'Melitta', 'Hallawell', 'Sociology', 'Environmental Studies', 2028, 'Third', 'Fluent in Spanish', '325-815-0914', 'mhallawellx@thetimes.co.uk', 34);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (35, 'Gerti', 'Odby', 'Chemistry', 'Film Studies', 2029, 'Second', 'Male', '770-888-0042', 'godbyy@slashdot.org', 35);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (36, 'Trixi', 'Reyna', 'Computer Science', 'Urban Planning', 2026, 'First', 'Coffee lover', '461-448-3784', 'treynaz@spotify.com', 36);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (37, 'Carmencita', 'Cowburn', 'Psychology', 'Nutrition', 2026, 'First', 'Software Engineer', '445-540-6360', 'ccowburn10@state.tx.us', 37);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (38, 'Helge', 'Semens', 'Political Science', 'Urban Planning', 2028, 'Second', 'Software Engineer', '999-370-5513', 'hsemens11@wordpress.com', 38);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (39, 'Gale', 'Mordacai', 'Political Science', 'Music Theory', 2025, 'Fourth', 'Software Engineer', '329-966-4282', 'gmordacai12@usda.gov', 39);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (40, 'Edithe', 'Jacobsson', 'Business Administration', 'Creative Writing', 2025, 'First', 'NY', '796-321-8546', 'ejacobsson13@furl.net', 40);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (41, 'Isac', 'Stebbing', 'Art History', 'Dance', 2029, 'Fourth', 'Hiking enthusiast', '160-234-6129', 'istebbing14@ed.gov', 41);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (42, 'Ulla', 'Hotton', 'Political Science', 'Environmental Studies', 2025, 'First', 'Coffee lover', '923-731-4650', 'uhotton15@is.gd', 42);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (43, 'Doti', 'Campe', 'Chemistry', 'Psychology', 2028, 'First', 'Hiking enthusiast', '315-498-5982', 'dcampe16@bbb.org', 43);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (44, 'Jacques', 'Ranyelld', 'Biology', 'Music Theory', 2028, 'Fourth', 'Software Engineer', '910-906-0572', 'jranyelld17@vk.com', 44);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (45, 'Aurelea', 'Pyner', 'Sociology', 'Music Theory', 2027, 'Fourth', 'Coffee lover', '314-697-9295', 'apyner18@ft.com', 45);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (46, 'Karyl', 'Ridewood', 'Biology', 'Urban Planning', 2026, 'Second', 'NY', '571-570-9942', 'kridewood19@surveymonkey.com', 46);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (47, 'Kevan', 'Keers', 'Business Administration', 'Public Health', 2028, 'Second', '25 years old', '971-657-9339', 'kkeers1a@edublogs.org', 47);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (48, 'Ariadne', 'Danforth', 'Art History', 'Psychology', 2024, 'Third', 'Fluent in Spanish', '363-172-2910', 'adanforth1b@a8.net', 48);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (49, 'Maya', 'Chen', 'Accounting&Finance', 'Gender Studies', 2029, 'First', 'John Doe', '398-740-0252', 'meate1c@jiathis.com', 49);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (50, 'Jordan', 'Thompson', 'Computer Science', 'Applied Math', 2026, 'First', 'Fluent in Spanish', '938-386-6627', 'npantlin1d@google.fr', 50);
 # Insert two companies into the companies table
 INSERT INTO companies (CompanyID, CompanyName, Industry, Location, Size, ProfileManager) VALUES
 (1, 'Apple', 'Technology', 'Cupertino, CA', 147000, 1),
