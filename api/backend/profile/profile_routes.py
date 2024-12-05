@@ -183,7 +183,7 @@ def update_profile(type):
         'student': '''UPDATE students
                       SET FirstName = %s, LastName = %s, Major = %s, ExpectedGrad = %s, Year = %s,
                           ProfileDetails = %s, Phone = %s, Email = %s, ProfileManager = %s
-                      WHERE EmployeeID = %s
+                      WHERE StudentID = %s
                     ''',
         'employee': '''UPDATE employees
                        SET FirstName = %s, LastName = %s, JobTitle = %s, ProfileDetails = %s, Phone = %s, 

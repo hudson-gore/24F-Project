@@ -21,6 +21,7 @@ def get_all_internships():
     query = '''SELECT *
                FROM internships
             '''
+     
     cursor.execute(query)
     theData = cursor.fetchall()
     the_response = make_response(jsonify(theData))
@@ -104,7 +105,7 @@ def update_internship():
     cursor = db.get_db().cursor()
     cursor.execute(query, data)
     db.get_db().commit()
-
+    
     return "Contact info updated successfully!"
 
 # Delete a specific internship role from the system

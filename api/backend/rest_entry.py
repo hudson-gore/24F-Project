@@ -1,10 +1,10 @@
 from flask import Flask
-
 from backend.db_connection import db
 from backend.contacts.contact_routes import contacts
 from backend.internships.internships_routes import internships
 from backend.profile.profile_routes import profile
 from backend.companies.companies_routes import companies
+from backend.students.student_routes import students
 import os
 from dotenv import load_dotenv
 
@@ -44,6 +44,7 @@ def create_app():
     app.register_blueprint(companies, url_prefix='/com')
     app.register_blueprint(contacts, url_prefix='/con')
     app.register_blueprint(internships, url_prefix='/i')
+    app.register_blueprint(students, url_prefix='/s')
 
     # Don't forget to return the app object
     return app

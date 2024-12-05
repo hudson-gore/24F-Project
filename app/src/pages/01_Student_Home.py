@@ -1,6 +1,8 @@
 import logging
 import streamlit as st
 from modules.nav import SideBarLinks
+import requests
+
 # Set up logging
 logging.basicConfig(format='%(filename)s:%(lineno)s:%(levelname)s -- %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -16,25 +18,23 @@ if not st.session_state.get('authenticated', False):
 student_role = st.session_state.get('role', '')
 student_name = st.session_state.get('first_name', '')
 
+
 # Define content based on the persona
 if student_role == "jordan_thompson":
     st.title(f"hi, {student_name}!")
-    st.subheader("Your wda to Big Tech Starts Here")
-    st.write("""
-    As an undergraduate computer science student looking to break into the tech industry, 
-    you can use this platform to:
-    - Find alumni and current students who interned/co-oped at big tech companies.
-    - Tailor your profile to impress potential employers.
-    - Learn more about contacts to craft personalized emails for networking.
-    """)
+    st.subheader("Student Homepage")
 
-    # Display actionable buttons or links
-    if st.button("Search for Alumni in Big Tech"):
-        st.switch_page("pages/alumni_search.py")
+    # Display actionable buttons with hover animation
+    if st.button("Coops"):
+        st.switch_page("pages/co_op_search.py")
         st.experimental_rerun()
 
-    if st.button("Find Students Who Co-oped at Toast"):
-        st.switch_page("pages/co_op_search.py")
+    if st.button("Interns"):
+        st.switch_page("pages/interns_search.py")
+        st.experimental_rerun()
+
+    if st.button("Alumni"):
+        st.switch_page("pages/alumni_search.py")
         st.experimental_rerun()
 
     if st.button("Update Your Profile"):
@@ -43,26 +43,32 @@ if student_role == "jordan_thompson":
 
 elif student_role == "maya_chen":
     st.title(f"Welcome, {student_name}!")
-    st.subheader("Your Career in Accounting and Finance Awaits")
-    st.write("""
-    As a senior studying Accounting and Finance, you can use this platform to:
-    - Find alumni who made decisions between Accounting and Finance.
-    - Aggregate hiring manager information for positions in your fields of interest.
-    - Track where others with similar co-op experiences ended up post-graduation.
-    """)
+    st.text("Maya Chen is an undergraduate student at Northeastern University studying \
+            Accounting and Finance. Maya is in their first semester of her senior year \
+            and thus far has successfully completed a co-op in Audit at PWC and as a \
+            Financial Analyst for Fidelity. As her time at Northeastern comes to a close \
+            she is looking for a full-time position, but is unsure if she wants to stay \
+            in Finance or go back to Accounting. ")
+    st.subheader(" ")
+    
 
-    # Display actionable buttons or links
-    if st.button("Find Alumni in Accounting and Finance"):
-        st.switch_page("pages/alumni_search.py")
+    # Display actionable buttons with hover animation
+    if st.button("Find alumni who graduated with an Accounting and Finance Degree", type='primary', use_container_width=True):
+        st.switch_page("pages/2_1_alumni_search.py")
         st.experimental_rerun()
 
-    if st.button("Search for Hiring Managers"):
-        st.switch_page("pages/hiring_managers.py")
+    if st.button("Adjust my profile to indicated I am looking for a job", type='primary', use_container_width=True):
+        st.switch_page("pages/2_2_profile_update.py")
         st.experimental_rerun()
 
-    if st.button("Track Co-op Outcomes"):
+    if st.button("Aggregate a list of hiring managers in Accounting and Finance", type='primary', use_container_width=True):
+        st.switch_page("pages/2_3_hiring_managers.py")
+        st.experimental_rerun()
+
+    if st.button("Add my co-op experiences to the data-base", type='primary', use_container_width=True):
         st.switch_page("pages/co_op_outcomes.py")
         st.experimental_rerun()
+
 else:
     st.error("Unknown student role. Please log in again.")
     logger.error(f"Unknown student role: {student_role}")
@@ -83,5 +89,3 @@ elif page == "hiring_manager_search":
     import hiring_managers
 elif page == "co_op_outcomes":
     import co_op_outcomes
-else:
-    st.write("Home Page (Default)")
