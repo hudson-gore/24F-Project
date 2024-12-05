@@ -1,9 +1,6 @@
-# Idea borrowed from https://github.com/fsmosca/sample-streamlit-authenticator
-
 # This file has function to add certain functionality to the left side bar of the app
 
 import streamlit as st
-from streamlit_extras.let_it_rain import rain
 
 #### ------------------------ General ------------------------
 def HomeNav():
