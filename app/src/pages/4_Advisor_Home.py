@@ -43,7 +43,7 @@ st.text("\n")
 # Navigation buttons
 if st.button("Student Directory"):
     st.write("Navigating to Student Directory...")
-    st.switch_page("pages/student_directory.py")
+    st.switch_page("pages/4_1_student_directory.py")
 
 if st.button("Analyze Job Placement Statistics"):
     st.write("Navigating to Job Placement Statistics...")
