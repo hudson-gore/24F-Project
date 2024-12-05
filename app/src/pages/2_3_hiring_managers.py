@@ -36,6 +36,3 @@ if st.button("Search"):
     else:
         st.warning("Please fill in both Position and Industry.")
 
-# Notes or footer
-st.markdown("---")
-st.caption("Ensure the API is running locally at `http://localhost:5000`. Update the URL if needed.")

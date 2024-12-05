@@ -11,7 +11,6 @@ st.title("Jordan Thompson")
 st.caption(f"Undergraduate: Computer Science - May 2026")
 st.caption("Northeastern University")
 
-# Resume and Transcript Uploads
 col1, col2 = st.columns(2)
 with col1:
     resume_uploaded = st.file_uploader("Resume Attach")

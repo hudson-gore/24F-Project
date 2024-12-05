@@ -19,7 +19,7 @@ tag = 'Alumni'
 data = {} 
 try:
     response = requests.get(f"http://api:4000/con/contacts/employees/degree/tag/{degree}/{tag}")
-    response.raise_for_status()  # Ensure HTTP errors are caught
+    response.raise_for_status() 
     data = response.json()
     if isinstance(data, list) and data:
         df = pd.DataFrame(data)
@@ -29,4 +29,3 @@ try:
 except Exception as e:
     st.write(f"Error fetching data: {e}")
 
-#st.dataframe(data)
