@@ -18,9 +18,15 @@ tag = 'Alumni'
 # Make the api call
 data = {} 
 try:
-  data = requests.get(f"http://api:4000/con/contacts/employees/degree/tag/{degree}/{tag}")
-except:
-  st.write("**Important**: Could not connect to sample api, so using dummy data.")
-  data = {"a":{"b": "123", "c": "hello"}, "z": {"b": "456", "c": "goodbye"}}
+    response = requests.get(f"http://api:4000/con/contacts/employees/degree/tag/{degree}/{tag}")
+    response.raise_for_status()  # Ensure HTTP errors are caught
+    data = response.json()
+    if isinstance(data, list) and data:
+        df = pd.DataFrame(data)
+        st.dataframe(df)
+    else:
+        st.write("No data available for the selected criteria.")
+except Exception as e:
+    st.write(f"Error fetching data: {e}")
 
-st.dataframe(data)
+#st.dataframe(data)
