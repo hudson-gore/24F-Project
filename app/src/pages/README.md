@@ -103,6 +103,9 @@ Home.py:
 
 
 4_Advisor_Home.py:
+    Advisor Home Page for the NetWorkHub platform. It serves as the main dashboard for co-op 
+    advisors, such as Dr. Sarah Patel, providing tools and resources to manage student 
+    relationships, applications, and employer contacts.
 
 
 4_1_delete_company.py:
