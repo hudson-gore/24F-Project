@@ -63,12 +63,14 @@ def internship_experience():
     intern = job_data['PositionHolder']
     manager = job_data['Supervisor']
 
+    data = (title, start, end, company, intern, manager)
+
     query = '''INSERT INTO internships (JobTitle, StartDate, EndDate, Company, 
                                         PositionHolder, Supervisor)
                VALUES (%s, %s, %s, %s, %s, %s)
             '''
     cursor = db.get_db().cursor()
-    cursor.execute(query)
+    cursor.execute(query, data)
     db.get_db().commit()
 
     response = make_response("Successfully Added Internship Experience!")
@@ -119,3 +121,20 @@ def delete_internship(position):
     db.get_db().commit()
 
     return "Internship deleted successfully!"
+
+# Route that returns all of the internship positions for a specific company
+@internships.route('/internships/pos/comp/<company>', methods=["GET"])
+def pos_from_comp(company):
+
+    query = '''SELECT i.JobTitle
+               FROM internships i
+               JOIN companies c ON i.Company = c.CompanyID
+               WHERE c.CompanyName = %s'''
+    
+    cursor = db.get_db().cursor()
+    cursor.execute(query, (company,))
+    
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status = 200
+    return the_response

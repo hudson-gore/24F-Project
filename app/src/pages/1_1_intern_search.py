@@ -3,18 +3,20 @@ import requests
 import pandas as pd
 
 # Streamlit app title
-st.title("Employee Contacts by Position and Industry")
+st.title("Student Internships by Position and Industry")
 
 # Input fields for position and industry
-position = st.text_input("Enter Job Position:", placeholder="e.g., Hiring Manager")
-industry = st.text_input("Enter Industry:", placeholder="e.g., Retail")
+position = st.text_input("Enter Job Position:", placeholder="e.g., Software Engineer Co-op")
+industry = st.text_input("Enter Industry:", placeholder="e.g., Tech")
 
 # Submit button
 if st.button("Search"):
     if position and industry:
         try:
+            # Construct API URL
+            api_url = f"http://api:4000/con/contacts/students/pos/ind/{position}/{industry}"
             # Make the GET request
-            response = requests.get(f"http://api:4000/con/contacts/employees/pos/ind/{position}/{industry}")
+            response = requests.get(api_url)
             
             if response.status_code == 200:
                 # Convert JSON response to DataFrame
@@ -32,4 +34,3 @@ if st.button("Search"):
             st.error(f"An error occurred: {e}")
     else:
         st.warning("Please fill in both Position and Industry.")
-

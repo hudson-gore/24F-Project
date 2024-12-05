@@ -33,8 +33,8 @@ def get_contacts(type):
     the_response.status_code = 200
     return the_response
 
-# Get all the contacts for a specific position and indsutry
-@contacts.route('/contacts/employees/<position>/<industry>', methods=['GET'])
+# Get all the employees for a specific position and indsutry
+@contacts.route('/contacts/employees/pos/ind/<position>/<industry>', methods=['GET'])
 def get_contacts_pos_ind(position, industry):
     cursor = db.get_db().cursor()
     
@@ -42,6 +42,26 @@ def get_contacts_pos_ind(position, industry):
                FROM employees e
                JOIN companies c ON e.Company = c.CompanyID
                WHERE e.JobTitle = %s AND c.Industry = %s'''
+    
+    cursor.execute(query, (position, industry))
+
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+    return the_response
+
+# Get all the student internships for a specific position and indsutry
+@contacts.route('/contacts/students/pos/ind/<position>/<industry>', methods=['GET'])
+def get_students_pos_ind(position, industry):
+    cursor = db.get_db().cursor()
+    
+    query = '''SELECT s.FirstName, s.LastName, s.Phone, s.Email 
+               FROM students s
+               JOIN internships i ON i.PositionHolder = s.StudentID
+               JOIN companies c ON c.CompanyID = i.Company
+               WHERE i.JobTitle = %s AND c.Industry = %s'''
+    
     cursor.execute(query, (position, industry))
 
     theData = cursor.fetchall()
@@ -58,10 +78,9 @@ def get_contacts_ind_tag(industry, tag):
     query = '''
                SELECT e.FirstName, e.LastName, e.JobTitle, e.Phone, e.Email 
                FROM employees e
-               JOIN people p ON p.ID = e.EmployeeID
-               JOIN tags t ON p.ID = t.TaggedUser
+               JOIN student_tags st ON e.EmployeeID = st.TaggedUser
                JOIN companies c ON e.Company = c.CompanyID
-               WHERE c.Industry = %s AND t.TagName = %s
+               WHERE c.Industry = %s AND st.TagName = %s
             '''
 
     cursor.execute(query, (industry, tag))
@@ -78,8 +97,7 @@ def get_contacts_spec_pos(company, position):
 
     query = '''SELECT s.FirstName, s.LastName, s.Email, s.Phone
                FROM students s
-               JOIN people p ON s.StudentID = p.ID
-               JOIN internships i ON p.ID = i.PositionHolder
+               JOIN internships i ON s.StudentID = i.PositionHolder
                JOIN companies c ON c.CompanyID = i.Company
                WHERE c.CompanyName = %s AND i.JobTitle = %s
                '''
@@ -93,7 +111,7 @@ def get_contacts_spec_pos(company, position):
 
 # Get all of the contacts of employees from a specific industry, with
 # a defined company size, and specific tag
-@contacts.route('/contacts/employees/<industry>/<size>/<tag>', methods=['GET'])
+@contacts.route('/contacts/employees/ind/sz/tag/<industry>/<size>/<tag>', methods=['GET'])
 def get_contacts_ind_sz_tag(industry, size, tag):
     try:
         try:
@@ -106,11 +124,10 @@ def get_contacts_ind_sz_tag(industry, size, tag):
         query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Email, e.Phone
                    FROM employees e
                    JOIN companies c ON e.Company = c.CompanyID
-                   JOIN people p ON e.EmployeeID = p.ID
-                   JOIN tags t ON p.ID = t.TaggedUser
+                   JOIN student_tags st ON e.EmployeeID = st.TaggedUser
                    WHERE c.Industry = %s
                         AND c.Size <= %s
-                        AND t.TagName = %s'''
+                        AND st.TagName = %s'''
         cursor.execute(query, (industry, size, tag))
 
         theData = cursor.fetchall()
@@ -134,9 +151,8 @@ def get_contacts_deg_tag(degree, tag):
 
     query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Email, e.Phone
                FROM employees e
-               JOIN people p ON e.EmployeeID = p.ID
-               JOIN tags t ON p.ID = t.TaggedUser
-               WHERE e.Degree = %s AND t.TagName = %s'''
+               JOIN student_tags st ON e.EmployeeID = st.TaggedUser
+               WHERE e.Degree = %s AND st.TagName = %s'''
     
     cursor.execute(query, (degree, tag))
 
@@ -146,36 +162,15 @@ def get_contacts_deg_tag(degree, tag):
     the_response.status_code = 200
     return the_response
 
-# Get all of the employee contacts that have completed a specified 
-# internship/co-op in the past and has the desired tag
-@contacts.route('/contacts/employees/<position>/<tag>', methods=['GET'])
-def get_contacts_intern_tag(position, tag):
-    cursor = db.get_db().cursor()
-
-    query = '''SELECT e.FirstName, e.LastName, e.JobTitle, e.Email, e.Phone
-               FROM employees e
-               JOIN people p ON p.ID = e.EmployeeID
-               JOIN internships i ON p.ID = i.PositionHolder
-               JOIN tags t ON p.ID = t.TaggedUser
-               WHERE i.JobTitle = %s AND t.TagName = %s'''
-    cursor.execute(query, (position, tag))
-
-    theData = cursor.fetchall()
-
-    the_response = make_response(jsonify(theData))
-    the_response.status_code = 200
-    return the_response
-
 # Get all of the students with a specific major and desired tag
-@contacts.route('/contacts/students/<major>/<tag>', methods=['GET'])
+@contacts.route('/contacts/students/major/tag/<major>/<tag>', methods=['GET'])
 def get_contacts_major_tag(major, tag):
     cursor = db.get_db().cursor()
 
     query = '''SELECT s.FirstName, s.LastName, s.Year, s.Email, s.Phone
                FROM students s
-               JOIN people p ON s.StudentID = p.ID
-               JOIN tags t ON p.ID = t.TaggedUser
-               WHERE s.Major = %s AND t.TagName = %s'''
+               JOIN employee_tags et ON s.StudentID = et.TaggedUser
+               WHERE s.Major = %s AND et.TagName = %s'''
     
     cursor.execute(query, (major, tag))
 
@@ -186,15 +181,14 @@ def get_contacts_major_tag(major, tag):
     return the_response
 
 # Get a list of all of the students with a specifc tag
-@contacts.route('/contacts/students/<tag>', methods=['GET'])
+@contacts.route('/contacts/students/tags/<tag>', methods=['GET'])
 def get_contacts_taggged(tag):
     cursor = db.get_db().cursor()
 
     query = '''SELECT s.FirstName, s.LastName, s.Year, s.Major, s.Email, s.Phone
                FROM students s
-               JOIN people p ON s.StudentID = p.ID
-               JOIN tags t on p.ID = t.TaggedUser
-               WHERE t.TagName = %s'''
+               JOIN employee_tags et on s.StudentID = et.TaggedUser
+               WHERE et.TagName = %s'''
     
     cursor.execute(query, (tag))
 
@@ -205,7 +199,7 @@ def get_contacts_taggged(tag):
     return the_response
 
 # Get the contact info of a specific user
-@contacts.route('/contact/<type>/<id>', methods=['GET'])
+@contacts.route('/contact/user/<type>/<id>', methods=['GET'])
 def get_contact_info(type, id):
     cursor = db.get_db().cursor()
         

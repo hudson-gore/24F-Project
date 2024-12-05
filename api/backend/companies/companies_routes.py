@@ -28,7 +28,7 @@ def get_all_companies():
     return the_response
 
 # Return the company profile of a specific company
-@companies.route('/companies/<id>', methods=['GET'])
+@companies.route('/companies/profile/<id>', methods=['GET'])
 def get_comp_prof(id):
     cursor = db.get_db().cursor()
 
@@ -119,4 +119,20 @@ def delete_company_profile(id):
     response = make_response('Successfully company profile!')
     response.status_code = 200
     return response
+
+# Return all of the company names who have internships
+@companies.route('/companies/internships', methods=['GET'])
+def companies_w_internships():
+
+    query = '''SELECT DISTINCT c.CompanyName
+               FROM companies c
+               JOIN internships i ON c.CompanyID = i.Company'''
+    
+    cursor = db.get_db().cursor()
+    cursor.execute(query)
+    
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status = 200
+    return the_response
     

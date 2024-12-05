@@ -3,26 +3,28 @@ import requests
 import pandas as pd
 
 # Streamlit app title
-st.title("Employee Contacts by Position and Industry")
+st.title("Contacts by Industry and Tag")
 
-# Input fields for position and industry
-position = st.text_input("Enter Job Position:", placeholder="e.g., Hiring Manager")
-industry = st.text_input("Enter Industry:", placeholder="e.g., Retail")
+# Input fields for industry and tag
+industry = st.text_input("Enter Industry:", placeholder="e.g., Tech")
+tag = st.text_input("Enter Tag:", placeholder="e.g., Alumni")
 
 # Submit button
 if st.button("Search"):
-    if position and industry:
+    if industry and tag:
         try:
+            # Construct API URL
+            api_url = f"http://api:4000/con/contacts/industry/tag/{industry}/{tag}"
             # Make the GET request
-            response = requests.get(f"http://api:4000/con/contacts/employees/pos/ind/{position}/{industry}")
+            response = requests.get(api_url)
             
             if response.status_code == 200:
                 # Convert JSON response to DataFrame
                 data = response.json()
                 if data:
-                    df = pd.DataFrame(data, columns=["FirstName", "LastName", "Phone", "Email"])
+                    df = pd.DataFrame(data, columns=["FirstName", "LastName", "JobTitle", "Phone", "Email"])
                     # Display results
-                    st.write(f"Results for {position} in {industry}:")
+                    st.write(f"Results for contacts in {industry} with tag '{tag}':")
                     st.dataframe(df)
                 else:
                     st.warning("No results found for the given criteria.")
@@ -31,5 +33,4 @@ if st.button("Search"):
         except Exception as e:
             st.error(f"An error occurred: {e}")
     else:
-        st.warning("Please fill in both Position and Industry.")
-
+        st.warning("Please fill in both Industry and Tag.")

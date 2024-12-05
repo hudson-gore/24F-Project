@@ -8,20 +8,13 @@ SHOW DATABASES;
 # Use the NetWorkHub Database
 USE NetWorkHub;
 
-# Create parent table for all people
-CREATE TABLE people(
-    ID INT PRIMARY KEY AUTO_INCREMENT
-);
-
 # Create the Advisors Table
 CREATE TABLE advisors(
     AdvisorID INT PRIMARY KEY,
     FirstName varchar(50),
     LastName varchar(50),
     Email varchar(50),
-    Phone varchar(50),
-    FOREIGN KEY (AdvisorID) REFERENCES people(ID)
-        ON UPDATE cascade ON DELETE restrict
+    Phone varchar(50)
 );
 
 # Create the Students table
@@ -38,8 +31,6 @@ CREATE TABLE students(
     Email varchar(50),
     ProfileManager INT NOT NULL,
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
-        ON UPDATE cascade ON DELETE restrict,
-    FOREIGN KEY (StudentID) REFERENCES people(ID)
         ON UPDATE cascade ON DELETE restrict
 );
 
@@ -73,20 +64,30 @@ CREATE TABLE employees(
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
         ON UPDATE cascade ON DELETE restrict,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
-        ON UPDATE cascade ON DELETE restrict,
-    FOREIGN KEY (EmployeeID) REFERENCES people(ID)
         ON UPDATE cascade ON DELETE restrict
 );
 
-# Create the Tags table
-CREATE TABLE tags(
+# Create the Employee Tags table
+CREATE TABLE employee_tags(
     TagID INT PRIMARY KEY AUTO_INCREMENT,
     TagName varchar(100) NOT NULL,
     TagOwner INT NOT NULL,
     TaggedUser INT NOT NULL,
-    FOREIGN KEY (TagOwner) REFERENCES people(ID)
+    FOREIGN KEY (TagOwner) REFERENCES employees(EmployeeID)
         ON UPDATE cascade ON DELETE restrict,
-    FOREIGN KEY (TaggedUser) REFERENCES people(ID)
+    FOREIGN KEY (TaggedUser) REFERENCES students(StudentID)
+        ON UPDATE cascade ON DELETE restrict
+);
+
+# Create the Student Tags table
+CREATE TABLE student_tags(
+    TagID INT PRIMARY KEY AUTO_INCREMENT,
+    TagName varchar(100) NOT NULL,
+    TagOwner INT NOT NULL,
+    TaggedUser INT NOT NULL,
+    FOREIGN KEY (TagOwner) REFERENCES students(StudentID)
+        ON UPDATE cascade ON DELETE restrict,
+    FOREIGN KEY (TaggedUser) REFERENCES employees(EmployeeID)
         ON UPDATE cascade ON DELETE restrict
 );
 
@@ -101,15 +102,11 @@ CREATE TABLE internships(
     Supervisor INT NOT NULL,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
         ON UPDATE cascade ON DELETE restrict,
-    FOREIGN KEY (PositionHolder) REFERENCES  people(ID)
+    FOREIGN KEY (PositionHolder) REFERENCES  students(StudentID)
         ON UPDATE cascade ON DELETE restrict,
     FOREIGN KEY (Supervisor) REFERENCES employees(EmployeeID)
         ON UPDATE cascade ON DELETE restrict
 );
-
-# Insert some people in the database
-INSERT INTO people(ID)
-VALUES(1),(2),(3),(4),(5), (6), (7);
 
 # Insert two advisors in the advisors table
 INSERT INTO advisors(AdvisorID, FirstName, LastName, Email, Phone)
@@ -128,12 +125,9 @@ VALUES (3, 'Jordan', 'Thompson', 'Computer Science', 'Applied Mathematics',
 
 # Insert two companies into the companies table
 INSERT INTO companies(CompanyID, CompanyName, Industry, Location, Size, ProfileManager)
-VALUES (100, 'Amazon', 'Tech', 'Seattle', 1000000,
-        1),
-        (101, 'PWC', 'Accounting', 'London', 370000,
-         2),
-        (102, 'Wayfair', 'Retail', 'Boston', 14400,
-         2);
+VALUES (100, 'Amazon', 'Tech', 'Seattle', 1000000, 1),
+        (101, 'PWC', 'Accounting', 'London', 370000, 2),
+        (102, 'Wayfair', 'Retail', 'Boston', 14400, 2);
 
 # Insert two employees into the employees table
 INSERT INTO employees(EmployeeID, FirstName, LastName, JobTitle, ProfileDetails, Phone, Email,
@@ -148,16 +142,19 @@ VALUES (5, 'Alex', 'Rivera', 'Hiring Manager',
          'Software Engineer @ SWE', '(555) 742-6159', 'ecarter@wayfair.com',
          'Computer Science', 5, 1, 102);
 
-# Insert two tags into the tags table
-INSERT INTO tags(TagID, TagName, TagOwner, TaggedUser)
-VALUES (1, 'Alumni', 1, 6),
-       (2, 'Candidates', 5,3);
+# Insert two tags into the student tags table
+INSERT INTO student_tags(TagID, TagName, TagOwner, TaggedUser)
+VALUES (1, 'Alumni', 3, 6),
+       (2, 'Save for Later', 4, 5);
+
+# Insert two tags into the employee tags table
+INSERT INTO employee_tags(TagID, TagName, TagOwner, TaggedUser)
+VALUES (1, 'Candidate', 5, 3),
+        (2, 'Graduating Senior', 5, 4);
 
 # Insert two positions into the internships table
 INSERT INTO internships(PositionID, JobTitle, StartDate, EndDate, Company, PositionHolder, Supervisor)
-VALUES (1, 'Accounting Co-op', '2023-7-10', '2023-12-22', 101,
-        4, 6),
-        (2, 'Software Engineer Co-op', '2022-7-10', '2023-12-22', 102,
-         7, 7);
+VALUES (1, 'Accounting Co-op', '2023-07-10', '2023-12-22', 101, 4, 6),
+        (2, 'Software Engineer Co-op', '2022-07-10', '2023-12-22', 102, 3, 7);
 
 
