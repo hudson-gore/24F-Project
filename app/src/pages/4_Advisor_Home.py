@@ -37,6 +37,6 @@ if st.button("Add a Tag to A Student", type='primary', use_container_width=True)
 if st.button("Add a New Contact to Database", type='primary', use_container_width=True):
     st.switch_page("pages/4_4_adding_new_contacts.py")
 
-if st.button("Student Directory"):
+if st.button("Student Directory", type='primary', use_container_width=True):
     st.write("Navigating to Student Directory...")
     st.switch_page("pages/4_5_student_directory.py")
