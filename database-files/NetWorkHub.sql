@@ -87,7 +87,7 @@ CREATE TABLE student_tags(
     TaggedUser INT NOT NULL,
     FOREIGN KEY (TagOwner) REFERENCES students(StudentID)
         ON UPDATE cascade ON DELETE restrict,
-    FOREIGN KEY (TaggedUser) REFERENCES Employees(EmployeeID)
+    FOREIGN KEY (TaggedUser) REFERENCES employees(EmployeeID)
         ON UPDATE cascade ON DELETE restrict
 );
 
