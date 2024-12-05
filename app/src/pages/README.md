@@ -87,6 +87,19 @@ Home.py:
 
 
 3_4_delete_profile.py:
+    the Delete Profile page, part of the NetWorkHub platform. It allows users, specifically Alex at 
+    Wayfair, to view and manage employee profiles associated with Wayfair. Users can select a contact 
+    to delete from a dropdown menu and view an updated list of contacts after deletion.
+
+    CLICK on a contact from the drop down menu
+    or 
+    TYPE in the name of a contact
+
+    then, CLICK the "Delete Contact" button below
+
+    You can view the the current contacts by clicking the "Show Updated Contacts"
+    - you can click this before removing a contact to see current list, then after to see that 
+      the deleted individual has been removed
 
 
 4_Advisor_Home.py:
