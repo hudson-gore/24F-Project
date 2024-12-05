@@ -361,4 +361,22 @@ def get_company_profiles(company):
 
     return the_response
 
+# Return all the tags
+@profile.route('profile/get/all/tags', methods=['GET'])
+def get_all_tags():
+
+    cursor = db.get_db().cursor()
+
+    query = ''' SELECT *
+                FROM employee_tags
+            '''
+    
+    cursor.execute(query)
+
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+
+    return the_response
+
     
