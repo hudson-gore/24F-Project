@@ -5,9 +5,14 @@ import pandas as pd
 # Streamlit app title
 st.title("Employee Contacts by Position and Industry")
 
-# Input fields for position and industry
-position = st.text_input("Enter Job Position:", placeholder="e.g., Hiring Manager")
-industry = st.text_input("Enter Industry:", placeholder="e.g., Retail")
+# Create two columns for position and industry input fields
+col1, col2 = st.columns(2)
+
+with col1:
+    position = st.text_input("Job Position", placeholder="e.g., Hiring Manager")
+
+with col2:
+    industry = st.text_input("Industry", placeholder="e.g., Retail")
 
 # Submit button
 if st.button("Search"):
