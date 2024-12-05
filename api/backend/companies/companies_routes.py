@@ -6,7 +6,7 @@ from flask import make_response
 from flask import current_app
 from flask import abort
 from backend.db_connection import db
-from backend.ml_models.model01 import predict
+
 
 # Creating new blueprint object
 companies = Blueprint('companies', __name__)

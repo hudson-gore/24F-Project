@@ -6,7 +6,10 @@ from flask import make_response
 from flask import current_app
 from flask import abort
 from backend.db_connection import db
-from backend.ml_models.model01 import predict
+<<<<<<< HEAD
+
+=======
+>>>>>>> 82c7fc4e0cab9c3be14e16153fd4fcdbe6707210
 
 # Creating new blueprint object
 internships = Blueprint('internships', __name__)
