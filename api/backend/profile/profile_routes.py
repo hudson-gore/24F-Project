@@ -202,7 +202,7 @@ def update_profile(type):
     response.status_code = 200
     return response
 
-# Delete an existing comapny profile
+# Delete an existing company profile
 @profile.route('/profile/<id>', methods=['DELETE'])
 def delete_profile(id):
     
@@ -217,16 +217,15 @@ def delete_profile(id):
     return response
 
 # Return all the student profiles with a specifc tag
-@profile.route('/profile/<tag>', methods=['GET'])
+@profile.route('/profile/students/tags/<tag>', methods=['GET'])
 def get_profiles_w_tag(tag):
 
     cursor = db.get_db().cursor()
 
     query = '''SELECT s.FirstName, s.LastName, s.Major, s.Year, s.Email, s.Phone
                FROM students s
-               JOIN people p ON p.ID = s.StudentID
-               JOIN tags t ON p.ID = t.TaggedUser
-               WHERE t.TagName = %s
+               JOIN employee_tags et ON s.StudentID = et.TaggedUser
+               WHERE et.TagName = %s
             '''
     cursor.execute(query, (tag,))
 
@@ -236,8 +235,8 @@ def get_profiles_w_tag(tag):
 
     return the_response
 
-# Add a new tag to a profile
-@profile.route('/profile/tag', methods=['POST'])
+# Add a new tag to a student profile
+@profile.route('/profile/student/tag', methods=['POST'])
 def add_tag_to_profile():
 
     cursor = db.get_db().cursor()
@@ -255,7 +254,7 @@ def add_tag_to_profile():
 
     data = (name, owner, tagged)
 
-    query = '''INSERT INTO tags (TagName, TagOwner, TaggedUser)
+    query = '''INSERT INTO employee_tags (TagName, TagOwner, TaggedUser)
                VALUES (%s, %s, %s)
             '''
     cursor.execute(query, data)
@@ -265,12 +264,12 @@ def add_tag_to_profile():
     response.status_code = 200
     return response
 
-# Removing a tag from a specifc profile
-@profile.route('/profile/<tag>/<profile>', methods=['DELETE'])
+# Removing a tag from a specifc  students profile
+@profile.route('/profile/student/<tag>/<profile>', methods=['DELETE'])
 def delete_tag(tag, profile):
     cursor = db.get_db().cursor()
 
-    query = '''DELETE FROM tags
+    query = '''DELETE FROM employee_tags
                WHERE TagID = %s AND TaggedUser = %s
             '''
     cursor.execute(query, (tag, profile))
@@ -281,5 +280,49 @@ def delete_tag(tag, profile):
     response.status_code = 200
     return response
 
+# Add a new tag to a employee's profile
+@profile.route('/profile/employee/tag', methods=['POST'])
+def add_tag_to_emp_profile():
+
+    cursor = db.get_db().cursor()
+
+    tag_data = request.json
+
+    required_fields = ['TagName', 'TagOwner', 'TaggedUser']
+
+    if not all(field in tag_data for field in required_fields):
+        return "Missing required fields in the request data."
+    
+    name = tag_data['TagName']
+    owner = tag_data['TagOwner']
+    tagged = tag_data['TaggedUser']
+
+    data = (name, owner, tagged)
+
+    query = '''INSERT INTO student_tags (TagName, TagOwner, TaggedUser)
+               VALUES (%s, %s, %s)
+            '''
+    cursor.execute(query, data)
+    db.get_db().commit()
+
+    response = make_response('Successfully added tag!')
+    response.status_code = 200
+    return response
+
+# Removing a tag from a specifc employee's profile
+@profile.route('/profile/employee/<tag>/<profile>', methods=['DELETE'])
+def delete_emp_tag(tag, profile):
+    cursor = db.get_db().cursor()
+
+    query = '''DELETE FROM student_tags
+               WHERE TagID = %s AND TaggedUser = %s
+            '''
+    cursor.execute(query, (tag, profile))
+
+    db.get_db().commit()
+
+    response = make_response('Successfully deleted tag!')
+    response.status_code = 200
+    return response
         
     
