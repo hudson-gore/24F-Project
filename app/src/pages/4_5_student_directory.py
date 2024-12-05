@@ -14,27 +14,27 @@ st.subheader("Use this page to search and view profiles of students seeking co-o
 # Backend API endpoints
 BASE_API_URL = "http://api:4000/s"
 ALL_STUDENTS_ENDPOINT = f"{BASE_API_URL}/students"
-SEARCH_STUDENTS_ENDPOINT = f"{BASE_API_URL}/students/{{}}"  # Placeholder for student search by first name
+SEARCH_STUDENTS_ENDPOINT = f"{BASE_API_URL}/students/{{}}" 
 
 # Function to fetch all students
 def fetch_all_students():
     try:
         response = requests.get(ALL_STUDENTS_ENDPOINT)
-        response.raise_for_status()  # Raise an error if the request fails
-        return pd.DataFrame(response.json())  # Convert to DataFrame
+        response.raise_for_status() 
+        return pd.DataFrame(response.json()) 
     except requests.RequestException as e:
         st.error(f"Error fetching all students: {e}")
-        return pd.DataFrame()  # Return an empty DataFrame
+        return pd.DataFrame()  
 
 # Function to search students by first name
 def search_students_by_name(first_name):
     try:
         response = requests.get(SEARCH_STUDENTS_ENDPOINT.format(first_name))
-        response.raise_for_status()  # Raise an error if the request fails
-        return pd.DataFrame(response.json())  # Convert to DataFrame
+        response.raise_for_status()  
+        return pd.DataFrame(response.json()) 
     except requests.RequestException as e:
         st.error(f"Error fetching student data for '{first_name}': {e}")
-        return pd.DataFrame()  # Return an empty DataFrame
+        return pd.DataFrame() 
 
 # Fetch all students initially
 students_df = fetch_all_students()
