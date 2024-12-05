@@ -6,7 +6,7 @@ import pandas as pd
 def get_contacts():
     try:
         # API call to fetch contacts (adjust the endpoint if necessary)
-        response = requests.get("http://api:4000/con/contacts/employees/company/102")
+        response = requests.get("http://api:4000/con/contacts/employees/company/31")
         if response.status_code == 200:
             contacts = response.json()
             # Process the data to display meaningful names in the dropdown
