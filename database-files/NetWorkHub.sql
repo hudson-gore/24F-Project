@@ -154,7 +154,7 @@ VALUES (1, 'Candidate', 5, 3),
 
 # Insert two positions into the internships table
 INSERT INTO internships(PositionID, JobTitle, StartDate, EndDate, Company, PositionHolder, Supervisor)
-VALUES (1, 'Accounting Co-op', '2023-7-10', '2023-12-22', 101, 4, 6),
-        (2, 'Software Engineer Co-op', '2022-7-10', '2023-12-22', 102, 7, 7);
+VALUES (1, 'Accounting Co-op', '2023-07-10', '2023-12-22', 101, 4, 6),
+        (2, 'Software Engineer Co-op', '2022-07-10', '2023-12-22', 102, 7, 7);
 
 
