@@ -242,8 +242,8 @@ INSERT INTO companies (CompanyID, CompanyName, Industry, Location, Size, Profile
 (27, 'Delta Air Lines', 'Aviation', 'Atlanta, GA', 75000, 27),
 (28, 'United Airlines', 'Aviation', 'Chicago, IL', 90000, 28),
 (29, 'American Airlines', 'Aviation', 'Fort Worth, TX', 133700, 29),
-(30, 'Boeing', 'Aerospace', 'Chicago, IL', 141000, 30);
-(31, 'Wayfair', 'Furniture', 'Boston', 10000, 30)
+(30, 'Boeing', 'Aerospace', 'Chicago, IL', 141000, 30),
+(31, 'Wayfair', 'Furniture', 'Boston', 10000, 30);
 # Insert empolyees
 INSERT INTO employees (EmployeeID, FirstName, LastName, JobTitle, ProfileDetails, Phone, Email, Degree, ContactManager, ProfileManager, Company) VALUES
 (1, 'John', 'Doe', 'Software Engineer', 'Experienced in web development', '123-456-7890', 'johndoe@apple.com', 'Computer Science', 1, 1, 1),
