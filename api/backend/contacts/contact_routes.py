@@ -320,3 +320,20 @@ def delete_contact(type, id):
     db_connection.commit()
 
     return "Contact Deleted Successfully!"
+
+# Get all the contacts from a specifc company
+@contacts.route('/contacts/employees/company/<company>', methods=["GET"])
+def get_contacts_from_company(company):
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT e.FirstName, e.LastName, e.EmployeeID
+               FROM employees e 
+               WHERE e.Company = %s'''
+    
+    cursor.execute(query, (company,))
+    theData = cursor.fetchall()
+
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+
+    return the_response

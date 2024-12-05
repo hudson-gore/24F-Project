@@ -19,45 +19,24 @@ advisor_name = st.session_state.get('first_name', '')
 
 # Display the title and welcome message
 st.title(f"Welcome, {advisor_name}!")
-st.subheader("Advisor Home Page")
-messages = [
-    "Shape the future of careers with your guidance!",
-    "Empower students to achieve their professional goals.",
-    "Your advice leads to successful career paths.",
-    "Mentorship that makes a lasting impact.",
-    "Transforming ambition into real-world success.",
-    "Guiding the next generation of professionals."
-]
-
-message = random.choice(messages)
-st.markdown(f"""
-
-    <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; 
-                text-align: center; font-size: 24px; font-weight: bold; 
-                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
-     <span style="color: #11178f;">{message}</span>
-    </div>
-    """, unsafe_allow_html=True)
-st.text("\n")
+st.text("Dr. Sarah Patel is a co-op advisor at Northeastern University dedicated to guiding students \
+        on the journey to finding their first, second, or third co-op. She is in charge of overseeing \
+        all of the resources available to students for networking with employers, other students, or alumni.")
+st.subheader(" ")
 
 # Navigation buttons
-if st.button("Student Directory"):
+if st.button("Delete Severed Relationships", type='primary', use_container_width=True):
+    st.switch_page("pages/4_1_delete_company.py")
+
+if st.button("Student Application Dashboard", type='primary', use_container_width=True):
+    st.switch_page("pages/4_2_application_dashboard.py")
+
+if st.button("Add a Tag to A Student", type='primary', use_container_width=True):
+    st.switch_page("pages/4_3_tagging_students.py")
+
+if st.button("Add a New Contact to Database", type='primary', use_container_width=True):
+    st.switch_page("pages/4_4_adding_new_contacts.py")
+
+if st.button("Student Directory", type='primary', use_container_width=True):
     st.write("Navigating to Student Directory...")
-    st.switch_page("pages/student_directory.py")
-
-if st.button("Analyze Job Placement Statistics"):
-    st.write("Navigating to Job Placement Statistics...")
-    st.switch_page("pages/job_placement_statistics.py")
-
-if st.button("Share Resources"):
-    st.write("Navigating to Share Resources...")
-    st.switch_page("pages/share_resources.py")
-
-
-if st.button("Provide Feedback"):
-    st.write("Navigating to Provide Feedback...")
-    st.switch_page("pages/provide_feedback.py")
-
-if st.button("Employers"):
-    st.write("Navigative to Employers...")
-    st.switch_page("pages/advisor_view_employers.py")
+    st.switch_page("pages/4_5_student_directory.py")

@@ -328,7 +328,7 @@ def delete_emp_tag(tag, profile):
 
 # Get all of the employee tags in the database
 @profile.route('/profile/students/tags', methods=['GET'])
-def get_all_tags():
+def get_students_tag():
 
     cursor = db.get_db().cursor()
 
@@ -354,6 +354,24 @@ def get_company_profiles(company):
                WHERE e.Company = %s'''
     
     cursor.execute(query, (company,))
+
+    theData = cursor.fetchall()
+    the_response = make_response(jsonify(theData))
+    the_response.status_code = 200
+
+    return the_response
+
+# Return all the tags
+@profile.route('profile/get/all/tags', methods=['GET'])
+def get_all_tags():
+
+    cursor = db.get_db().cursor()
+
+    query = ''' SELECT *
+                FROM employee_tags
+            '''
+    
+    cursor.execute(query)
 
     theData = cursor.fetchall()
     the_response = make_response(jsonify(theData))
