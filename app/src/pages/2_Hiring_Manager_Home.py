@@ -16,23 +16,6 @@ if not st.session_state.get('authenticated', False):
     st.error("Please log in to access this page.")
     st.stop()
 
-messages = [
-    "Your next great hire starts here!",
-    "Unlock potential with every new connection.",
-    "Discover the talent that drives success.",
-    "Opportunities grow when you find the right fit.",
-    "Building strong teams begins today.",
-    "The future of your company starts with talent.",
-    "Every resume holds potential for greatness.",
-    "Transform your team with exceptional hires.",
-    "Your next innovator is waiting to be found.",
-    "Create impact by choosing the right people.",
-    "Every interview is a step toward success.",
-    "Shape the future with the right talent.",
-    "Where opportunity meets the perfect candidate.",
-    "Hiring smarter, building better teams.",
-    "The right people make all the difference."
-]
 
 # Get hiring manager information from the session state
 hiring_manager_name = st.session_state.get('first_name', '')
@@ -41,45 +24,24 @@ hiring_manager_role = st.session_state.get('role', '')
 # Display the hiring manager home page content
 if hiring_manager_role == "hiring_manager":
     st.title(f"Welcome, {hiring_manager_name}!")
-    st.subheader("Hiring Manager Homepage")
-    
-    # Select a random motivational message
-    message = random.choice(messages)
-    st.markdown(f"""
-    <div style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; 
-                text-align: center; font-size: 24px; font-weight: bold; 
-                color: #4b0082; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                animation: fadeIn 2s ease-in-out;">
-     <span style="color: #11178f;">{message}</span>
-    </div>
-
-    <style>
-        @keyframes fadeIn {{
-            from {{
-                opacity: 0;
-            }}
-            to {{
-                opacity: 1;
-            }}
-        }}
-    </style>
-    """, unsafe_allow_html=True)
-
-    st.text("\n")
+    st.text('Alex Rivera is a Northeastern Graduate, who now is the hiring manager for Wayfair. \
+            Alex is in charge of overseeing all of the co-op hiring processes within Wayfair and \
+            maintaining the relationship between Northeastern and Wayfair.')
+    st.subheader(' ')
 
     # Actionable buttons for navigation
-    if st.button("Post a New Job Opening"):
+    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
         st.switch_page("pages/post_job.py")
 
-    if st.button("Review Job Applications"):
+    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
         st.switch_page("pages/review_applications.py")
         st.experimental_rerun()
 
-    if st.button("Search for Candidates"):
+    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
         st.switch_page("pages/search_candidates.py")
         st.experimental_rerun()
 
-    if st.button("Track Job Listing Status"):
+    if st.button("Current students who have interned at big tech firms as Software Engineers", type='primary', use_container_width=True):
         st.switch_page("pages/job_listing_status.py")
         st.experimental_rerun()
 
