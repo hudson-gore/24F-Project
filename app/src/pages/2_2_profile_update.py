@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
 import json
+import pandas as pd
+from pandas import json_normalize
 
 API_URL = "http://api:4000/p"  
 
@@ -61,12 +63,22 @@ with st.form(key="update_form"):
 # Check Profile
 st.header("Updated Profile")
 update_button = st.button("See Updated Profile")
-if update_button:
-    data = {} 
-    try:
-        data = requests.get(f"http://api:4000/p/profile/student/{student_id}")
-    except:
-        st.write("**Important**: Could not connect to sample api, so using dummy data.")
-        data = {"a":{"b": "123", "c": "hello"}, "z": {"b": "456", "c": "goodbye"}}
 
-    st.dataframe(data)
+if update_button:
+    try:
+        response = requests.get(f"{API_URL}/profile/student/{student_id}")
+        response.raise_for_status()  # Catch HTTP errors
+        data = response.json()
+
+        if data:
+            # Create a DataFrame where keys are columns and values are row data
+           # df = pd.DataFrame([data])  # Use [data] to create one row
+            df = json_normalize(data)
+            st.dataframe(df)  # Display DataFrame
+        else:
+            st.write("No data found for the provided Student ID.")
+
+    except requests.exceptions.RequestException as e:
+        st.error(f"API connection error: {e}")
+    except ValueError:
+        st.error("Invalid data format received from API.")
