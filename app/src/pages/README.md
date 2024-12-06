@@ -214,12 +214,37 @@ Home.py:
     and enter the student id number for the student the tag is being applied to
 
 
-
 4_4_adding_new_contacts.py:
+    allows users, such as co-op advisors, to add new employee contacts to the database, 
+    capturing relevant details about the employee and their association with a company.
+
+    EXAMPLE INPUT:
+
+        First Name:
+                - "John"
+        Last Name:
+                - "Doe"
+        Job Title:
+                - "Hiring Manager"
+        Profile Details:
+                - "Hiring Manager @ Amazon"
+        Phone:
+                - [put whatever number you want to test it out]
+        Email:
+                - "john.doe@amazon.com"
+        Degree:
+                - "Business Administration"
+        Contact Manager ID:
+                - 6
+        Profile Manager ID: 
+                - 2
+        Company:
+                - 100
 
 
 4_5_student_directory.py:
 
+    
 
 5_About.py:
 
