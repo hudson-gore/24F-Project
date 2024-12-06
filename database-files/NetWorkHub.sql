@@ -209,8 +209,15 @@ insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (46, 'Karyl', 'Ridewood', 'Biology', 'Urban Planning', 2026, 'Second', 'NY', '571-570-9942', 'kridewood19@surveymonkey.com', 46);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (47, 'Kevan', 'Keers', 'Business Administration', 'Public Health', 2028, 'Second', '25 years old', '971-657-9339', 'kkeers1a@edublogs.org', 47);
 insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (48, 'Ariadne', 'Danforth', 'Art History', 'Psychology', 2024, 'Third', 'Fluent in Spanish', '363-172-2910', 'adanforth1b@a8.net', 48);
-insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (49, 'Maya', 'Chen', 'Accounting&Finance', 'Gender Studies', 2029, 'First', 'John Doe', '398-740-0252', 'meate1c@jiathis.com', 49);
-insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (50, 'Jordan', 'Thompson', 'Computer Science', 'Applied Math', 2026, 'First', 'Fluent in Spanish', '938-386-6627', 'npantlin1d@google.fr', 50);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (49, 'Maya', 'Chen', 'Accounting & Finance', 'Gender Studies', 2025, 'Fourth', 'Looking for full time role!', '398-740-0252', 'meate1c@jiathis.com', 49);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (50, 'Jordan', 'Thompson', 'Computer Science', 'Applied Math', 2026, 'Second', 'Fluent in Spanish', '938-386-6627', 'npantlin1d@google.fr', 50);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (51, 'Emma', 'Foster', 'Computer Science', 'Psychology', 2025, 'Fourth', 'Minimalist designer, tech enthusiast, creative visionary', '555-812-3490', 'emma.foster@mail.com', 1);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (52, 'James', 'Holloway', 'Computer Science', 'Sociology', 2026, 'Third', 'AI engineer, problem solver, innovation seeker', '555-874-1293', 'james.holloway@gmail.com', 2);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (53, 'Olivia', 'Carter', 'Computer Science', 'Philosophy', 2027, 'Second', 'Finance enthusiast, socially responsible, entrepreneurial spirit', '555-563-2417', 'olivia.carter@outlook.com', 3);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (54, 'Noah', 'Turner', 'Computer Science', 'Environmental Studies', 2028, 'First', 'Environmental advocate, biology student, sustainability-driven', '555-482-3561', 'noah.turner@edu.org', 4);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (55, 'Isabella', 'Mitchell', 'Computer Science', 'Business', 2027, 'Second', "Writer, poet, capturing life's moments", '555-219-8476', 'isabella.mitchell@mail.net', 5);
+insert into students (StudentID, FirstName, LastName, Major, Minor, ExpectedGrad, Year, ProfileDetails, Phone, Email, ProfileManager) values (56, 'Liam', 'Bennett', 'Computer Science', 'Yoga', 2026, 'Third', 'History lover, future educator, knowledge seeker', '555-738-9924', 'liam.bennet@biz.com', 6);
+
 # Insert two companies into the companies table
 INSERT INTO companies (CompanyID, CompanyName, Industry, Location, Size, ProfileManager) VALUES
 (1, 'Apple', 'Tech', 'Cupertino, CA', 147000, 1),
@@ -243,7 +250,17 @@ INSERT INTO companies (CompanyID, CompanyName, Industry, Location, Size, Profile
 (28, 'United Airlines', 'Aviation', 'Chicago, IL', 90000, 28),
 (29, 'American Airlines', 'Aviation', 'Fort Worth, TX', 133700, 29),
 (30, 'Boeing', 'Aerospace', 'Chicago, IL', 141000, 30),
-(31, 'Wayfair', 'Furniture', 'Boston', 10000, 30);
+(31, 'Wayfair', 'Furniture', 'Boston', 10000, 30),
+(32, 'Toast', 'Technology', 'Boston', 4500, 2),
+(33, 'PwC', 'Accounting', 'New York', 327000, 5),  
+(34, 'Deloitte', 'Accounting', 'London', 415000, 5),
+(35, 'Ernst & Young (EY)', 'Accounting', 'New York', 312250, 4), 
+(36, 'KPMG', 'Accounting', 'Amsterdam', 265000, 4),  
+(37, 'Goldman Sachs', 'Finance', 'New York', 44000, 5),  
+(38, 'JPMorgan Chase', 'Finance', 'New York', 293000, 5),  
+(39, 'Morgan Stanley', 'Finance', 'New York', 82000, 4),  
+(40, 'BlackRock', 'Finance', 'New York', 19200, 5);
+
 # Insert empolyees
 INSERT INTO employees (EmployeeID, FirstName, LastName, JobTitle, ProfileDetails, Phone, Email, Degree, ContactManager, ProfileManager, Company) VALUES
 (1, 'John', 'Doe', 'Software Engineer', 'Experienced in web development', '123-456-7890', 'johndoe@apple.com', 'Computer Science', 1, 1, 1),
@@ -295,7 +312,25 @@ INSERT INTO employees (EmployeeID, FirstName, LastName, JobTitle, ProfileDetails
 (47, 'Daniel', 'Wilson', 'Hiring Manager', 'Oversees technological innovations for a major startup', '123-456-7936', 'danielwilson@wayfair.com', 'Technology Management', 47, 47, 31),
 (48, 'Evelyn', 'Perez', 'Operations Manager', 'Manages operations for a growing tech company', '123-456-7937', 'evelynperez@wayfair.com', 'Operations Management', 48, 48, 31),
 (49, 'Henry', 'Thompson', 'Chief Financial Officer', 'Handles financial strategies for a tech company', '123-456-7938', 'henrythompson@wayfair.com', 'Finance', 49, 49, 31),
-(50, 'Abigail', 'White', 'Software Engineer', 'Leads the human resources department for a major corporation', '123-456-7939', 'abigailwhite@wayfair.com', 'Human Resources', 50, 50, 31);
+(50, 'Abigail', 'White', 'Software Engineer', 'Leads the human resources department for a major corporation', '123-456-7939', 'abigailwhite@wayfair.com', 'Human Resources', 50, 50, 31),
+(51, 'Ethan', 'Taylor', 'Senior Software Developer', "Designs and implements scalable solutions for Toast's point-of-sale systems", '555-892-3471', 'ethantaylor@toast.com', 'Engineering', 51, 3, 32),
+(52, 'Sophia', 'Garcia', 'Financial Analyst', "Provides data-driven insights for Amazon's financial planning and forecasting", '555-234-6789', 'sophiagarcia@amazon.com', 'Accounting & Finance', 6, 4, 3),
+(53, 'Liam', 'Brown', 'Accounting Manager', "Oversees Tesla's global accounting operations and ensures compliance with financial regulations", '555-874-1234', 'liambrown@tesla.com', 'Accounting & Finance', 6, 5, 4),
+(54, 'Olivia', 'Davis', 'Budget Analyst', "Manages Walmart's departmental budgets and provides expenditure insights", '555-482-9472', 'oliviadavis@walmart.com', 'Accounting & Finance', 18, 3, 9),
+(55, 'James', 'Wilson', 'Tax Specialist', "Handles Nike's corporate tax filings and develops tax-saving strategies", '555-612-5487', 'jameswilson@nike.com', 'Accounting & Finance', 22, 6, 11),
+(56, 'Emma', 'Martinez', 'Investment Analyst', "Advises Johnson & Johnson on portfolio management and investment opportunities", '555-329-8741', 'emmamartinez@jnj.com', 'Accounting & Finance', 24, 7, 12),
+(57, 'Noah', 'Taylor', 'Cost Accountant', "Monitors cost efficiency for Procter & Gamble's manufacturing operations", '555-768-2314', 'noahtaylor@pg.com', 'Accounting & Finance', 25, 8, 13),
+(58, 'Isabella', 'Moore', 'Corporate Treasurer', "Manages PepsiCo's cash flow and liquidity strategies", '555-438-5623', 'isabellamoore@pepsico.com', 'Accounting & Finance', 16, 10, 8),
+(59, 'Benjamin', 'Lee', 'Accounts Payable Specialist', "Ensures Chevron's vendor payments are processed accurately and on time", '555-908-4521', 'benjaminlee@chevron.com', 'Accounting & Finance', 29, 2, 15),
+(60, 'Megan', 'Harris', 'Hiring Manager', 'Oversees recruitment processes for PwC to ensure top talent acquisition.', '555-456-7890', 'megan.harris@pwc.com', 'Human Resources', 60, 27, 33),
+(61, 'Ryan', 'Clark', 'Hiring Manager', 'Leads talent acquisition efforts for Deloitte, focusing on global expansion.', '555-874-3257', 'ryan.clark@deloitte.com', 'Human Resources', 61, 28, 34),
+(62, 'Sophia', 'Brooks', 'Hiring Manager', 'Manages recruitment strategies for EY, specializing in senior-level positions.', '555-482-1964', 'sophia.brooks@ey.com', 'Human Resources', 62, 29, 35),
+(63, 'Ethan', 'Nguyen', 'Hiring Manager', 'Drives recruitment campaigns for KPMG to support international hiring.', '555-329-8745', 'ethan.nguyen@kpmg.com', 'Human Resources', 63, 30, 36),
+(64, 'Olivia', 'Parker', 'Hiring Manager', 'Focuses on identifying top financial talent for Goldman Sachs.', '555-612-3849', 'olivia.parker@goldmansachs.com', 'Human Resources', 64, 31, 37),
+(65, 'James', 'Taylor', 'Hiring Manager', 'Directs recruitment for JPMorgan Chase, emphasizing diversity and inclusion.', '555-768-1423', 'james.taylor@jpmorganchase.com', 'Human Resources', 65, 32, 38),
+(66, 'Liam', 'Rodriguez', 'Hiring Manager', 'Leads Morgan Stanley’s talent acquisition team to find specialized finance professionals.', '555-438-5629', 'liam.rodriguez@morganstanley.com', 'Human Resources', 66, 33, 39),
+(67, 'Emma', 'Walker', 'Hiring Manager', 'Coordinates recruitment for BlackRock, focusing on investment management experts.', '555-908-4527', 'emma.walker@blackrock.com', 'Human Resources', 67, 34, 40);
+
 
 # Insert Employee TAGS
 INSERT INTO employee_tags (TagID, TagName, TagOwner, TaggedUser) VALUES
@@ -348,7 +383,21 @@ INSERT INTO employee_tags (TagID, TagName, TagOwner, TaggedUser) VALUES
 (47, 'Tech Genius', 47, 47),
 (48, 'Problem Solver', 48, 48),
 (49, 'Team Player', 49, 49),
-(50, 'Quick Learner', 50, 50);
+(50, 'Quick Learner', 50, 50)
+(51, 'Looking for Co-op', 67, 29),
+(52, 'Looking for Co-op', 67, 40),
+(53, 'Looking for Co-op', 67, 47),
+(54, 'Looking for Co-op', 67, 5),
+(55, 'Looking for Co-op', 67, 41),
+(56, 'Looking for Co-op', 67, 50),
+(57, 'Looking for Co-op', 67, 18),
+(58, 'Looking for Co-op', 67, 19),
+(59, 'Looking for Co-op', 67, 27),
+(60, 'Looking for Co-op', 67, 9),
+(61, 'Looking for Co-op', 67, 31),
+(62, 'Looking for Co-op', 67, 32),
+(63, 'Looking for Co-op', 67, 14),
+(64, 'Looking for Co-op', 67, 37);
 
 # Insert TAGS STUDENT TAGS
 INSERT INTO student_tags (TagID, TagName, TagOwner, TaggedUser) VALUES
@@ -401,8 +450,17 @@ INSERT INTO student_tags (TagID, TagName, TagOwner, TaggedUser) VALUES
 (47, 'Quick Learner', 47, 47),
 (48, 'Organized', 48, 48),
 (49, 'Creative Thinker', 49, 49),
-(50, 'Tech Innovator', 50, 50);
-
+(50, 'Tech Innovator', 50, 50),
+(51, 'Alumni',56, 1),
+(52, 'Alumni',56, 2),
+(53, 'Alumni',56, 9),
+(54, 'Alumni',56, 10),
+(55, 'Alumni',56, 11),
+(56, 'Alumni',56, 12),
+(57, 'Alumni',56, 35),
+(58, 'Alumni',56, 36),
+(59, 'Alumni',56, 4),
+(60, 'Alumni',56, 45);
 
 # Insert POSITIONS CO-Op
 INSERT INTO internships (PositionID, JobTitle, StartDate, EndDate, Company, PositionHolder, Supervisor) VALUES
@@ -445,4 +503,16 @@ INSERT INTO internships (PositionID, JobTitle, StartDate, EndDate, Company, Posi
 (37, 'Research Assistant', '2026-01-05', '2026-07-05', 4, 2, 22),
 (38, 'Research Assistant', '2026-02-15', '2026-08-15', 3, 27, 18),
 (39, 'Software Engineer', '2026-03-25', '2026-09-25', 2, 10, 13),
-(40, 'Research Assistant', '2026-04-10', '2026-10-10', 1, 3, 4);
+(40, 'Research Assistant', '2026-04-10', '2026-10-10', 1, 3, 4),
+(41, 'Software Engineer', '2023-04-13', '2023-10-15', 1, 51, 1),
+(42, 'Software Engineer', '2024-04-13', '2024-10-15', 1, 52, 1),
+(43, 'Software Engineer', '2023-08-13', '2024-02-15', 6, 53, 12),
+(44, 'Software Engineer', '2023-01-13', '2023-06-15', 6, 54, 12),
+(45, 'Software Engineer', '2023-03-13', '2023-09-15', 5, 55, 9),
+(46, 'Software Engineer', '2022-04-13', '2022-10-15', 5, 56, 9)
+(47, 'Software Development', '2023-04-13', '2023-10-15', 32, 13, 51),
+(48, 'Software Development', '2024-04-13', '2024-10-15', 32, 21, 51),
+(49, 'Software Development', '2023-08-13', '2024-02-15', 32, 36, 51),
+(50, 'Software Development', '2023-01-13', '2023-06-15', 32, 32, 51),
+(51, 'Software Development', '2023-03-13', '2023-09-15', 32, 35, 51),
+(52, 'Software Development', '2022-04-13', '2022-10-15', 32, 54, 51);
