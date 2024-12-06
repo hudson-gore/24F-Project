@@ -52,35 +52,35 @@ Home.py:
 
     EXAMPLE INPUT:
 
-        First Name:
-            - "John"
+    First Name:
+        - "John"
 
-        Last Name:
-            - "Smith"
+    Last Name:
+        - "Smith"
 
-        Major:
-            - "Finance"
-        
-        Expected Graduation Year:
-            - "2026"
+    Major:
+        - "Finance"
+    
+    Expected Graduation Year:
+        - "2026"
 
-        Year:
-            - "Junior"
-        
-        Profile Details:
-            - "Information xyz ...."
+    Year:
+        - "Junior"
+    
+    Profile Details:
+        - "Information xyz ...."
 
-        Phone:
-            - "413-456-1234"
+    Phone:
+        - "413-456-1234"
 
-        Email:
-            - "John_smith@gmail.com"
-        
-        Prfofile Manager:
-            - "Terrance"
+    Email:
+        - "John_smith@gmail.com"
+    
+    Prfofile Manager:
+        - "Terrance"
 
-        Student Id:
-            - "67"
+    Student Id:
+        - "67"
 
 
 2_3_hiring_managers.py:
@@ -94,24 +94,25 @@ Home.py:
 
     EXAMPLE INPUT:
 
-        Job Title:
-            - "Software Engineering Co-op"
-        
-        Start Date:
-            - "2024/12/06"
-        
-        End Date:
-            - "2024/12/06"
-        
-        Comapny:
-            - "PWC"
+    Job Title:
+        - "Software Engineering Co-op"
+    
+    Start Date:
+        - "2024/12/06"
+    
+    End Date:
+        - "2024/12/06"
+    
+    Comapny:
+        - "PWC"
 
-        Student ID:
-            - "124"
+    Student ID:
+        - "124"
 
-        Supervisor:
-            - "Sara Anders"
-        
+    Supervisor:
+        - "Sara Anders"
+
+
 
 3_Hiring_Mangager_Home.py:
     the Hiring Manager Home Page within the broader NetWorkHub platform. It provides a personalized 
@@ -201,11 +202,19 @@ Home.py:
 
 
 4_2_application_dashboard.py:
-
-
+    the Student Dashboard page provides co-op advisors and administrators with insights into 
+    student profiles by displaying tag statistics and detailed information about students 
+    associated with specific tags.
 
 
 4_3_tagging_students.py:
+    allows co-op advisors and other authorized users to assign descriptive tags to student profiles, 
+    facilitating easier categorization and identification of students based on specific attributes or 
+    qualities.
+
+    TYPE in the desired tag, such as "hard worker", the employee id number of the tag creator,
+    and enter the student id number for the student the tag is being applied to
+
 
 
 4_4_adding_new_contacts.py:
