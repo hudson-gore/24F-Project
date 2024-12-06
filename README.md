@@ -1,14 +1,4 @@
 # Fall 2024 CS 3200 Project Template Repository
-
-This repo is a template for your semester project.  It includes most of the infrastructure setup (containers) and sample code and data throughout.  Explore it fully and ask questions.
-
-## Prerequisites
-
-- A GitHub Account
-- A terminal-based or GUI git client
-- VSCode with the Python Plugin
-- A distrobution of Python running on your laptop (Choco (for Windows), brew (for Macs), miniconda, Anaconda, etc). 
-
 ## Current Project Components
 
 Currently, there are three major components which will each run in their own Docker Containers:
