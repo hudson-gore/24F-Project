@@ -31,7 +31,7 @@ CREATE TABLE students(
     Email varchar(50),
     ProfileManager INT NOT NULL,
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
-        ON UPDATE cascade ON DELETE restrict
+        ON UPDATE cascade
 );
 
 # Create the Companies Table
@@ -43,7 +43,7 @@ CREATE TABLE companies(
     Size INT,
     ProfileManager INT NOT NULL,
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
-        ON UPDATE cascade ON DELETE restrict
+        ON UPDATE cascade
 );
 
 # Create the Employees Table
@@ -60,11 +60,11 @@ CREATE TABLE employees(
     ProfileManager INT NOT NULL,
     Company INT NOT NULL,
     FOREIGN KEY (ContactManager) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade ON DELETE restrict,
+        ON UPDATE cascade,
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
-        ON UPDATE cascade ON DELETE restrict,
+        ON UPDATE cascade,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
-        ON UPDATE cascade ON DELETE restrict
+        ON UPDATE cascade
 );
 
 # Create the Employee Tags table
@@ -74,9 +74,9 @@ CREATE TABLE employee_tags(
     TagOwner INT NOT NULL,
     TaggedUser INT NOT NULL,
     FOREIGN KEY (TagOwner) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade ON DELETE delete,
+        ON UPDATE cascade,
     FOREIGN KEY (TaggedUser) REFERENCES students(StudentID)
-        ON UPDATE cascade ON DELETE delete
+        ON UPDATE cascade
 );
 
 # Create the Student Tags table
@@ -86,9 +86,9 @@ CREATE TABLE student_tags(
     TagOwner INT NOT NULL,
     TaggedUser INT NOT NULL,
     FOREIGN KEY (TagOwner) REFERENCES students(StudentID)
-        ON UPDATE cascade ON DELETE delete,
+        ON UPDATE cascade,
     FOREIGN KEY (TaggedUser) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade ON DELETE delete
+        ON UPDATE cascade
 );
 
 # Create the Co-op/Internships table
@@ -101,11 +101,11 @@ CREATE TABLE internships(
     PositionHolder INT NOT NULL,
     Supervisor INT NOT NULL,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
-        ON UPDATE cascade ON DELETE restrict,
+        ON UPDATE cascade,
     FOREIGN KEY (PositionHolder) REFERENCES  students(StudentID)
-        ON UPDATE cascade ON DELETE restrict,
+        ON UPDATE cascade,
     FOREIGN KEY (Supervisor) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade ON DELETE restrict
+        ON UPDATE cascade
 );
 
 # Insert Advisors
