@@ -64,7 +64,7 @@ CREATE TABLE employees(
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
         ON UPDATE cascade ON DELETE SET NULL,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
-        ON UPDATE cascade ON DELETE cascade, 
+        ON UPDATE cascade ON DELETE cascade 
 );
 
 # Create the Employee Tags table
@@ -99,10 +99,10 @@ CREATE TABLE internships(
     EndDate DATE NOT NULL,
     Company INT NOT NULL,
     PositionHolder INT NOT NULL,
-    Supervisor INT NOT,
+    Supervisor INT,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
         ON UPDATE cascade ON DELETE cascade,
-    FOREIGN KEY (PositionHolder) REFERENCES  students(StudentID)
+    FOREIGN KEY (PositionHolder) REFERENCES students(StudentID)
         ON UPDATE cascade ON DELETE cascade,
     FOREIGN KEY (Supervisor) REFERENCES employees(EmployeeID)
         ON UPDATE cascade ON DELETE SET NULL
