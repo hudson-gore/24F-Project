@@ -1,9 +1,6 @@
 # `pages` Folder
 
-This folder contains all the pages that will be part of the application. Details on required numbers will be provided in the Phase 3 documentation.
-
-These pages are meant to show you an example of some of the features of Streamlit and the way we will limit functionality access by role/persona. It is not meant to represent a complete application.
-
+This folder contains all the pages that will be part of the application.
 
 Pages Folder:
     The pages folder contains all the individual application pages that form the core user interface for NetWorkHub. 
@@ -245,12 +242,14 @@ Home.py:
 
 
 4_5_student_directory.py:
+    provides users, such as co-op advisors, with a centralized interface to view and search 
+    for student profiles. The directory includes functionality to list all students or search 
+    for specific students by their first name
 
-    
+    TYPE the first name of the student you are looking for, then PRESS ENTER to see results
+
 
 5_About.py:
-
-
 
 
 
