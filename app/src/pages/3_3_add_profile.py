@@ -52,10 +52,10 @@ job_title = st.text_input("Job Title")
 profile_details = st.text_area("Profile Details")
 phone = st.text_input("Phone")
 email = st.text_input("Email")
-contact_manager = st.text_input("Contact Manager")
-profile_manager = st.text_input("Profile Manager")
-company = st.text_input("Company")
-employee_id = st.text_input("EmployeeID")
+contact_manager = st.text_input("Contact Manager", placeholder="Would be Alex, his ID is 39")
+profile_manager = st.text_input("Profile Manager", placeholder='Any Admin ID number: 26')
+company = st.text_input("Company", placeholder="Wayfair's ID number= 31")
+employee_id = st.text_input("EmployeeID", placeholder='Any random integer: 1-70 already taken')
 
 # Add employee profile submission
 if st.button("Submit Employee Profile"):

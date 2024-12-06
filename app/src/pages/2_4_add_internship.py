@@ -9,12 +9,12 @@ st.write("Fill in the details below to add a new internship experience.")
 
 # Form for Internship Details
 with st.form(key="internship_form"):
-    job_title = st.text_input("Job Title")
+    job_title = st.text_input("Job Title", placeholder='Investment Banking')
     start_date = st.date_input("Start Date")
     end_date = st.date_input("End Date")
-    company = st.text_input("Company")
-    position_holder = st.text_input("Student ID (Position Holder)")
-    supervisor = st.text_input("Supervisor")
+    company = st.text_input("Company", placeholder='Goldman Sachs ID = 37')
+    position_holder = st.text_input("Student ID (Position Holder)", placeholder="Maya's ID is 49")
+    supervisor = st.text_input("Supervisor", placeholder='An employee at GS is 64')
     
     # Submit Button
     submit_button = st.form_submit_button(label="Add Internship")

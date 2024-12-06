@@ -28,16 +28,16 @@ with st.form(key="update_form"):
     st.header(f"Update {profile_type.capitalize()} Profile")
     
     if profile_type == "student":
-        first_name = st.text_input("First Name")
-        last_name = st.text_input("Last Name")
-        major = st.text_input("Major")
-        grad_year = st.text_input("Expected Graduation Year")
-        year = st.text_input("Year")
+        first_name = st.text_input("First Name", placeholder='Maya')
+        last_name = st.text_input("Last Name", placeholder='Chen')
+        major = st.text_input("Major", placeholder='Accounting & Finance')
+        grad_year = st.text_input("Expected Graduation Year", placeholder='2025')
+        year = st.text_input("Year", placeholder='Fourth')
         profile_details = st.text_area("Profile Details")
         phone = st.text_input("Phone")
         email = st.text_input("Email")
-        profile_manager = st.text_input("Profile Manager")
-        student_id = st.text_input("Student ID")
+        profile_manager = st.text_input("Profile Manager", placeholder='Admin Integer: 35')
+        student_id = st.text_input("Student ID", placeholder="Maya's ID is 49")
         
         profile_data = {
             "FirstName": first_name,

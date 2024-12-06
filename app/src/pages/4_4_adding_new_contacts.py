@@ -41,9 +41,9 @@ profile_details = st.text_area("Profile Details")
 phone = st.text_input("Phone")
 email = st.text_input("Email")
 degree = st.text_input("Degree")
-contact_manager = st.text_input("Contact Manager ID")
-profile_manager = st.text_input("Profile Manager ID")
-company = st.text_input("Company ID")
+contact_manager = st.text_input("Contact Manager ID", placeholder="Employee at the company that manages: Could be 45")
+profile_manager = st.text_input("Profile Manager ID", placeholder="Would be Sarah's ID = 1")
+company = st.text_input("Company ID", placeholder='Company ID, Amazon = 3')
 
 # Button to submit the employee contact
 if st.button("Add Employee Contact"):
