@@ -74,3 +74,77 @@ def delete_student(studentID, studentFirstName):
     except Exception as e:
         current_app.logger.error(f"Error deleting student: {e}")
         return jsonify({"error": f"An error occurred: {e}"}), 500
+    
+
+    # Add a new student
+@students.route('/students', methods=['POST'])
+def add_student():
+    # Get data from the request
+    data = request.get_json()
+
+    # Ensure all required fields are provided
+    required_fields = ['FirstName', 'LastName', 'Major', 'Minor', 'ExpectedGrad', 'Year', 
+                       'ProfileDetails', 'Phone', 'Email', 'ProfileManager']
+    for field in required_fields:
+        if field not in data:
+            return jsonify({"error": f"Missing field: {field}"}), 400
+
+    try:
+        cursor = db.get_db().cursor()
+
+        # Insert the new student
+        query = '''INSERT INTO students (FirstName, LastName, Major, Minor, ExpectedGrad, Year, 
+                                         ProfileDetails, Phone, Email, ProfileManager)
+                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'''
+        cursor.execute(query, (data['FirstName'], data['LastName'], data['Major'], data['Minor'], 
+                               data['ExpectedGrad'], data['Year'], data['ProfileDetails'], 
+                               data['Phone'], data['Email'], data['ProfileManager']))
+
+        db.get_db().commit()
+        return jsonify({"message": "Student added successfully!"}), 201
+
+    except Exception as e:
+        current_app.logger.error(f"Error adding student: {e}")
+        return jsonify({"error": f"An error occurred: {e}"}), 500
+
+
+# Update an existing student
+@students.route('/students/<int:studentID>', methods=['PUT'])
+def update_student(studentID):
+    # Get data from the request
+    data = request.get_json()
+
+    # Ensure at least one field is provided for update
+    if not data:
+        return jsonify({"error": "No data provided for update"}), 400
+
+    # Build the update query dynamically
+    update_fields = []
+    query_params = []
+    for key, value in data.items():
+        if key in ['FirstName', 'LastName', 'Major', 'Minor', 'ExpectedGrad', 'Year', 
+                   'ProfileDetails', 'Phone', 'Email', 'ProfileManager']:
+            update_fields.append(f"{key} = %s")
+            query_params.append(value)
+
+    if not update_fields:
+        return jsonify({"error": "No valid fields provided for update"}), 400
+
+    query_params.append(studentID)  # Append the student ID for the WHERE clause
+
+    try:
+        cursor = db.get_db().cursor()
+
+        # Execute the update query
+        query = f"UPDATE students SET {', '.join(update_fields)} WHERE StudentID = %s"
+        cursor.execute(query, query_params)
+        db.get_db().commit()
+
+        if cursor.rowcount == 0:
+            return jsonify({"message": "Student not found or no changes made"}), 404
+
+        return jsonify({"message": "Student updated successfully!"}), 200
+
+    except Exception as e:
+        current_app.logger.error(f"Error updating student: {e}")
+        return jsonify({"error": f"An error occurred: {e}"}), 500
