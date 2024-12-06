@@ -1,5 +1,5 @@
 # Fall 2024 CS 3200 Project - NetWorkHub SQL Samurai
-
+Ryan Devlin, Hudson Gore, Aman Bhojwani, Maximilian Hill, Jarnell
 ## Current Project Components
 
 Currently, there are three major components which will each run in their own Docker Containers:

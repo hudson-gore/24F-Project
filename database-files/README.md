@@ -1,5 +1,5 @@
 # `database-files` Folder
-
+Ryan Devlin, Hudson Gore, Aman Bhojwani, Maximilian Hill, Jarnell
 1) Data Base Creation:
     - The sql file first drops the database if it exists and creates a fresh one named NetWorkHub
     - This ensurees a clean slate from the database
