@@ -74,9 +74,9 @@ CREATE TABLE employee_tags(
     TagOwner INT NOT NULL,
     TaggedUser INT NOT NULL,
     FOREIGN KEY (TagOwner) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade ON DELETE restrict,
+        ON UPDATE cascade ON DELETE delete,
     FOREIGN KEY (TaggedUser) REFERENCES students(StudentID)
-        ON UPDATE cascade ON DELETE restrict
+        ON UPDATE cascade ON DELETE delete
 );
 
 # Create the Student Tags table
@@ -86,9 +86,9 @@ CREATE TABLE student_tags(
     TagOwner INT NOT NULL,
     TaggedUser INT NOT NULL,
     FOREIGN KEY (TagOwner) REFERENCES students(StudentID)
-        ON UPDATE cascade ON DELETE restrict,
+        ON UPDATE cascade ON DELETE delete,
     FOREIGN KEY (TaggedUser) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade ON DELETE restrict
+        ON UPDATE cascade ON DELETE delete
 );
 
 # Create the Co-op/Internships table
