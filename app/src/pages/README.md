@@ -48,6 +48,38 @@ Home.py:
     Allows students to update their profiles with new information regarding their status for looking for a job, 
     ensuring the database remains current and relevant. Also enables them to view their updated profile to 
 
+    EXAMPLE INPUT:
+
+        First Name:
+            - "John"
+
+        Last Name:
+            - "Smith"
+
+        Major:
+            - "Finance"
+        
+        Expected Graduation Year:
+            - "2026"
+
+        Year:
+            - "Junior"
+        
+        Profile Details:
+            - "Information xyz ...."
+
+        Phone:
+            - "413-456-1234"
+
+        Email:
+            - "John_smith@gmail.com"
+        
+        Prfofile Manager:
+            - "Terrance"
+
+        Student Id:
+            - "67"
+
 
 2_3_hiring_managers.py:
     Allows students to aggregate a list of hiring managers from various companies based on the job position they 
@@ -58,6 +90,26 @@ Home.py:
 2_4_add_internship.py:
     Enables authorized users to add new internship opportunities to the database for students to explore
 
+    EXAMPLE INPUT:
+
+        Job Title:
+            - "Software Engineering Co-op"
+        
+        Start Date:
+            - "2024/12/06"
+        
+        End Date:
+            - "2024/12/06"
+        
+        Comapny:
+            - "PWC"
+
+        Student ID:
+            - "124"
+
+        Supervisor:
+            - "Sara Anders"
+        
 
 3_Hiring_Mangager_Home.py:
     the Hiring Manager Home Page within the broader NetWorkHub platform. It provides a personalized 
