@@ -1,4 +1,5 @@
-# Fall 2024 CS 3200 Project Template Repository
+# Fall 2024 CS 3200 Project - NetWorkHub SQL Samurai
+
 ## Current Project Components
 
 Currently, there are three major components which will each run in their own Docker Containers:
