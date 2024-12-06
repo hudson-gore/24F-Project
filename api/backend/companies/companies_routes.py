@@ -6,6 +6,10 @@ from flask import make_response
 from flask import current_app
 from flask import abort
 from backend.db_connection import db
+<<<<<<< HEAD
+=======
+
+>>>>>>> 797aa6594171ee7e2190e53aafb42b100ba8a818
 
 # Creating new blueprint object
 companies = Blueprint('companies', __name__)
