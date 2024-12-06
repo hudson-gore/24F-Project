@@ -11,6 +11,8 @@ Pages Folder:
     needs of the different user personas: undergraduate students, hiring managers, and co-op advisors. These pages 
     aim to streamline networking, recruiting, and advising processes for all users.
 
+Relevant Streamlit Documentation:
+https://docs.streamlit.io/develop/api-reference
 
 Home.py:
     A general landing pages providing an overview of the application and quick navigation link to user-specific sections, 
