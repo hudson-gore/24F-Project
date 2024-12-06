@@ -250,7 +250,7 @@ Home.py:
 
 
 5_About.py:
-
+    about page for the site describing its purpose
 
 
 
