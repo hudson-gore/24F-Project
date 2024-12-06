@@ -1,8 +1,4 @@
 # ------------------------------------------------------------
-# In this file, you can make some modifications to the Streamlit
-# app's global environment. 
-#
-# All of the possible config options can be found here:
 # https://docs.streamlit.io/develop/api-reference/configuration/config.toml
 # ------------------------------------------------------------
 
@@ -18,4 +14,4 @@ base="light"
 primaryColor="#497b8c"
 secondaryBackgroundColor="#bcd9e3"
 font="helvetica"
-
+STREAMLIT_SERVER_ENABLE_STATIC_SERVING=true
