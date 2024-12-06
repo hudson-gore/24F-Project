@@ -29,9 +29,9 @@ CREATE TABLE students(
     ProfileDetails text,
     Phone varchar(50),
     Email varchar(50),
-    ProfileManager INT NOT NULL,
+    ProfileManager INT,
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
-        ON UPDATE cascade
+        ON UPDATE cascade ON DELETE SET NULL
 );
 
 # Create the Companies Table
@@ -41,9 +41,9 @@ CREATE TABLE companies(
     Industry varchar(100),
     Location varchar(50),
     Size INT,
-    ProfileManager INT NOT NULL,
+    ProfileManager INT,
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
-        ON UPDATE cascade
+        ON UPDATE cascade ON DELETE SET NULL
 );
 
 # Create the Employees Table
@@ -56,15 +56,15 @@ CREATE TABLE employees(
     Phone varchar(50),
     Email varchar(50),
     Degree varchar(100),
-    ContactManager INT NOT NULL,
-    ProfileManager INT NOT NULL,
+    ContactManager INT,
+    ProfileManager INT,
     Company INT NOT NULL,
     FOREIGN KEY (ContactManager) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade,
+        ON UPDATE cascade ON DELETE SET NULL,
     FOREIGN KEY (ProfileManager) REFERENCES advisors(AdvisorID)
-        ON UPDATE cascade,
+        ON UPDATE cascade ON DELETE SET NULL,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
-        ON UPDATE cascade
+        ON UPDATE cascade ON DELETE cascade, 
 );
 
 # Create the Employee Tags table
@@ -74,9 +74,9 @@ CREATE TABLE employee_tags(
     TagOwner INT NOT NULL,
     TaggedUser INT NOT NULL,
     FOREIGN KEY (TagOwner) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade,
+        ON UPDATE cascade ON DELETE cascade,
     FOREIGN KEY (TaggedUser) REFERENCES students(StudentID)
-        ON UPDATE cascade
+        ON UPDATE cascade ON DELETE cascade
 );
 
 # Create the Student Tags table
@@ -86,9 +86,9 @@ CREATE TABLE student_tags(
     TagOwner INT NOT NULL,
     TaggedUser INT NOT NULL,
     FOREIGN KEY (TagOwner) REFERENCES students(StudentID)
-        ON UPDATE cascade,
+        ON UPDATE cascade ON DELETE cascade,
     FOREIGN KEY (TaggedUser) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade
+        ON UPDATE cascade ON DELETE cascade
 );
 
 # Create the Co-op/Internships table
@@ -99,13 +99,13 @@ CREATE TABLE internships(
     EndDate DATE NOT NULL,
     Company INT NOT NULL,
     PositionHolder INT NOT NULL,
-    Supervisor INT NOT NULL,
+    Supervisor INT NOT,
     FOREIGN KEY (Company) REFERENCES companies(CompanyID)
-        ON UPDATE cascade,
+        ON UPDATE cascade ON DELETE cascade,
     FOREIGN KEY (PositionHolder) REFERENCES  students(StudentID)
-        ON UPDATE cascade,
+        ON UPDATE cascade ON DELETE cascade,
     FOREIGN KEY (Supervisor) REFERENCES employees(EmployeeID)
-        ON UPDATE cascade
+        ON UPDATE cascade ON DELETE SET NULL
 );
 
 # Insert Advisors
