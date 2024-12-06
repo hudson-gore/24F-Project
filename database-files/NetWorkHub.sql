@@ -383,7 +383,7 @@ INSERT INTO employee_tags (TagID, TagName, TagOwner, TaggedUser) VALUES
 (47, 'Tech Genius', 47, 47),
 (48, 'Problem Solver', 48, 48),
 (49, 'Team Player', 49, 49),
-(50, 'Quick Learner', 50, 50)
+(50, 'Quick Learner', 50, 50),
 (51, 'Looking for Co-op', 67, 29),
 (52, 'Looking for Co-op', 67, 40),
 (53, 'Looking for Co-op', 67, 47),
@@ -509,7 +509,7 @@ INSERT INTO internships (PositionID, JobTitle, StartDate, EndDate, Company, Posi
 (43, 'Software Engineer', '2023-08-13', '2024-02-15', 6, 53, 12),
 (44, 'Software Engineer', '2023-01-13', '2023-06-15', 6, 54, 12),
 (45, 'Software Engineer', '2023-03-13', '2023-09-15', 5, 55, 9),
-(46, 'Software Engineer', '2022-04-13', '2022-10-15', 5, 56, 9)
+(46, 'Software Engineer', '2022-04-13', '2022-10-15', 5, 56, 9),
 (47, 'Software Development', '2023-04-13', '2023-10-15', 32, 13, 51),
 (48, 'Software Development', '2024-04-13', '2024-10-15', 32, 21, 51),
 (49, 'Software Development', '2023-08-13', '2024-02-15', 32, 36, 51),

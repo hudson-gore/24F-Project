@@ -37,7 +37,7 @@ if st.button("Search"):
 # Section: Add Tag
 st.header("Add Tag to Employee Profile")
 tag_name = st.text_input("Enter Tag Name:", placeholder="e.g., Mentor")
-tag_owner = st.text_input("Enter Tag Owner ID:", placeholder="ID of the user adding the tag (Jordan's is 3)")
+tag_owner = st.text_input("Enter Tag Owner ID:", placeholder="ID of the user adding the tag (Jordan's is 50)")
 tagged_user = st.text_input("Enter Tagged User ID:", placeholder="ID of the employee to tag")
 
 if st.button("Add Tag"):
