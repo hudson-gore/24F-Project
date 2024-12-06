@@ -1,8 +1,5 @@
 # `database-files` Folder
 
-TODO: Put some notes here about how this works.  include how to re-bootstrap the db. 
-
-
 1) Data Base Creation:
     - The sql file first drops the database if it exists and creates a fresh one named NetWorkHub
     - This ensurees a clean slate from the database

@@ -460,7 +460,17 @@ INSERT INTO student_tags (TagID, TagName, TagOwner, TaggedUser) VALUES
 (57, 'Alumni',56, 35),
 (58, 'Alumni',56, 36),
 (59, 'Alumni',56, 4),
-(60, 'Alumni',56, 45);
+(60, 'Alumni',56, 45),
+(61, 'Alumni',49, 16),
+(62, 'Alumni',49, 29),
+(63, 'Alumni',49, 49),
+(64, 'Alumni',49, 52),
+(65, 'Alumni',49, 53),
+(66, 'Alumni',49, 54),
+(67, 'Alumni',49, 55),
+(68, 'Alumni',49, 62),
+(69, 'Alumni',49, 64),
+(70, 'Alumni',49, 67);
 
 # Insert POSITIONS CO-Op
 INSERT INTO internships (PositionID, JobTitle, StartDate, EndDate, Company, PositionHolder, Supervisor) VALUES
