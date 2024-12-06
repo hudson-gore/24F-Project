@@ -6,7 +6,6 @@ from flask import make_response
 from flask import current_app
 from flask import abort
 from backend.db_connection import db
-from backend.ml_models.model01 import predict
 
 # Creating new blueprint object
 companies = Blueprint('companies', __name__)
@@ -18,7 +17,7 @@ companies = Blueprint('companies', __name__)
 def get_all_companies():
     cursor = db.get_db().cursor()
 
-    query = '''SELECT DISTINCT CompanyName FROM companies'''
+    query = '''SELECT * FROM companies'''
 
     cursor.execute(query)
     theData = cursor.fetchall()
@@ -107,13 +106,13 @@ def updated_company_profile():
     return response
 
 # Delete an existing profile from the database
-@companies.route('/companies/<company>', methods=['DELETE'])
-def delete_company_profile(company):
+@companies.route('/companies/<id>', methods=['DELETE'])
+def delete_company_profile(id):
 
-    query = '''DELETE FROM companies WHERE CompanyName = %s'''
+    query = '''DELETE FROM companies WHERE CompanyID = %s'''
 
     cursor = db.get_db().cursor()
-    cursor.execute(query, (company,))
+    cursor.execute(query, (id,))
     db.get_db().commit()
 
     response = make_response('Successfully company profile!')
@@ -136,3 +135,21 @@ def companies_w_internships():
     the_response.status = 200
     return the_response
     
+
+# returns the company id of a company given the name
+@companies.route('/companies/<name>', methods=['GET'])
+def get_company_id(name):
+    cursor = db.get_db().cursor()
+
+    query = '''SELECT CompanyID
+               FROM companies
+               WHERE CompanyName = %s'''
+    cursor.execute(query, (name,))
+    
+    theData = cursor.fetchone()  # Use fetchone since it's a single record
+    if not theData:
+        return make_response(jsonify({"error": "Company not found"}), 404)
+
+    response = make_response(jsonify({"CompanyID": theData[0]}))
+    response.status_code = 200
+    return response
